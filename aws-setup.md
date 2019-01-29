@@ -1,10 +1,10 @@
-# AWS setup for secure distributed website hosting
+# AWS setup for secure distributed static website hosting
 
-This is a high level overview of the steps involved in setting up hosting of a secured distributed public website through Amazon Web Services (AWS).
+This is a high level overview of the steps involved in setting up hosting of a secured distributed static public website through Amazon Web Services (AWS). This overview assumes familiarity with AWS.
 
 ## Reference
 
-[AWS website hosting walkthrough](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)
+[AWS website hosting walkthrough](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html) is a good starting point. It doesn't address the more advanced topics of setting up an SSL security certificate or the CloudFront distribution that are outlined below. Detailed information about those topics can be found elsewhere on the AWS documentation site.
 
 ## Register a domain with Route 53
 
