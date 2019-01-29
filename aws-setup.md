@@ -17,13 +17,13 @@ Use [AWS S3](https://s3.console.aws.amazon.com/s3/home?region=us-east-1) Buckets
 "To support requests from both the root domain such as example.com and subdomain such as www.example.com, you create two buckets. One bucket contains the content. You configure the other bucket to redirect requests." A third bucket can be used to store web traffic logs.
 
 First create a log bucket
-logs.{mydomainname}
+`logs.{mydomainname}`
 
 Next a bucker for the content
-{mydomainname}
+`{mydomainname}`
 
 And third a bucket for the www subdomain
-www.{mydomainname}
+`www.{mydomainname}`
 
 In the content bucket:
 
@@ -31,6 +31,7 @@ In the content bucket:
 - upload error.html document
 
 Set public read permissions on content bucket.
+
 Set public read permissions on www subdomain bucket.
 
 ```json
@@ -62,17 +63,19 @@ Follow instructions (fairly straightforward)
 (wait for the SSL certificate to be issued - takes only a few minutes)
 
 Open [AWS Cloudfront](https://console.aws.amazon.com/cloudfront/home?region=us-east-1) to create a new distribution.
+
 Use defaults except:
-"Origin Domain Name" => click in box and select existing S3 content bucket.
-"Viewer Protocol Policy" => select "Redirect HTTP to HTTPS"
-"Compress Objects Automatically" => Yes
-"Alternate Domain Names (CNAMEs)" => {mydomainname} www.{mydomainname}
-"SSL Certificate" => check "Custom SSL Certificate"
-"Custom SSL Certificate" => click in box and select SSL certificate previously created
-"Default Root Object" => Type "index.html" (without the quotes)
-"Logging" => check "On"
-"Bucket for Logs" => click in box and select existing S3 log bucket.
-"Log Prefix" => type "cdn/" (without the quotes)
+
+- "Origin Domain Name" => click in box and select existing S3 content bucket.
+- "Viewer Protocol Policy" => select "Redirect HTTP to HTTPS"
+- "Compress Objects Automatically" => Yes
+- "Alternate Domain Names (CNAMEs)" => {mydomainname} www.{mydomainname}
+- "SSL Certificate" => check "Custom SSL Certificate"
+- "Custom SSL Certificate" => click in box and select SSL certificate previously created
+- "Default Root Object" => Type "index.html" (without the quotes)
+- "Logging" => check "On"
+- "Bucket for Logs" => click in box and select existing S3 log bucket.
+- "Log Prefix" => type "cdn/" (without the quotes)
 
 ## Add alias records in Route 53
 
@@ -81,19 +84,23 @@ Use defaults except:
 Open [AWS Route 53](https://console.aws.amazon.com/route53/home?region=us-east-1) to edit the DNS records of your registered domain.
 
 At this point there should be four records:
-One NS (nameserver) record
-One SOA (start of authority) record
-One or more CNAME (canonical name) records for the SSL certificates (amount depends on your choices during the SSL creation)
 
-Create a Record Set
+- One NS (nameserver) record
+- One SOA (start of authority) record
+- One or more CNAME (canonical name) records for the SSL certificates (number depends on your choices during the SSL creation)
+
+Create a Record Set.
+
 Accept defaults except:
-"Name" => leave empty (is main domain)
-"Alias" => select "yes"
-"Alias target" => type the name of the cloudfront distribution created previously (it may also already be available as a selectable default value).
+
+- "Name" => leave empty (is main domain)
+- "Alias" => select "yes"
+- "Alias target" => type the name of the cloudfront distribution created previously (it may also already be available as a selectable default value).
 
 Create another Record Set same as previous one except:
-"Name" => type "www" (without the double quotes)
+
+- "Name" => type "www" (without the double quotes)
 
 ## Test in a browser
 
-Type the domain name with and without "www" subdomain. Both cases should redirect to the secure https version of your new site.
+Type the domain name with and without "www" subdomain. Both cases should redirect to the secure `https` version of your new site.
