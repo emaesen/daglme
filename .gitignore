@@ -4,6 +4,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*-log.*
 
 # Runtime data
 pids
@@ -38,6 +39,9 @@ jspm_packages/
 
 # TypeScript v1 declaration files
 typings/
+
+# Temporary directory
+temp/
 
 # Optional npm cache directory
 .npm
