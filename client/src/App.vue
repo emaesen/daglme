@@ -41,15 +41,8 @@ html, #nav, #nav a {
 }
 #app {
   padding: 5px 10px 200px;
-  background-image: url(/img/illumined-earth.png);
-  background-size: initial;
-  background-attachment: fixed;
-  background-position-x: center;
-  background-position-y: bottom;
-  background-repeat: no-repeat;
 }
 body,html {
-  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -57,6 +50,12 @@ body {
   margin: 0 auto;
   min-width: 300px;
   max-width: 900px;
+  background-image: url(/img/illumined-earth.png);
+  background-size: initial;
+  background-attachment: fixed;
+  background-position-x: center;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
 }
 body,
 input,
@@ -235,6 +234,10 @@ a,
   select,
   button {
     font-size: 15px;
+  }
+  html, #nav, #nav a,
+  body {
+    background-size: contain;
   }
   h1,
   h2,
