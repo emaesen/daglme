@@ -173,7 +173,7 @@ a,
   background-color: #00000027;
   color: #f3f5e7;
   padding: 5px 10px;
-  box-shadow: 0 0 30px #eef;
+  box-shadow: 0 0 40px -10px #eef;
 }
 .poetic {
   font-family: 'Vollkorn', cursive;
@@ -181,6 +181,7 @@ a,
   font-size: 120%;
   line-height: 1.6em;
   text-align: center;
+  margin: 1em;
 }
 .emph {
   font-weight: bold;
@@ -208,7 +209,7 @@ a,
   opacity: 0;
 }
 .glow {
-  text-shadow: 0 0 10px #c0defd, 0 0 30px #ffffff63;
+  text-shadow: 2px 2px 10px #00000050, 0 0 10px #ffffff90;
 }
 .pulse-glow {
   animation: pulse-glow 14s infinite;
@@ -222,6 +223,9 @@ a,
   50% {
     text-shadow: none;
   }
+}
+.todo {
+  color: #b8cbf9;
 }
 @media all and (max-width: 600px) {
   body,
