@@ -2,7 +2,7 @@
   <div class="home view">
     <h1>Daily Global Meditation</h1>
 
-    <h2>Invitation:</h2>
+    <h2>A Call:</h2>
     <div class="center outline">
       <div class="poetic glow">
         Birthing of the New Earth Culture &amp; Consciousness
@@ -28,7 +28,7 @@
 
     <h2>Sacred Sound</h2>
     <div>
-      .....(option of meditation with or without sacred sounding).....<br>
+      <span class="todo">coming soon: .....(option of meditation with or without sacred sounding).....</span><br>
       <br class="spacer">
       <span class="emph">note:</span> 
     </div>
