@@ -15,7 +15,7 @@
     </div>
     
     <h2>Simple Guidelines:</h2>
-    <ul>
+    <ul class="bullet">
       <li>Be in the Stillness.</li>
       <li>Envision Earth and Sky as Already Illumined and Whole. Feel It!</li>
       <li>Release the Vision.</li>
@@ -28,7 +28,7 @@
 
     <h2>Sacred Sound</h2>
     <div>
-      <span class="todo">coming soon: .....(option of meditation with or without sacred sounding).....</span>
+      <span class="todo">coming soon: .....(option of meditation with recorded sacred sounding).....</span>
     </div>
     <ul>
       <li>One will connect with the Divine Current.</li>
