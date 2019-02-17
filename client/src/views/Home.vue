@@ -4,11 +4,11 @@
 
     <h2>Invitation:</h2>
     <div class="center outline">
-      <div class="poetic">
-        Birthing of the New Earth Culture and Consciousness
+      <div class="poetic glow">
+        Birthing of the New Earth Culture &amp; Consciousness
       </div>
-      <div>
-        <span class="emph">Each Day: 5 Minute Meditation at 8 p.m., Local Time</span>
+      <div class="h-color">
+        <span class="emph">5 Minute Meditation, Each Day at 8 PM, Local Time</span>
         <br>
         (or choose first 5 minutes of any hour of the day)
       </div>
@@ -42,11 +42,11 @@
     <h2>Global Event</h2>
     <ul>
       <li>The power of group meditation:</li>
-      <li>the group effect amplifies the intentions of each individual.</li>
+      <li class="indent">the group effect amplifies the intentions of each individual.</li>
       <li>Be part of a global event,</li>
-      <li>a wave of Awareness Awakening traveling daily around the globe.</li>
+      <li class="indent">a wave of Awareness Awakening traveling daily around the globe.</li>
       <li>Share on social media:</li>
-      <li><span class="emph">#DailyGlobalMeditation</span> or <span class="emph">#daglme</span></li>
+      <li class="indent"><span class="emph">#DailyGlobalMeditation</span> or <span class="emph">#daglme</span></li>
     </ul>
 
     <h2>Presented and Supported by:</h2>

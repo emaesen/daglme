@@ -1,6 +1,6 @@
 <template>
   <div class="about view">
-    <h1>About the supporters</h1>
+    <h1>About the Presenters</h1>
 
     <h2>EarthCare Global TV</h2>
     <div>
