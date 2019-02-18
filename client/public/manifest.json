@@ -1,6 +1,6 @@
 {
-  "name": "client",
-  "short_name": "client",
+  "name": "Daily Global Meditation",
+  "short_name": "DaGlMe",
   "icons": [
     {
       "src": "./img/icons/android-icon-144x144.png",
@@ -14,7 +14,5 @@
     }
   ],
   "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#f6d65d"
+  "display": "standalone"
 }
