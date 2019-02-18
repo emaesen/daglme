@@ -133,15 +133,15 @@ a,
   min-width: 300px;
   max-width: 915px;
   z-index: 999;
-  border-bottom: 2px solid #ffffff63;
+  border-bottom: 2px solid #ccbd88;
   opacity: 0.85;
   a {
     opacity: 1;
     margin-left:2em;
-    padding: 5px;
+    padding: 5px 10px;
     display: inline-block;
-    border-left: 2px solid #ffffff63;
-    border-right: 2px solid #ffffff63;
+    border-left: 2px solid #ccbd88;
+    border-right: 2px solid #ccbd88;
     &.router-link-exact-active {
       cursor: default;
       color: #f6d65d;
