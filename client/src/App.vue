@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img src="/img/illumined-earth.png" class="bg-img">
     <div id="nav">
       <router-link to="/">Meditation</router-link>
       <router-link to="/about">Presenters</router-link>
@@ -40,7 +41,14 @@ html, #nav, #nav a {
   background-attachment: fixed;
 }
 #app {
+  height: 100%;
   padding: 5px 10px 200px;
+}
+.bg-img{
+  position:fixed;
+  bottom:0;
+  z-index:-1;
+  right:20%;
 }
 body,html {
   margin: 0;
@@ -50,12 +58,6 @@ body {
   margin: 0 auto;
   min-width: 300px;
   max-width: 900px;
-  background-image: url(/img/illumined-earth.png);
-  background-size: initial;
-  background-attachment: fixed;
-  background-position-x: center;
-  background-position-y: bottom;
-  background-repeat: no-repeat;
 }
 body,
 input,
@@ -109,7 +111,7 @@ ul li {
   list-style-type: none;
 }
 ul.bullet {
-  padding-inline-start: 1.5em;
+  padding-inline-start: 1em;
   margin-block-start: 0.5em;
 }
 ul.bullet li {
@@ -227,6 +229,21 @@ a,
 .todo {
   color: #b8cbf9;
 }
+@media all and (max-width: 1200px) {
+  .bg-img{
+    right:14%;
+  }
+}
+@media all and (max-width: 900px) {
+  .bg-img{
+    right:7%;
+  }
+}
+@media all and (max-width: 750px) {
+  .bg-img{
+    right:2%;
+  }
+}
 @media all and (max-width: 600px) {
   body,
   input,
@@ -235,8 +252,7 @@ a,
   button {
     font-size: 15px;
   }
-  html, #nav, #nav a,
-  body {
+  html, #nav, #nav a {
     background-size: contain;
   }
   h1,
@@ -246,6 +262,10 @@ a,
   h5,
   h6 {
     letter-spacing: normal;
+  }
+  .bg-img{
+    right:0;
+    width: 100%
   }
 }
 </style>
