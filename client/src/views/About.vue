@@ -22,7 +22,7 @@
       </div>
       <div>All may be daily guardians of the earth and sky by living ‘Action Borne of Vision.’</div>
       <div class="poetic">‘Our ACTIONS affect everyone, everything and everyplace. <span class="nowrap">We are One.’</span></div>
-      <div>Web site: <a href="http://EarthCareGlobalTV.com">EarthCare Global TV</a></div>
+      <div>Web site: <a href="http://EarthCareGlobalTV.com" class="external">EarthCare Global TV</a></div>
     </div>
 
     <h2>In Shared Oneness</h2>
@@ -37,7 +37,7 @@
       With combined well over a century experience in consciousness explorations, Angelique Jan Pera, Mary Saint-Marie and Edward Maesen hold Sacred Space for your Wholeness.
     </p>
     <div class="poetic">Recognize, Experience and Embrace the Power and Beauty of <span class="nowrap">Your Uniqueness.</span></div>
-    <div>Web site: <a href="https://InSharedOneness.com">In Shared Oneness retreats</a></div>
+    <div>Web site: <a href="https://InSharedOneness.com" class="external">In Shared Oneness retreats</a></div>
   </div>
 </template>
 
