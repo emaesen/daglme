@@ -101,6 +101,9 @@ h2 {
   margin: 2em 0 0.5em 0;
   font-size: 170%;
 }
+ul, ol {
+  padding-left: 0;
+}
 ul {
   padding-inline-start: 0;
   margin-block-start: 0.5em;
@@ -118,6 +121,7 @@ ul li {
   list-style-type: none;
 }
 ul.bullet {
+  padding-left: 1em;
   padding-inline-start: 1em;
   margin-block-start: 0.5em;
 }
