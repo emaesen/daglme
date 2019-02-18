@@ -43,10 +43,23 @@
     <ul>
       <li>A daily wave of Awareness Awakening</li>
       <li>propagating around the globe.</li>
-      <li class="margin-top5">A group effect</li>
+      <li class="margin-top5">The group effect</li>
       <li>amplifying the intentions of each individual.</li>
       <li class="margin-top5">#DailyGlobalMeditation, #daglme</li>
     </ul>
+    <div class="poetic">
+      Together<br>
+      We are on a journey<br>
+      From the stars unto the stones<br>
+      From the sky unto the earth<br>
+      <br>
+      Together<br>
+      We are on this journey<br>
+      <br>
+      Together<br>
+      We are the formless into form
+    </div>
+
 
     <h2>Presented and Supported by:</h2>
     <ul>
