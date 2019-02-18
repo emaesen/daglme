@@ -34,6 +34,13 @@
   src: local('Vollkorn Italic'), local('Vollkorn-Italic'), url(/fonts/volkorn-italic-latin.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+@font-face {
+  font-family: 'Rosario';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Rosario'), local('Rosario-Regular'), url(/fonts/rosario.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 html, #nav, #nav a {
   background-color: #0c1c31;
   background-image: url(/img/bg.png);
@@ -82,7 +89,7 @@ h6 {
   letter-spacing: 1px;
   color: #f6d65d;
 }
-.h-color {
+.emph-color {
   color: #f6d65d;
 }
 h1 {
@@ -121,9 +128,17 @@ a,
 .action {
   cursor: pointer;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: normal;
   color: #97fffb;
-  font-family: monospace;
+  font-family: 'Rosario', sans-serif;
+  font-size: 90%;
+}
+a.external:after { 
+  content: " \00A0 (" attr(href) ") "; 
+  font-weight: normal;
+  font-family: 'Vollkorn', serif;
+  font-size: 85%;
+  color: #63c2df;
 }
 #nav {
   position: fixed;
@@ -170,17 +185,17 @@ a,
   text-align: center
 }
 .outline {
-  border: 5px solid #cbdef713;
+  border: 1px solid #cbdef713;
   border-radius: 10px;
   background-color: #00000027;
   color: #f3f5e7;
-  padding: 5px 10px;
+  padding: 5px 1px;
   box-shadow: 0 0 40px -10px #eef;
 }
 .poetic {
   font-family: 'Vollkorn', cursive;
   font-style: italic;
-  font-size: 120%;
+  font-size: 110%;
   line-height: 1.6em;
   text-align: center;
   margin: 1em;
@@ -194,6 +209,9 @@ a,
 }
 .roomy {
   margin: .5em 0 1em 0
+}
+.margin-top5 {
+  margin-top: .5em;
 }
 .spacious {
   margin: 1em 0 2em 0;
