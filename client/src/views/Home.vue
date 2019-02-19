@@ -41,9 +41,9 @@
 
     <h2>Global Awakening</h2>
     <ul>
-      <li>A daily wave of Awareness Awakening</li>
+      <li>A daily wave of Awareness Awakening...</li>
       <li>propagating around the globe.</li>
-      <li class="margin-top5">The group effect</li>
+      <li class="margin-top5">The group effect...</li>
       <li>amplifying the intentions of each individual.</li>
       <li class="margin-top5">#DailyGlobalMeditation, #daglme</li>
     </ul>
@@ -70,7 +70,7 @@
       <li><a href="http://EarthCareGlobalTV.com" class="external">EarthCare Global TV</a></li>
       <li class="margin-top5"><a href="https://InSharedOneness.com" class="external">In Shared Oneness retreats</a>:<br>
         <ul>
-        <li><a href="http://MarySaintMarie.com" class="external">Mary Saint Marie</a></li>
+        <li><a href="http://MarySaintMarie.com" class="external">Mary Saint-Marie</a></li>
         <li><a href="http://letempledelesprit.com/" class="external">Angelique Jan Pera</a></li>
         <li><a href="https://kagalakan.com" class="external">Edward Maesen</a></li>
         </ul>
