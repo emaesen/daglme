@@ -48,16 +48,20 @@
       <li class="margin-top5">#DailyGlobalMeditation, #daglme</li>
     </ul>
     <div class="poetic">
-      Together<br>
-      We are on a journey<br>
-      From the stars unto the stones<br>
-      From the sky unto the earth<br>
-      <br>
-      Together<br>
-      We are on this journey<br>
-      <br>
-      Together<br>
-      We are the formless into form
+      <div>
+        Together<br>
+        We are on a journey<br>
+        From the stars unto the stones<br>
+        From the sky unto the earth
+      </div>
+      <div class="margin-top5">
+        Together<br>
+        We are on this journey
+      </div>
+      <div class="margin-top5">
+        Together<br>
+        We are the formless into form
+      </div>
     </div>
 
 
