@@ -208,6 +208,13 @@ a.external:after {
   text-align: center;
   margin: 1em;
 }
+.normal {
+  font-style: normal;
+}
+.poetic.compact {
+  font-size: 95%;
+  line-height: normal;
+}
 .emph {
   font-weight: bold;
 }
@@ -220,6 +227,9 @@ a.external:after {
 }
 .margin-top5 {
   margin-top: .5em;
+}
+.margin-top10 {
+  margin-top: 1.0em;
 }
 .spacious {
   margin: 1em 0 2em 0;
