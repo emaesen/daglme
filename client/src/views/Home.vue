@@ -39,31 +39,53 @@
       <li>One will realize that Action is Borne of Vision.</li>
     </ul>
 
-    <h2>Global Awakening</h2>
-    <ul>
-      <li>A daily wave of Awareness Awakening...</li>
-      <li>propagating around the globe.</li>
-      <li class="margin-top5">The group effect...</li>
-      <li>amplifying the intentions of each individual.</li>
-      <li class="margin-top5">#DailyGlobalMeditation, #daglme</li>
-    </ul>
-    <div class="poetic">
-      <div>
-        Together<br>
-        We are on a journey<br>
-        From the stars unto the stones<br>
-        From the sky unto the earth
+    <h2 class="center">Planetary Initiation for Humanity</h2>
+    <div class="poetic compact">
+      <div class="normal">
+        <div>
+          Daily Planetary Meditations are a catalyst for all to open to Oneness Consciousness.
+        </div>
+        <div class="margin-top5">
+          Daily Planetary Meditations soften the collective shift.
+        </div>
+        <div class="margin-top5">
+          Daily Planetary Meditations ignite souls around the earth.
+        </div>
+        <div class="margin-top5">
+          Daily Planetary Meditations open ones to see the Web of Life and Web of Light.
+        </div>
+        <div class="margin-top5">
+          Daily Planetary Meditations open ones to see the Illumined Earth and Sky.
+        </div>
+        <div class="margin-top5">
+          Daily Planetary Meditations give the revelation that we are all Already ONE.
+        </div>
       </div>
-      <div class="margin-top5">
-        Together<br>
-        We are on this journey
-      </div>
-      <div class="margin-top5">
-        Together<br>
-        We are the formless into form
+      <div class="margin-top10">
+        <div>
+          Let us together…open to this wave of light…
+        </div>
+        <div class="margin-top5">
+          Let us together…be in the transcendent realm…
+        </div>
+        <div class="margin-top5">
+          Let us together…allow the Feminine Principle, the receptive, to give the VISIONS…
+        </div>
+        <div class="margin-top5">
+          Let us together…allow the Actions Borne of VISION…
+        </div>
       </div>
     </div>
 
+
+    <h2>Global Awakening</h2>
+    <ul>
+      <li>A daily wave of Awareness Awakening…</li>
+      <li>propagating around the globe.</li>
+      <li class="margin-top5">The group effect…</li>
+      <li>amplifying the intentions of each individual.</li>
+      <li class="margin-top5">#DailyGlobalMeditation, #daglme</li>
+    </ul>
 
     <h2>Presented and Supported by:</h2>
     <ul>
