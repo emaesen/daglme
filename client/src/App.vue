@@ -47,6 +47,10 @@ html, #nav {
   background-size: initial;
   background-attachment: fixed;
 }
+#nav a {
+  background-image: url(/img/bg.png);
+  background-size: initial;
+}
 #app {
   height: 100%;
   padding: 5px 10px 200px;
