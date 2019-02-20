@@ -2,8 +2,8 @@
   <div id="app">
     <img src="/img/illumined-earth.png" class="bg-img">
     <div id="nav">
-      <router-link to="/">Meditation</router-link>
-      <router-link to="/about">Presenters</router-link>
+      <router-link to="/" exact>Meditation</router-link>
+      <router-link to="/about">About</router-link>
     </div>
     <transition name="view-fade" mode="out-in">
       <router-view/>
@@ -50,6 +50,9 @@ html, #nav {
 #nav a {
   background-image: url(/img/bg.png);
   background-size: initial;
+}
+#nav {
+  box-shadow: 0 0 40px #d9f0ff;
 }
 #app {
   height: 100%;
@@ -105,6 +108,10 @@ h2 {
   margin: 2em 0 0.5em 0;
   font-size: 170%;
 }
+h3 {
+  margin: 2em 0 0.5em 0;
+  font-size: 140%;
+}
 ul, ol {
   padding-left: 0;
 }
@@ -152,30 +159,34 @@ a.external:after {
   position: fixed;
   top: 0;
   width: 100%;
-  margin: 0 0 0 -10px;
+  margin: 0 0 0 -16px;
   min-width: 300px;
   max-width: 915px;
   z-index: 999;
-  border-bottom: 2px solid #ccbd88;
+  border-bottom: 2px solid #80afe4;
   opacity: 0.85;
   a {
     opacity: 1;
     margin-left:2em;
     padding: 5px 10px;
     display: inline-block;
-    border-left: 2px solid #ccbd88;
-    border-right: 2px solid #ccbd88;
-    &.router-link-exact-active {
+    border-left: 2px solid #80afe4;
+    border-right: 2px solid #80afe4;
+    &.router-link-active {
       cursor: default;
       color: #f6d65d;
-      margin-bottom: -2px;
-      padding-bottom: 7px;
+      margin-bottom: -5px;
+      padding-bottom: 10px;
     }
   }
   a + a {
     margin-left:0;
     border-left: none;
   }
+}
+a.router-link-exact-active {
+  cursor: default;
+  color: #f6d65d;
 }
 #footer {
   left: 0;
@@ -193,7 +204,7 @@ a.external:after {
   text-align: center
 }
 .outline {
-  border: 1px solid #cbdef713;
+  border: 1px solid #80afe481;
   border-radius: 10px;
   background-color: #00000027;
   color: #f3f5e7;
@@ -210,6 +221,7 @@ a.external:after {
 }
 .normal {
   font-style: normal;
+  color: #f3f5e7;
 }
 .poetic.compact {
   font-size: 95%;
@@ -230,6 +242,12 @@ a.external:after {
 }
 .margin-top10 {
   margin-top: 1.0em;
+}
+.margin-top20 {
+  margin-top: 2.0em;
+}
+.margin-top50 {
+  margin-top: 5.0em;
 }
 .spacious {
   margin: 1em 0 2em 0;
