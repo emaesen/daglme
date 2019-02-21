@@ -54,6 +54,11 @@ html, #nav {
 #nav {
   box-shadow: 0 0 40px #d9f0ff;
 }
+hr {
+  margin: 5em 0;
+  border: 1px solid #80afe4;
+  box-shadow: 0 0 20px #d9f0ff;
+}
 #app {
   height: 100%;
   padding: 5px 10px 200px;
@@ -185,7 +190,7 @@ a.external:after {
     border-left: none;
   }
 }
-a.router-link-exact-active {
+a.router-link-active {
   cursor: default;
   color: #f6d65d;
 }
@@ -230,6 +235,10 @@ a.router-link-exact-active {
 }
 .emph {
   font-weight: bold;
+}
+.instruction {
+  font-style: italic;
+  color: #f3f5e7b7;
 }
 .spacer {
   display: block;

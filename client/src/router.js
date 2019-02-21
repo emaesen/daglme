@@ -57,14 +57,14 @@ export default new Router({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
-    if (from.path.startsWith("/about") && to.path.startsWith("/about")) {
-      return null;
-    } else if (savedPosition) {
-      return savedPosition;
-    } else if (to.hash) {
+    if (to.hash) {
       return {
         selector: to.hash
       };
+    } else if (savedPosition) {
+      return savedPosition;
+    } else if (from.path.startsWith("/about") && to.path.startsWith("/about")) {
+      return null;
     } else {
       return { x: 0, y: 0 };
     }

@@ -9,7 +9,7 @@
     </p>
     <p>
       In Shared Oneness is a unique union of three experienced facilitators who are Consciousness educators, coaches and way-showers. 
-      With combined well over a century experience in consciousness explorations, <router-link to="/about/angelique-jan-pera">Angelique Jan Pera</router-link>, <router-link to="/about/mary-saint-marie">Mary Saint-Marie</router-link> and <router-link to="/about/edward-maesen">Edward Maesen</router-link> hold Sacred Space for your Wholeness.
+      With combined well over a century experience in consciousness explorations, <router-link to="/about/angelique-jan-pera#info">Angelique Jan Pera</router-link>, <router-link to="/about/mary-saint-marie#info">Mary Saint-Marie</router-link> and <router-link to="/about/edward-maesen#info">Edward Maesen</router-link> hold Sacred Space for your Wholeness.
     </p>
     <div class="poetic">Recognize, Experience and Embrace the Power and Beauty of <span class="nowrap">Your Uniqueness.</span></div>
     <div>Web site: <a href="https://InSharedOneness.com" class="external">In Shared Oneness retreats</a></div>

@@ -3,12 +3,12 @@
 
     <h1>About the Daily Global Meditation</h1>
 
-    <p>
+    <p class="margin-top20">
       The Daily Global Meditation is a call for peoples around the world to participate in a short daily meditation or prayer at 8PM local time.<br>
       If 8PM is an inconvenient time, one may choose any other hour of the day and align with individuals for which that hour is their local 8PM.
     </p>
 
-    <div class="poetic compact normal">
+    <div class="poetic compact normal margin-top20">
       <div>
         A daily meditation for the Earth and the Sky.
       </div>
@@ -28,9 +28,11 @@
         A beacon for lost souls.
       </div>
       <div class="margin-top5">
-        A daily anchor to feel at ease, to be home, United as One.
+        A daily anchor to feel United as One.
       </div>
     </div>
+
+    <hr id="info">
 
     <p class="margin-top20">
     The Daily Global Meditation is presented by
@@ -38,7 +40,8 @@
     <router-link to="/about/angelique-jan-pera">Angelique Jan Pera</router-link> and
     <router-link to="/about/edward-maesen">Edward Maesen</router-link>,
     in association with <router-link to="/about/earthcare-global-tv">EarthCare Global TV</router-link> 
-    and <router-link to="/about/in-shared-oneness">In Shared Oneness</router-link>.
+    and <router-link to="/about/in-shared-oneness">In Shared Oneness</router-link>.<br>
+    <span class="instruction">(Click any of these names to view their information below)</span>
     </p>
 
     <transition name="view-fade" mode="out-in">
