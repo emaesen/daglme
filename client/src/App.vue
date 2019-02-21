@@ -56,7 +56,7 @@ html, #nav {
 }
 hr {
   margin: 5em 0;
-  border: 1px solid #80afe4;
+  border: 1px solid #80afe472;
   box-shadow: 0 0 20px #d9f0ff;
 }
 #app {
@@ -104,7 +104,7 @@ h6 {
 .emph-color {
   color: #f6d65d;
 }
-h1 {
+h1, h2.h1 {
   text-align: center;
   margin-top: 1.5em;
   font-size: 210%;
