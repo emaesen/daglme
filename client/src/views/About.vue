@@ -8,7 +8,7 @@
       If 8PM is an inconvenient time, one may choose any other hour of the day and align with individuals for which that hour is their local 8PM.
     </p>
 
-    <div class="poetic compact">
+    <div class="poetic compact normal">
       <div>
         A daily meditation for the Earth and the Sky.
       </div>
