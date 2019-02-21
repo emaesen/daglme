@@ -56,7 +56,7 @@ html, #nav {
 }
 hr {
   margin: 5em 0;
-  border: 1px solid #80afe472;
+  border-color: #6ab5ea;
   box-shadow: 0 0 20px #d9f0ff;
 }
 #app {
