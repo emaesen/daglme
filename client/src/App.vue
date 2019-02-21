@@ -8,7 +8,7 @@
     <transition name="view-fade" mode="out-in">
       <router-view/>
     </transition>
-    <div id="footer">© 2019, In Shared Oneness. All rights reserved.</div>
+    <div id="footer">© 2019, Daily Global Meditation. All rights reserved.</div>
   </div>
 </template>
 
