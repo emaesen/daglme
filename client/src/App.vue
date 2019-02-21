@@ -177,6 +177,7 @@ a.external:after {
       color: #f6d65d;
       margin-bottom: -5px;
       padding-bottom: 10px;
+      box-shadow: 0 0 30px #a7dcff;
     }
   }
   a + a {
@@ -205,11 +206,11 @@ a.router-link-exact-active {
 }
 .outline {
   border: 1px solid #80afe481;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: #00000027;
   color: #f3f5e7;
   padding: 5px 1px;
-  box-shadow: 0 0 40px -10px #eef;
+  box-shadow: 0 0 50px #a7dcff;
 }
 .poetic {
   font-family: 'Vollkorn', cursive;
