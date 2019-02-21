@@ -34,6 +34,8 @@
 
     <hr id="info">
 
+    <h2 class="h1">About the Presenters</h2>
+
     <p class="margin-top20">
     The Daily Global Meditation is presented by
     <router-link to="/about/mary-saint-marie">Mary Saint-Marie</router-link>,
