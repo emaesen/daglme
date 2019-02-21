@@ -1,43 +1,49 @@
 <template>
   <div class="about view">
-    <h1>About the Presenters</h1>
 
-    <h2>EarthCare Global TV</h2>
-    <div>
-      <div>EarthCare Global TV exposes, educates and inspires action about the care of the earth and the sky.</div>
-      <div>Over 350 documentary films are listed.<br>
-        <br class="spacer">These films:
-        <ul class="bullet">
-          <li>share about the current choices for our planet: Purity or Pollution</li>
-          <li>assist in catalyzing needed shifts and changes in our daily living worldwide</li>
-          <li>offer solutions and new models</li>
-          <li>share the understanding of the Universal Law of Balance in all of nature.</li>
-          <li>bring awareness to the interconnectedness and interrelatedness of all of nature</li>
-          <li>bring the awareness that we are one living organism</li>
-          <li>
-            bring conscious understanding of the need for true organic, natural living for harmony of elements,
-            earth, air, fire, water, of which we all are a part
-          </li>
-        </ul>
+    <h1>About the Daily Global Meditation</h1>
+
+    <p>
+      The Daily Global Meditation is a call for peoples around the world to participate in a short daily meditation or prayer at 8PM local time.<br>
+      If 8PM is an inconvenient time, one may choose any other hour of the day and align with individuals for which that hour is their local 8PM.
+    </p>
+
+    <div class="poetic compact">
+      <div>
+        A daily meditation for the Earth and the Sky.
       </div>
-      <div>All may be daily guardians of the earth and sky by living ‘Action Borne of Vision.’</div>
-      <div class="poetic">‘Our ACTIONS affect everyone, everything and everyplace. <span class="nowrap">We are One.’</span></div>
-      <div>Web site: <a href="http://EarthCareGlobalTV.com" class="external">EarthCare Global TV</a></div>
+      <div class="margin-top5">
+        A prayer for peace, love, equality and abundance.
+      </div>
+      <div class="margin-top5">
+        Weaving a web of light around the globe…
+      </div>
+      <div class="margin-top5">
+        Expanding day by day, driven by the power of group meditation.
+      </div>
+      <div class="margin-top5">
+        A catalyst for all that are on the brink of awakening.
+      </div>
+      <div class="margin-top5">
+        A beacon for lost souls.
+      </div>
+      <div class="margin-top5">
+        A place and moment in time to feel at ease, to be home.
+      </div>
     </div>
 
-    <h2>In Shared Oneness</h2>
-    <p>
-      In Shared Oneness offers customized transformational spiritual retreats in the activating beauty of Mt Shasta, northern California, USA.
+    <p class="margin-top20">
+    The Daily Global Meditation is presented by
+    <router-link to="/about/mary-saint-marie">Mary Saint-Marie</router-link>,
+    <router-link to="/about/angelique-jan-pera">Angelique Jan Pera</router-link> and
+    <router-link to="/about/edward-maesen">Edward Maesen</router-link>,
+    in association with <router-link to="/about/earthcare-global-tv">EarthCare Global TV</router-link> 
+    and <router-link to="/about/in-shared-oneness">In Shared Oneness</router-link>.
     </p>
-    <p>
-      Individuals, couples, families and groups are assisted in discovering their fullest Unique Self Expression beyond limiting beliefs and fearful thoughts.
-    </p>
-    <p>
-      In Shared Oneness is a unique union of three experienced facilitators who are Consciousness educators, coaches and way-showers. 
-      With combined well over a century experience in consciousness explorations, Angelique Jan Pera, Mary Saint-Marie and Edward Maesen hold Sacred Space for your Wholeness.
-    </p>
-    <div class="poetic">Recognize, Experience and Embrace the Power and Beauty of <span class="nowrap">Your Uniqueness.</span></div>
-    <div>Web site: <a href="https://InSharedOneness.com" class="external">In Shared Oneness retreats</a></div>
+
+    <transition name="view-fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
