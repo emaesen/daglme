@@ -13,7 +13,7 @@
         A daily meditation for the Earth and the Sky.
       </div>
       <div class="margin-top5">
-        A prayer for peace, love, equality and abundance.
+        A daily prayer for peace, love, equality and abundance…
       </div>
       <div class="margin-top5">
         Weaving a web of light around the globe…
@@ -28,7 +28,7 @@
         A beacon for lost souls.
       </div>
       <div class="margin-top5">
-        A place and moment in time to feel at ease, to be home.
+        A daily anchor to feel at ease, to be home, United as One.
       </div>
     </div>
 
