@@ -332,4 +332,21 @@ a.router-link-active {
     width: 100%
   }
 }
+@media print {
+  #nav, hr, img.bg-img {
+    display:none;
+  }
+  html {
+    background-color: #fff;
+    background-image: none;
+  }
+  body,
+  input,
+  textarea,
+  select,
+  button {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+}
 </style>
