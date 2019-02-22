@@ -25,3 +25,6 @@ yarn-error.log*
 
 # Local docs folder
 docs
+
+# SEO Verification files
+google*
