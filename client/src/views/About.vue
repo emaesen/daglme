@@ -8,7 +8,7 @@
       If 8PM is an inconvenient time, one may choose any other hour of the day and align with individuals for which that hour is their local 8PM.
     </p>
     <p>
-      The goal is to have enough daily participants that we reach a critical mass that will produce improvements in the quality of life for mankind. Similar to the <a href="https://tmhome.com/benefits/study-maharishi-effect-group-meditation-crime-rate/" target="_blank">"Maharishi effect"</a>: research in 1976 found that when 1% of a community practiced Transcendental Meditation, the crime rate was reduced by 16% on average. 
+      The goal is to have enough daily participants to reach a critical mass that will produce improvements in the quality of life for mankind. Similar to the <a href="https://tmhome.com/benefits/study-maharishi-effect-group-meditation-crime-rate/" target="_blank">"Maharishi effect"</a>: research in 1976 found that when 1% of a community practiced Transcendental Meditation, the crime rate was reduced by 16% on average. 
     </p>
     <p>
       One doesn't need to be an experienced meditator to join our Daily Global Meditation. We suggest a focused attention daily for 5 minutes at 8PM local time, to envision the Earth and Sky as Illumined and Whole.
