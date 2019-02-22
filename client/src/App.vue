@@ -344,7 +344,8 @@ a.router-link-active {
   input,
   textarea,
   select,
-  button {
+  button,
+  .normal {
     color: #333 !important;
     text-shadow: none !important;
   }
