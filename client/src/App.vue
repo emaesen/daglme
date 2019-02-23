@@ -256,6 +256,9 @@ a.router-link-active {
 .margin-top20 {
   margin-top: 2.0em;
 }
+.margin-top30 {
+  margin-top: 3.0em;
+}
 .margin-top50 {
   margin-top: 5.0em;
 }
@@ -348,6 +351,18 @@ a.router-link-active {
   .normal {
     color: #333 !important;
     text-shadow: none !important;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #d6af1b !important;
+  }
+  a,
+  .action {
+    color: #4a80fd;
   }
 }
 </style>
