@@ -55,6 +55,15 @@
       </div>
     </div>
 
+    <h2>Downloads and Sharing</h2>
+    <div>
+      Participants are welcome and invited to download and share the Daily Global Meditation <a href="/img/daily-global-meditation-eflyer.jpg">email flyer</a> or <a href="/img/daily-global-meditation-banner-3x2.jpg">website banner</a>.<br>
+      <br> 
+      When sharing on social media, please consider using hashtag #DailyGlobalMeditation or #daglme.<br>
+      <br>
+      This <i>DailyGlobalMeditation.com</i> website can be referenced on social media with limited character length, like twitter, gab or SMS, as <a href="http://dagl.me" class="external"><i>dagl.me</i></a>.
+    </div>
+
     <hr id="info">
 
     <h2 class="h1">About the Presenters</h2>
