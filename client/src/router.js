@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import About from "./views/About.vue";
+import Presenters from "./views/Presenters.vue";
 import MarySaintMarie from "./views/presenters/MarySaintMarie.vue";
 import AngeliqueJanPera from "./views/presenters/AngeliqueJanPera.vue";
 import EdwardMaesen from "./views/presenters/EdwardMaesen.vue";
@@ -22,7 +23,11 @@ export default new Router({
     },
     {
       path: "/about",
-      component: About,
+      component: About
+    },
+    {
+      path: "/presenters",
+      component: Presenters,
       children: [
         {
           path: "mary-saint-marie",
@@ -63,7 +68,7 @@ export default new Router({
       };
     } else if (savedPosition) {
       return savedPosition;
-    } else if (from.path.startsWith("/about") && to.path.startsWith("/about")) {
+    } else if (from.path.startsWith("/presenters") && to.path.startsWith("/presenters")) {
       return null;
     } else {
       return { x: 0, y: 0 };

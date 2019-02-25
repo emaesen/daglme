@@ -4,6 +4,7 @@
     <div id="nav">
       <router-link to="/" exact>Meditation</router-link>
       <router-link to="/about">About</router-link>
+      <router-link to="/presenters">Presenters</router-link>
     </div>
     <transition name="view-fade" mode="out-in">
       <router-view/>

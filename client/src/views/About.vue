@@ -29,17 +29,14 @@
       <div>
         A daily meditation for the Earth and the Sky.
       </div>
-      <div class="margin-top10">
-        A daily meditation for Peace, Love, Equality and Wisdom.
-      </div>
       <div class="margin-top5">
-        A daily meditation for Simplicity, Patience and Abundance…
+        A daily prayer for Peace, Love, Equality and Wisdom.
       </div>
       <div class="margin-top5">
         Weaving a web of Light around the globe…
       </div>
       <div class="margin-top5">
-        Expanding day by day,
+        Expanding day by day…
       </div>
       <div class="margin-top5">
         Driven by the power of group meditation.
@@ -50,41 +47,20 @@
       <div class="margin-top5">
         And a beacon for Souls.
       </div>
-      <div class="margin-top10">
+      <div class="margin-top5">
         A daily anchor to feel United as One.
       </div>
     </div>
 
     <h2>Downloads and Sharing</h2>
     <div>
-      Participants are welcome and invited to download and share the Daily Global Meditation <a href="/img/daily-global-meditation-eflyer.jpg">email flyer</a> or <a href="/img/daily-global-meditation-banner-3x2.jpg">website banner</a>.<br>
+      Participants are welcome and invited to download and share the Daily Global Meditation <a href="/img/daily-global-meditation-eflyer.jpg" target="_blank">email flyer</a> or <a href="/img/daily-global-meditation-banner-3x2.jpg" target="_blank">website banner</a>.<br>
       <br> 
       When sharing on social media, please consider using hashtag #DailyGlobalMeditation or #daglme.<br>
       <br>
       This <i>DailyGlobalMeditation.com</i> website can be referenced on social media with limited character length, like twitter, gab or SMS, as <a href="http://dagl.me" class="external"><i>dagl.me</i></a>.
     </div>
 
-    <hr id="info">
-
-    <h2 class="h1">About the Presenters</h2>
-
-    <p class="margin-top20">
-      The Daily Global Meditation is presented by
-      <router-link to="/about/mary-saint-marie">Mary Saint-Marie</router-link>,
-      <router-link to="/about/angelique-jan-pera">Angelique Jan Pera</router-link> 
-      and
-      <router-link to="/about/edward-maesen">Edward Maesen</router-link>,
-      in association with
-      <router-link to="/about/earthcare-global-tv">EarthCare Global TV</router-link>
-      and
-      <router-link to="/about/in-shared-oneness">In Shared Oneness</router-link>.
-      <br>
-      <span class="instruction">(Click any of these names to view their information below)</span>
-    </p>
-
-    <transition name="view-fade" mode="out-in">
-      <router-view></router-view>
-    </transition>
   </div>
 </template>
 
