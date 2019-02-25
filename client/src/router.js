@@ -62,16 +62,22 @@ export default new Router({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return {
-        selector: to.hash
-      };
-    } else if (savedPosition) {
-      return savedPosition;
-    } else if (from.path.startsWith("/presenters") && to.path.startsWith("/presenters")) {
-      return null;
-    } else {
-      return { x: 0, y: 0 };
-    }
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (to.hash) {
+          resolve( {
+            selector: to.hash
+          } );
+        } else if (savedPosition) {
+          resolve( savedPosition );
+        } else if (from.path.endsWith("/presenters") && to.path.startsWith("/presenters/")) {
+          resolve( { x: 0, y: 0 } );
+        } else if (from.path.startsWith("/presenters") && to.path.startsWith("/presenters")) {
+          resolve( null );
+        } else {
+          resolve( { x: 0, y: 0 } );
+        }
+      }, 500)
+    })
   }
 });
