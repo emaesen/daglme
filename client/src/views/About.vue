@@ -58,7 +58,13 @@
       <br> 
       When sharing on social media, please consider using hashtag #DailyGlobalMeditation or #daglme.<br>
       <br>
-      This <i>DailyGlobalMeditation.com</i> website can be referenced on social media with limited character length, like twitter, gab or SMS, as <a href="http://dagl.me" class="external"><i>dagl.me</i></a>.
+      This <i>DailyGlobalMeditation.com</i> website can be referenced in short as <a href="http://dagl.me" class="external"><i>dagl.me</i></a>. For instance on social media with limited character length, like twitter, gab or SMS.
+    </div>
+
+
+    <h2>Donations</h2>
+    <div>
+      Donations to support the development of the Daily Global Meditation website and corresponding meditation videos are greatly appreciated. If you feel so inclined, please view this site's <a href="https://www.gofundme.com/daily-global-meditation-website&rcid=r01-155112011808-f5a97623d58746d3&pc=ot_co_campmgmt_w" target="_blank">fundraising campaign on GoFundMe</a>. Any amount is accepted in gratitude.
     </div>
 
   </div>
