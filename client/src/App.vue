@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="/img/illumined-earth.png" class="bg-img">
+    <img src="/img/illumined-earth.png" class="bg-img" alt="illumined earth">
     <div id="nav">
       <router-link to="/" exact>Meditation</router-link>
       <router-link to="/about">About</router-link>
