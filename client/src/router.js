@@ -72,6 +72,8 @@ export default new Router({
           resolve( savedPosition );
         } else if (from.path.endsWith("/presenters") && to.path.startsWith("/presenters/")) {
           resolve( { x: 0, y: 0 } );
+        } else if (from.path.startsWith("/presenters/") && to.path.endsWith("/presenters")) {
+          resolve( { x: 0, y: 0 } );
         } else if (from.path.startsWith("/presenters") && to.path.startsWith("/presenters")) {
           resolve( {
             selector: null
