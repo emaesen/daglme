@@ -15,7 +15,7 @@ module.exports = {
       msTileImage: "img/icons/ms-icon-144x144.png"
     },
     workboxOptions: {
-      navigateFallback: "/"
+      navigateFallback: "/index.html"
     }
   }
 };
