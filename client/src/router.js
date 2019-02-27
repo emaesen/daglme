@@ -73,7 +73,9 @@ export default new Router({
         } else if (from.path.endsWith("/presenters") && to.path.startsWith("/presenters/")) {
           resolve( { x: 0, y: 0 } );
         } else if (from.path.startsWith("/presenters") && to.path.startsWith("/presenters")) {
-          resolve( null );
+          resolve( {
+            selector: null
+          } );
         } else {
           resolve( { x: 0, y: 0 } );
         }
