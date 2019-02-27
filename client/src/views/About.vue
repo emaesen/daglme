@@ -25,7 +25,8 @@
       Daily Global Meditation embraces all ways, paths and practices.
     </p>
 
-    <div class="poetic compact normal margin-top30">
+    <h2 class="center">Simplicity, Abundance, Patience</h2>
+    <div class="poetic compact normal">
       <div>
         A daily meditation for the Earth and the Sky.
       </div>
