@@ -39,6 +39,20 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Vollkorn Bold'), local('Vollkorn-Bold'), url(/fonts/volkorn-bold-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Vollkorn Bold Italic'), local('Vollkorn-BoldItalic'), url(/fonts/volkorn-bold-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
   font-family: 'Rosario';
   font-style: normal;
   font-weight: 400;
@@ -102,7 +116,7 @@ h4,
 h5,
 h6 {
   font-family: 'Niconne', sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: 1px;
   color: #f6d65d;
 }
@@ -153,14 +167,14 @@ a,
 .action {
   cursor: pointer;
   text-decoration: none;
-  font-weight: normal;
+  font-weight: 400;
   color: #97fffb;
   font-family: 'Rosario', sans-serif;
   font-size: 90%;
 }
 a.external:after { 
   content: " \00A0 (" attr(href) ") "; 
-  font-weight: normal;
+  font-weight: 400;
   font-family: 'Vollkorn', serif;
   font-size: 85%;
   color: #63c2df;
@@ -239,7 +253,7 @@ a.router-link-active {
   line-height: normal;
 }
 .emph {
-  font-weight: bold;
+  font-weight: 700;
 }
 .instruction {
   font-style: italic;
