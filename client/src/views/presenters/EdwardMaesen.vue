@@ -41,9 +41,9 @@
       ‘Sound Ceremony as Celestial Initiation’.
     </div>
     <div class="poetic margin-top20">
-      Beyond the story<br>
+      “Beyond the story<br>
       Beyond belief<br>
-      Dwells freedom
+      Dwells freedom”
     </div>
 
     <h3>Spiritual Retreats</h3>
