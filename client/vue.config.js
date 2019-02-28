@@ -9,10 +9,10 @@ module.exports = {
     appleMobileWebAppCapable: "yes",
     iconPaths: {
       favicon32: "img/icon-32x32.png",
-      favicon16: "img/icons/favicon-16x16.png",
-      appleTouchIcon: "img/icons/apple-icon-152x152.png",
-      maskIcon: "img/icons/safari-pinned-tab.svg",
-      msTileImage: "img/icons/ms-icon-144x144.png"
+      favicon16: "img/icon-16x16.png",
+      appleTouchIcon: "img/icon-152x152.png",
+      maskIcon: "img/icon.svg",
+      msTileImage: "img/icon-144x144.png"
     },
     workboxOptions: {
       navigateFallback: "/"
