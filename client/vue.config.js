@@ -15,7 +15,10 @@ module.exports = {
       msTileImage: "img/icon-144x144.png"
     },
     workboxOptions: {
-      navigateFallback: "/"
+      navigateFallback: "/",
+      skipWaiting: true,
+      clientsClaim: true,
+      exclude: [/\.map$/, /^manifest.*\.js(?:on)?$/,/img\/media/,/img\/icons/,/^google/,/^robots/,/^sitemap/]
     }
   }
 };
