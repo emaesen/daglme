@@ -14,6 +14,7 @@ module.exports = {
       maskIcon: "img/icon.svg",
       msTileImage: "img/icon-144x144.png"
     },
+    //https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin
     workboxOptions: {
       navigateFallback: "/",
       skipWaiting: true,
