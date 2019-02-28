@@ -55,7 +55,7 @@
 
     <h2>Downloads and Sharing</h2>
     <div>
-      Participants are welcome and invited to download and share the Daily Global Meditation <a href="/img/daily-global-meditation-eflyer.jpg" target="_blank">email flyer</a> or <a href="/img/daily-global-meditation-banner-3x2.jpg" target="_blank">website banner</a>.<br>
+      Participants are welcome and invited to download and share the Daily Global Meditation <a href="/img/media/daily-global-meditation-eflyer.jpg" target="_blank">email flyer</a> or <a href="/img/media/daily-global-meditation-banner-3x2.jpg" target="_blank">website banner</a>.<br>
       <br> 
       When sharing on social media, please consider using hashtag #DailyGlobalMeditation or #daglme.<br>
       <br>
