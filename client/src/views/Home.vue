@@ -5,12 +5,16 @@
     <h2 class="center">A Call</h2>
     <div class="center outline">
       <div class="poetic glow margin-top5">
-        Birthing of the New Earth Culture &amp; Consciousness
+        Birthing of the <span class="nowrap">New Earth Culture &amp; Consciousness</span>
       </div>
       <div class="emph-color">
-        <span class="emph">5 Minute Meditation, Each Day at 8 PM, Local Time</span>
-        <br>
-        (or choose first 5 minutes of any hour of the day)
+        <div class="emph">
+          <span class="nowrap">5 Minute Meditation</span>, 
+          <span class="nowrap">Each Day at 8 PM, Local Time</span>
+        </div>
+        <div>
+          <span class="nowrap">(or choose first 5 minutes</span> of <span class="nowrap">any hour of the day)</span>
+        </div>
       </div>
     </div>
     
