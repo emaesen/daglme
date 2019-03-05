@@ -17,6 +17,7 @@ module.exports = {
     //https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin
     workboxOptions: {
       navigateFallback: "/",
+      navigateFallbackBlacklist: [/img\/media/],
       skipWaiting: true,
       clientsClaim: true,
       exclude: [/\.map$/, /^manifest.*\.js(?:on)?$/,/img\/media/,/img\/icons/,/^google/,/^robots/,/^sitemap/]
