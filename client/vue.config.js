@@ -16,7 +16,7 @@ module.exports = {
     },
     //https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin
     workboxOptions: {
-      navigateFallback: "/",
+      navigateFallback: "/index.html",
       navigateFallbackBlacklist: [/img\/media/],
       skipWaiting: true,
       clientsClaim: true,
