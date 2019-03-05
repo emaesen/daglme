@@ -20,7 +20,15 @@ module.exports = {
       navigateFallbackBlacklist: [/img\/media/],
       skipWaiting: true,
       clientsClaim: true,
-      exclude: [/\.map$/, /^manifest.*\.js(?:on)?$/,/img\/media/,/img\/icons/,/^google/,/^robots/,/^sitemap/]
+      exclude: [/\.map$/, /^manifest.*\.js(?:on)?$/,/img\/media/,/img\/icons/,/^google/,/^robots/,/^sitemap/],
+      runtimeCaching: [{
+        urlPattern: /media/,
+        handler: 'networkFirst',
+        options: {
+          networkTimeoutSeconds: 10,
+          cacheName: 'media-cache'
+        }
+      }]
     }
   }
 };
