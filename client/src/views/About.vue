@@ -51,7 +51,7 @@
 
     <h2>Downloads and Sharing</h2>
     <div>
-      Participants are welcome and invited to download and share the Daily Global Meditation <a href="/img/media/daily-global-meditation-eflyer.jpg" target="_blank">email flyer</a> or <a href="/img/media/daily-global-meditation-banner-3x2.jpg" target="_blank">website banner</a>.<br>
+      Participants are welcome and invited to download and share the Daily Global Meditation <a href="/img/media/daily-global-meditation-eflyer.jpg" class="external" target="_blank">email flyer</a> or <a href="/img/media/daily-global-meditation-banner-3x2.jpg" class="external" target="_blank">website banner</a>.<br>
       <br> 
       When sharing on social media, please consider using hashtag #DailyGlobalMeditation or #daglme.<br>
       <br>
@@ -61,7 +61,7 @@
 
     <h2>Donations</h2>
     <div>
-      Donations to support the development of the Daily Global Meditation website and corresponding meditation videos are greatly appreciated. If you feel so inclined, please view this site's <a href="https://www.gofundme.com/daily-global-meditation-website&rcid=r01-155112011808-f5a97623d58746d3&pc=ot_co_campmgmt_w"  class="external" target="_blank">fundraising campaign on GoFundMe</a>. Any amount is accepted in gratitude.
+      Donations to support the development of the Daily Global Meditation website and corresponding meditation videos are greatly appreciated. If you feel so inclined, please view this site's <a href="https://www.gofundme.com/daily-global-meditation-website&rcid=r01-155112011808-f5a97623d58746d3&pc=ot_co_campmgmt_w" class="external" target="_blank">fundraising campaign on GoFundMe</a>. Any amount is accepted in gratitude.
     </div>
 
   </div>
