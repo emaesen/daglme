@@ -23,9 +23,8 @@ module.exports = {
       exclude: [/\.map$/, /^manifest.*\.js(?:on)?$/,/img\/media/,/img\/icons/,/^google/,/^robots/,/^sitemap/],
       runtimeCaching: [{
         urlPattern: /media/,
-        handler: 'networkFirst',
+        handler: 'cacheFirst',
         options: {
-          networkTimeoutSeconds: 10,
           cacheName: 'media-cache'
         }
       }]
