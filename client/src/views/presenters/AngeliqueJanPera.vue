@@ -65,7 +65,7 @@
       Wishing You Love,<br>
       Angelique<br>
       <br>
-      <a href="http://letempledelesprit.com" class="external">Angelique's web site</a>
+      <a href="http://letempledelesprit.com" class="external expand">Angelique's web site</a>
     </div>
 
   </div>

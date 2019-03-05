@@ -55,7 +55,7 @@
       Blessings,<br>
       Edward<br>
       <br>
-      <a href="https://kagalakan.com" class="external">Edward's web site</a><br>
+      <a href="https://kagalakan.com" class="external expand">Edward's web site</a><br>
     </div>
 
   </div>

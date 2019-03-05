@@ -20,7 +20,7 @@
       Recognize, Experience and Embrace the Power and Beauty of <span class="nowrap">Your Uniqueness.</span>
     </div>
     <div>
-      Web site: <a href="https://InSharedOneness.com" class="external">In Shared Oneness retreats</a>
+      Web site: <a href="https://InSharedOneness.com" class="external expand">In Shared Oneness retreats</a>
     </div>
 
   </div>

@@ -172,12 +172,19 @@ a,
   font-family: 'Rosario', sans-serif;
   font-size: 90%;
 }
-a.external:after { 
+a.external:after {
+  content: " \02604";
+  color: #f3bb67;
+}
+a.expand:after { 
   content: " \00A0 (" attr(href) ") "; 
   font-weight: 400;
   font-family: 'Vollkorn', serif;
   font-size: 85%;
-  color: #63c2df;
+  color: #7adaf7;
+}
+a.expand.external:after { 
+  content: " \00A0 (" attr(href) ") \02604"; 
 }
 #nav {
   position: fixed;
@@ -211,6 +218,12 @@ a.external:after {
 }
 a.router-link-active {
   cursor: default;
+  color: #f6d65d;
+}
+a.external:hover {
+  color: #7adaf7;
+}
+a:not(.external):hover {
   color: #f6d65d;
 }
 #footer {

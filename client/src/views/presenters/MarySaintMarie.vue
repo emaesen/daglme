@@ -68,8 +68,8 @@
       In Beauty,<br>
       Mary<br>
       <br>
-      <a href="http://MarySaintMarie.com" class="external">Mary's web site</a><br>
-      <a href="http://EarthCareGlobalTV.com" class="external">EarthCare Global TV</a>
+      <a href="http://MarySaintMarie.com" class="external expand">Mary's web site</a><br>
+      <a href="http://EarthCareGlobalTV.com" class="external expand">EarthCare Global TV</a>
     </div>
 
   </div>
