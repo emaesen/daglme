@@ -173,8 +173,8 @@ a,
   font-size: 90%;
 }
 a.external:after {
-  content: " \02604";
-  color: #f3bb67;
+  content: " \02197";
+  color: #7adaf7;
 }
 a.expand:after { 
   content: " \00A0 (" attr(href) ") "; 
@@ -184,7 +184,7 @@ a.expand:after {
   color: #7adaf7;
 }
 a.expand.external:after { 
-  content: " \00A0 (" attr(href) ") \02604"; 
+  content: " \00A0 (" attr(href) ") \02197"; 
 }
 #nav {
   position: fixed;
