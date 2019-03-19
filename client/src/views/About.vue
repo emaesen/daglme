@@ -64,6 +64,11 @@
       Donations to support the development of the Daily Global Meditation website and corresponding meditation videos are greatly appreciated. If you feel so inclined, please view this site's <a href="https://www.gofundme.com/daily-global-meditation-website&rcid=r01-155112011808-f5a97623d58746d3&pc=ot_co_campmgmt_w" class="external" target="_blank">fundraising campaign on GoFundMe</a>. Any amount is accepted in gratitude.
     </div>
 
+    <h2>eMail Contact</h2>
+    <div>
+      <a href="mailto:daglme@protonmail.com">daglme@protonmail.com</a>
+    </div>
+
   </div>
 </template>
 
