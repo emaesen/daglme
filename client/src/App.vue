@@ -5,6 +5,7 @@
       <router-link to="/" exact>Meditation</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/presenters">Presenters</router-link>
+      <router-link to="/reminder" v-if="showReminderLink">Remind me</router-link>
     </div>
     <transition name="fade" mode="out-in">
       <router-view/>
@@ -12,6 +13,27 @@
     <div id="footer">© 2019, Daily Global Meditation. All rights reserved.</div>
   </div>
 </template>
+
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      showReminderLink: false
+    }
+  },
+  mounted() {
+    console.log(this.$route)
+    // show the reminder link only if
+    // notifications are supported and were not previously denied
+    // or if the user navigated to the reminder view explicitly.
+    if ( ("Notification" in window && Notification.permission !== "denied")
+         || (this.$route && this.$route.path==="/reminder") ) {
+      this.showReminderLink = true;
+    }
+  }
+}
+</script>
 
 <style lang="less">
 @font-face {

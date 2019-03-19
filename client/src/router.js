@@ -9,6 +9,7 @@ import EdwardMaesen from "./views/presenters/EdwardMaesen.vue";
 import EarthCareGlobalTV from "./views/presenters/EarthCareGlobalTV.vue";
 import InSharedOneness from "./views/presenters/InSharedOneness.vue";
 import Sponsors from "./views/presenters/Sponsors.vue";
+import Reminder from "./views/Reminder.vue";
 
 Vue.use(Router);
 
@@ -54,6 +55,10 @@ export default new Router({
           component: Sponsors
         }
       ]
+    },
+    {
+      path: "/reminder",
+      component: Reminder
     },
     {
       // catch all - show home page
