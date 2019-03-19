@@ -58,7 +58,6 @@
       This <i>DailyGlobalMeditation.com</i> website can be referenced in short as <a href="http://dagl.me" class="external expand"><i>dagl.me</i></a>. For instance on social media with limited character length, like twitter, gab or SMS.
     </div>
 
-
     <h2>Donations</h2>
     <div>
       Donations to support the development of the Daily Global Meditation website and corresponding meditation videos are greatly appreciated. If you feel so inclined, please view this site's <a href="https://www.gofundme.com/daily-global-meditation-website&rcid=r01-155112011808-f5a97623d58746d3&pc=ot_co_campmgmt_w" class="external" target="_blank">fundraising campaign on GoFundMe</a>. Any amount is accepted in gratitude.
@@ -67,6 +66,46 @@
     <h2>eMail Contact</h2>
     <div>
       <a href="mailto:daglme@protonmail.com">daglme@protonmail.com</a>
+    </div>
+
+    <h2>Privacy Policy</h2>
+    <div class="notice">
+      We value and respect your security and privacy and therefor this website (https://dailyglobalmeditation.com):
+      <ul class="bullet">
+        <li>is served over a secure connection;
+          <ul><li>("https" - identified by a padlock or similar icon next to this site URL in your browser window)</li></ul>
+        </li>
+        <li>processes the minimum amount of information required to operate and display content on this site</li>
+      </ul>
+    </div>
+    <div class="notice margin-top20">
+      This website does not:
+      <ul class="bullet">
+        <li>use "cookies" or "web beacons"</li>
+        <li>collect or transmit a visitor's personal information</li>
+        <li>embed analytics trackers</li>
+        <li>embed or connect with social networks</li>
+        <li>display ads</li>
+      </ul>
+    </div>
+    <div class="notice margin-top20">
+      This website does:
+      <ul class="bullet">
+        <li>store standard non-personal information transmitted by your browser when you request access to pages on this website;
+          <ul><li>(This is aggregated in anonymous statistical access data, that is not shared with any third parties)</li></ul>
+        </li>
+      </ul>
+    </div>
+    <div class="notice margin-top20">
+      This website may:
+      <ul class="bullet">
+        <li>store a copy of its pages on your local device for offline use;
+          <ul><li>(You may opt out by disabling "service workers" in your device's settings)</li></ul>
+        </li>
+        <li>request to send you push notifications with a daily meditation reminder;
+          <ul><li>(Only after you explicitly opt in)</li><li>(You may opt out by blocking "notifications" in your device’s settings)</li></ul>
+        </li>
+      </ul>
     </div>
 
   </div>
