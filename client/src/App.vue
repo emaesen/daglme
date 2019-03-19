@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <img src="/img/illumined-earth.png" class="bg-img" alt="illumined earth">
-    <div id="nav">
+    <div id="nav" class="nowrap">
       <router-link to="/" exact>Meditation</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/presenters">Presenters</router-link>
     </div>
-    <transition name="view-fade" mode="out-in">
+    <transition name="fade" mode="out-in">
       <router-view/>
     </transition>
     <div id="footer">© 2019, Daily Global Meditation. All rights reserved.</div>
@@ -268,7 +268,8 @@ a:not(.external):hover {
 .emph {
   font-weight: 700;
 }
-.instruction {
+.instruction,
+.notice {
   font-style: italic;
   color: #f3f5e7b7;
 }
@@ -303,10 +304,13 @@ a:not(.external):hover {
 .nowrap {
   white-space: nowrap
 }
-.view-fade-enter-active, .view-fade-leave-active {
+.hidden {
+  display: none;
+}
+.fade-enter-active, .fade-leave-active {
   transition: opacity .5s ease;
 }
-.view-fade-enter, .view-fade-leave-to {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 .glow {
@@ -333,6 +337,11 @@ a:not(.external):hover {
     right:14%;
   }
 }
+@media all and (max-width: 915px) {
+  #nav {
+    margin: 0 0 0 -9px;
+  }
+}
 @media all and (max-width: 900px) {
   .bg-img{
     right:7%;
@@ -351,9 +360,6 @@ a:not(.external):hover {
   button {
     font-size: 15px;
   }
-  html, #nav, #nav a {
-    background-size: contain;
-  }
   h1,
   h2,
   h3,
@@ -365,6 +371,11 @@ a:not(.external):hover {
   .bg-img{
     right:0;
     width: 100%
+  }
+}
+@media all and (max-width: 350px) {
+  #nav a {
+    margin-left: 0;
   }
 }
 @media print {
