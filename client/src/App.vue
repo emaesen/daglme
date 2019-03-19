@@ -23,7 +23,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route)
     // show the reminder link only if
     // notifications are supported and were not previously denied
     // or if the user navigated to the reminder view explicitly.
