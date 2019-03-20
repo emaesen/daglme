@@ -131,7 +131,7 @@ button {
   text-shadow: 2px 2px 10px #000;
 }
 button {
-  margin: 2em .5em 1em 1em;
+  margin: 1em .5em 1em 1em;
   background-color: #18213290;
   border: 1px solid #6ab5ea;
   border-radius: 9px;
@@ -346,6 +346,9 @@ a:not(.external):hover {
 }
 .nowrap {
   white-space: nowrap
+}
+.smallfont {
+  font-size: 80%;
 }
 .hidden {
   display: none;
