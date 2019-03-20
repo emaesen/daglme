@@ -304,14 +304,17 @@ a:not(.external):hover {
   font-size: 95%;
   line-height: normal;
 }
-.emph {
-  font-weight: 700;
-}
 .instruction,
 .notice,
 .note {
   font-style: italic;
   color: #f3f5e7b7;
+}
+.emph {
+  font-weight: 700;
+}
+.emph-alert {
+  color:#fa7147;
 }
 .spacer {
   display: block;
