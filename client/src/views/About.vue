@@ -68,8 +68,8 @@
       <a href="mailto:daglme@protonmail.com">daglme@protonmail.com</a>
     </div>
 
-    <h2>Privacy Policy</h2>
-    <div class="notice">
+    <h3>Privacy Policy</h3>
+    <div class="notice smallfont">
       We value and respect your security and privacy and therefor this website (https://dailyglobalmeditation.com):
       <ul class="bullet">
         <li>is served over a secure connection;
@@ -78,7 +78,7 @@
         <li>processes the minimum amount of information required to operate and display content on this site</li>
       </ul>
     </div>
-    <div class="notice margin-top20">
+    <div class="notice smallfont margin-top20">
       This website does not:
       <ul class="bullet">
         <li>use "cookies" or "web beacons"</li>
@@ -88,7 +88,7 @@
         <li>display ads</li>
       </ul>
     </div>
-    <div class="notice margin-top20">
+    <div class="notice smallfont margin-top20">
       This website does:
       <ul class="bullet">
         <li>store standard non-personal information transmitted by your browser when you request access to pages on this website;
@@ -96,7 +96,7 @@
         </li>
       </ul>
     </div>
-    <div class="notice margin-top20">
+    <div class="notice smallfont margin-top20">
       This website may:
       <ul class="bullet">
         <li>store a copy of its pages on your local device for offline use;
