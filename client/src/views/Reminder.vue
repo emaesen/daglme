@@ -103,10 +103,23 @@ export default {
       reminderHour: 20,
       reminderMinute: 0,
       isClockStartPending: false,
-      allowNotificationVibrate: false
+      allowNotificationVibrate: false,
+      store: null,
+      reminderTimeStorageKey: "daglme:reminder-time",
+      notificationEnabledStorageKey: "daglme:notification-enabled"
     }
   },
   mounted() {
+    this.store = window.localStorage;
+    var rt = this.retrieveData(this.reminderTimeStorageKey);
+    if (rt) {
+      this.reminderTime = rt;
+    }
+    var ine = this.retrieveData(this.notificationEnabledStorageKey);
+    if (ine) {
+      this.isNotificationEnabled = ine;
+    }
+    console.log(this.reminderTimeStorageKey + "=", rt);
     if ("Notification" in window) {
       this.isNotificationSupported = true;
       this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
@@ -138,9 +151,10 @@ export default {
       var options = {
           body: body,
           icon: '/img/icon-96x96.png',
-          image: '/img/illumined-earth.png',
-          badge: '/img/icon-96x96.png',
-          tag: 'daglme'
+          image: '/img/daily-global-meditation-reminder.jpg',
+          badge: '/img/daily-global-meditation-reminder.jpg',
+          tag: 'daglme',
+          requireInteraction: true
       };
       if (this.allowNotificationVibrate) {
         options.vibrate = [50, 50, 50];
@@ -149,6 +163,7 @@ export default {
     },
     enableNotifications() {
       this.isNotificationEnabled = true;
+      this.storeData(this.notificationEnabledStorageKey, this.isNotificationEnabled);
       var spawnNotification = this.spawnNotification;
       var that = this;
       if (Notification.permission === "granted") {
@@ -172,6 +187,7 @@ export default {
     disableNotifications() {
       this.isNotificationEnabled = false;
       this.isNotificationGranted = false;
+      this.storeData(this.notificationEnabledStorageKey, this.isNotificationEnabled);
     },
     startClock() {
       this.stopClock();
@@ -211,6 +227,13 @@ export default {
         this.spawnNotification("Your Daily Global Meditation Reminder");
         console.log("Your Daily Global Meditation Reminder");
       }
+    },
+    storeData(key, value) {
+      this.store.setItem(key, value);
+    },
+    retrieveData(key) {
+      console.log({store:this.store, key:key});
+      return this.store.getItem(key);
     }
   },
   watch: {
@@ -218,6 +241,7 @@ export default {
       var timeSplit = this.reminderTime.split(":");
       this.reminderHour = 1 * timeSplit[0];
       this.reminderMinute = 1 * timeSplit[1];
+      this.storeData(this.reminderTimeStorageKey, this.reminderTime);
       console.log("reminder time changed to " + this.reminderTime + " (" + this.reminderHour + "," + this.reminderMinute + ")");
     }
   }
