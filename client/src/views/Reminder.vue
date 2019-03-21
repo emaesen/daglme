@@ -90,6 +90,15 @@ export default {
       this.isNotificationSupported = true;
     }
   },
+  created() {
+    this.startClock();
+  },
+  updated() {
+    this.startClock();
+  },
+  destroyed() {
+    this.stopClock();
+  },
   computed: {
     timeAmPm() {
       return this.reminderTime;
@@ -135,6 +144,34 @@ export default {
     disableNotifications() {
       this.isNotificationEnabled = false;
       this.isNotificationGranted = false;
+    },
+    startClock() {
+      this.stopClock();
+      // clock ticks once every minute
+      let multiplier = 60;
+      let delay = 60 - new Date().getSeconds();
+      console.log("Initialize the clock - start in " + delay + " seconds");
+      setTimeout(() => {
+        this.timerID = setInterval(this.ticktock, multiplier * 1000);
+        console.log("Start the clock " + this.timerID);
+      }, delay * 1000);
+    },
+    stopClock() {
+      if (this.timerID) {
+        console.log("Stop the clock " + this.timerID);
+        clearInterval(this.timerID);
+      }
+    },
+    ticktock() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      console.log("tick tock " + hours + ":" + minutes);
+      if (hours === 0 && minutes === 0) {
+        // restart/recalibrate the clock
+        console.log("Recalibrate the clock");
+        this.startClock();
+      }
     }
   }
 };
