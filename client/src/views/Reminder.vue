@@ -62,9 +62,20 @@
       </div>
     </transition>
 
+    <h3>Terms of Service</h3>
+    <div class="notice smallfont">
+      The Daily Global Meditation Reminder is provided AS IS, as a courtesy service.<br>
+      The technology used to display Notifications still has limited browser and device support.<br>
+      <span v-if="isNotificationSupported">If you can view this page then your system technically supports Notifications but they may or may not work entirely as expected.</span>
+      <span v-if="!isNotificationSupported">It appears that your system technically DOES NOT SUPPORT Notifications so they will probably not work as expected.</span>
+      <br>
+      Use at your own discretion.<br>
+      You may have to re-enable your Daily Global Meditation Reminder after a page reload.
+    </div>
+
     <h3>Privacy Notice</h3>
     <div class="notice smallfont">
-      Reminder notifications are a direct communication between your local copy of this web page in your current browser and the device that you view this on.<br>
+      Reminder Notifications are a direct communication between your local copy of this web page in your current browser and the device that you view this on.<br>
       Your preferences and settings are stored exclusively in your browser;<br>
       no data is exchanged with our server or with outside parties.<br>
       <br>
