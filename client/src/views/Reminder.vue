@@ -6,7 +6,7 @@
 
     <div class="margin-top20">
       <div>
-        If you'd like to receive a Daily Global Meditation Reminder, you are invited to enable daily reminder notifications on your device.<br>
+        If you'd like to receive a Daily Global Meditation Reminder as a notification on your device, you are invited to enable a personal daily reminder below.<br>
         By default the reminder will show at 8 o'clock in the evening (8 PM or 20:00 hour), but you may set any other time.<br>
         You can disable the reminder at any time if so desired.<br>
       </div>
