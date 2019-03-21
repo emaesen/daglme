@@ -102,7 +102,8 @@ export default {
       reminderTime: "20:00",
       reminderHour: 20,
       reminderMinute: 0,
-      isClockStartPending: false
+      isClockStartPending: false,
+      allowNotificationVibrate: false
     }
   },
   mounted() {
@@ -139,9 +140,11 @@ export default {
           icon: '/img/icon-96x96.png',
           image: '/img/illumined-earth.png',
           badge: '/img/icon-96x96.png',
-          tag: 'daglme',
-          vibrate: [50, 50, 50]
+          tag: 'daglme'
       };
+      if (this.allowNotificationVibrate) {
+        options.vibrate = [50, 50, 50];
+      }
       new Notification(title, options);
     },
     enableNotifications() {
