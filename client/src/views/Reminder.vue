@@ -229,11 +229,11 @@ export default {
       }
     },
     storeData(key, value) {
-      this.store.setItem(key, value);
+      this.store && this.store.setItem(key, value);
     },
     retrieveData(key) {
       console.log({store:this.store, key:key});
-      return this.store.getItem(key);
+      return this.store && this.store.getItem(key);
     }
   },
   watch: {
