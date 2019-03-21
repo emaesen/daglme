@@ -89,7 +89,9 @@ export default {
       isNotificationGranted: this.isNotificationEnabled && Notification.permission==="granted",
       isNotificationDenied: Notification.permission==="denied",
       reminderTime: "20:00",
-      isClockRunning: false
+      reminderHour: 20,
+      reminderMinute: 0,
+      isClockStartPending: false
     }
   },
   mounted() {
@@ -122,6 +124,7 @@ export default {
           icon: '/img/icon-96x96.png',
           image: '/img/illumined-earth.png',
           badge: '/img/icon-96x96.png',
+          tag: 'daglme',
           vibrate: [50, 50, 50]
       };
       new Notification(title, options);
@@ -154,31 +157,47 @@ export default {
     },
     startClock() {
       this.stopClock();
-      // clock ticks once every minute
-      let multiplier = 60;
-      let delay = 60 - new Date().getSeconds();
-      console.log("Initialize the clock - start in " + delay + " seconds");
-      setTimeout(() => {
-        this.timerID = setInterval(this.ticktock, multiplier * 1000);
-        console.log("Start the clock " + this.timerID);
-      }, delay * 1000);
+      if(!this.isClockStartPending) {
+        // clock ticks once every minute
+        let multiplier = 60;
+        let delay = 60 - new Date().getSeconds();
+        console.log("Initialize the clock - start in " + delay + " seconds");
+        setTimeout(() => {
+          this.timerID = setInterval(this.ticktock, multiplier * 1000);
+          console.log("Start the clock (" + this.timerID + ")");
+          this.isClockStartPending = false;
+        }, delay * 1000);
+        this.isClockStartPending = true;
+      }
     },
     stopClock() {
       if (this.timerID) {
-        console.log("Stop the clock " + this.timerID);
+        console.log("Stop the clock (" + this.timerID + ")");
         clearInterval(this.timerID);
+        this.timerID = null;
       }
     },
     ticktock() {
       var now = new Date();
       var hours = now.getHours();
       var minutes = now.getMinutes();
-      console.log("tick tock (" + this.timerID + ") " + hours + ":" + minutes);
+      console.log("tick tock (" + this.timerID + ") " + hours + ":" + minutes + " (" + this.reminderTime + ")");
       if (hours === 0 && minutes === 0) {
         // restart/recalibrate the clock
         console.log("Recalibrate the clock");
         this.startClock();
       }
+      if (hours === this.reminderHour && minutes === this.reminderMinute) {
+        this.spawnNotification("Your Daily Global Meditation Reminder.");
+      }
+    }
+  },
+  watch: {
+    reminderTime() {
+      var timeSplit = this.reminderTime.split(":");
+      this.reminderHour = 1 * timeSplit[0];
+      this.reminderMinute = 1 * timeSplit[1];
+      console.log("reminder time changed to " + this.reminderTime + " (" + this.reminderHour + "," + this.reminderMinute + ")");
     }
   }
 };
