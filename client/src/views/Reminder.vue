@@ -146,8 +146,9 @@ export default {
     }
   },
   methods: {
-    spawnNotification(body, title) {
+    spawnNotification(body, duration, title) {
       title = title || "Daily Global Meditation";
+      duration = duration * 1000 || 5 * 60 * 1000;
       var options = {
           body: body,
           icon: '/img/icon-96x96.png',
@@ -159,7 +160,8 @@ export default {
       if (this.allowNotificationVibrate) {
         options.vibrate = [50, 50, 50];
       }
-      new Notification(title, options);
+      var n = new Notification(title, options);
+      setTimeout(n.close.bind(n), duration);
     },
     enableNotifications() {
       this.isNotificationEnabled = true;
@@ -168,14 +170,14 @@ export default {
       var that = this;
       if (Notification.permission === "granted") {
         // permission was granted already
-        spawnNotification("Welcome! You will receive a daily meditation reminder");
+        spawnNotification("Welcome! You will receive a daily meditation reminder", 15);
         that.isNotificationGranted = true;
       } else {
         // ask the user for permission
         Notification.requestPermission().then(function (permission) {
           if (permission === "granted") {
             // If the user accepted, let's create a notification
-            spawnNotification("Welcome! You will receive a daily meditation reminder");
+            spawnNotification("Welcome! You will receive a daily meditation reminder", 15);
             that.isNotificationGranted = true;
           }
           if (permission === "denied") {
