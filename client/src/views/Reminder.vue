@@ -168,7 +168,7 @@ export default {
       var that = this;
       if (Notification.permission === "granted") {
         // permission was granted already
-        spawnNotification("Welcome back! You are receiving a daily meditation reminder");
+        spawnNotification("Welcome! You will receive a daily meditation reminder");
         that.isNotificationGranted = true;
       } else {
         // ask the user for permission
@@ -224,7 +224,7 @@ export default {
       }
       if (this.isNotificationGranted && 
           hours === this.reminderHour && minutes === this.reminderMinute) {
-        this.spawnNotification("Your Daily Global Meditation Reminder");
+        this.spawnNotification("For 5 minutes, envision the Earth and Sky as Illumined and Whole...\nThanks for your participation!");
         console.log("Your Daily Global Meditation Reminder");
       }
     },
