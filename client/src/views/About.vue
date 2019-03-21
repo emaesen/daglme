@@ -53,13 +53,14 @@
     <div>
       Participants are welcome and invited to download and share the Daily Global Meditation <a href="/img/media/daily-global-meditation-eflyer.jpg">email flyer</a> or <a href="/img/media/daily-global-meditation-banner-3x2.jpg">website banner</a>.<br>
       <br> 
-      When sharing on social media, please consider using hashtag #DailyGlobalMeditation or #daglme.<br>
+      When sharing on social media, consider using hashtag #DailyGlobalMeditation or #daglme.<br>
       <br>
       This <i>DailyGlobalMeditation.com</i> website can be referenced in short as <a href="http://dagl.me" class="external expand"><i>dagl.me</i></a>. For instance on social media with limited character length, like twitter, gab or SMS.
     </div>
 
     <h2>eMail Contact</h2>
     <div>
+      We'd love to hear from you!<br>
       <a href="mailto:daglme@protonmail.com">daglme@protonmail.com</a>
     </div>
 
