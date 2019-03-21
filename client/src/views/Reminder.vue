@@ -10,7 +10,7 @@
         By default the reminder will show at 8 o'clock in the evening (8 PM or 20:00 hour), but you may set any other time.<br>
         You can disable the reminder at any time if so desired.<br>
       </div>
-      <div class="margin-top10">
+      <div class="margin-top10 emph">
         If you'd like to enable or manage your personal private Daily Global Meditation Reminder, please follow the instructions below:
       </div>
     </div>
@@ -135,14 +135,14 @@ export default {
       var that = this;
       if (Notification.permission === "granted") {
         // permission was granted already
-        spawnNotification("Welcome back! You are receiving a daily meditation reminder.");
+        spawnNotification("Welcome back! You are receiving a daily meditation reminder");
         that.isNotificationGranted = true;
       } else {
         // ask the user for permission
         Notification.requestPermission().then(function (permission) {
           if (permission === "granted") {
             // If the user accepted, let's create a notification
-            spawnNotification("Welcome! You will receive a daily meditation reminder.");
+            spawnNotification("Welcome! You will receive a daily meditation reminder");
             that.isNotificationGranted = true;
           }
           if (permission === "denied") {
@@ -165,6 +165,7 @@ export default {
         setTimeout(() => {
           this.timerID = setInterval(this.ticktock, multiplier * 1000);
           console.log("Start the clock (" + this.timerID + ")");
+          this.ticktock();
           this.isClockStartPending = false;
         }, delay * 1000);
         this.isClockStartPending = true;
@@ -181,14 +182,16 @@ export default {
       var now = new Date();
       var hours = now.getHours();
       var minutes = now.getMinutes();
-      console.log("tick tock (" + this.timerID + ") " + hours + ":" + minutes + " (" + this.reminderTime + ")");
+      console.log("tick tock (" + this.timerID + ") " + hours + ":" + minutes + " (" + this.reminderTime + ")" + this.isNotificationGranted);
       if (hours === 0 && minutes === 0) {
         // restart/recalibrate the clock
         console.log("Recalibrate the clock");
         this.startClock();
       }
-      if (hours === this.reminderHour && minutes === this.reminderMinute) {
-        this.spawnNotification("Your Daily Global Meditation Reminder.");
+      if (this.isNotificationGranted && 
+          hours === this.reminderHour && minutes === this.reminderMinute) {
+        this.spawnNotification("Your Daily Global Meditation Reminder");
+        console.log("Your Daily Global Meditation Reminder");
       }
     }
   },
