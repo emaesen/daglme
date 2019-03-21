@@ -97,8 +97,8 @@ export default {
     return {
       isNotificationSupported: false,
       isNotificationEnabled: false,
-      isNotificationGranted: this.isNotificationEnabled && Notification.permission==="granted",
-      isNotificationDenied: Notification.permission==="denied",
+      isNotificationGranted: false,
+      isNotificationDenied: false,
       reminderTime: "20:00",
       reminderHour: 20,
       reminderMinute: 0,
@@ -108,6 +108,10 @@ export default {
   mounted() {
     if ("Notification" in window) {
       this.isNotificationSupported = true;
+      this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
+      this.isNotificationDenied = Notification.permission==="denied";
+      console.log("isNotificationGranted:" + this.isNotificationGranted);
+      console.log("isNotificationDenied:" + this.isNotificationDenied);
     }
   },
   created() {
