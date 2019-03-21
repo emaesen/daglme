@@ -2,6 +2,8 @@
   <div class="reminder view">
     <h1>Daily Global Meditation Reminder</h1>
 
+    <template v-if="isNotificationSupported">
+
     <div class="margin-top20">
       <div>
         If you'd like to receive a Daily Global Meditation Reminder, you are invited to enable daily reminder notifications on your device.<br>
@@ -68,7 +70,11 @@
       <br>
       You may opt out entirely by blocking "notifications" in your browser or device’s settings.
     </div>
+    </template>
 
+    <template v-else>
+      If your device, operating system and browser support Notifications, you will see options here to enable and manage a Daily Global Meditation Reminder. But your current system does not appear to support Notifications.
+    </template>
   </div>
 </template>
 
@@ -82,7 +88,8 @@ export default {
       isNotificationEnabled: false,
       isNotificationGranted: this.isNotificationEnabled && Notification.permission==="granted",
       isNotificationDenied: Notification.permission==="denied",
-      reminderTime: "20:00"
+      reminderTime: "20:00",
+      isClockRunning: false
     }
   },
   mounted() {
@@ -166,7 +173,7 @@ export default {
       var now = new Date();
       var hours = now.getHours();
       var minutes = now.getMinutes();
-      console.log("tick tock " + hours + ":" + minutes);
+      console.log("tick tock (" + this.timerID + ") " + hours + ":" + minutes);
       if (hours === 0 && minutes === 0) {
         // restart/recalibrate the clock
         console.log("Recalibrate the clock");
