@@ -94,6 +94,9 @@ html, #nav {
 #nav {
   box-shadow: 0 0 40px #d9f0ff;
 }
+#nav.glow {
+  box-shadow: 0 0 500px 500px #d9f0ff;
+}
 hr {
   margin: 5em 0;
   border-color: #6ab5ea;
