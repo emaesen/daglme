@@ -26,6 +26,7 @@
       <div key="eb" v-else>
         <transition name="fade" mode="out-in">
           <div key="ga" v-if="!isNotificationGranted">
+            Almost there! You have enabled the daily meditation reminder.<br>
             <span class="emph-alert">Please grant notification permission in your browser:</span> it should show a popup with option to allow or block notifications.
             <div class="note" v-if="isNotificationDenied">
               <br>
@@ -48,7 +49,7 @@
       <div key="mb" v-else>
         <div>
           Change your reminder time:
-          <input type="time" v-model="reminderTime" step="900"/> (<span class="mono">{{ reminderTime }}</span>)
+          <input type="time" v-model="reminderTime" step="900"/> (<span class="mono">{{ reminderTimeText }}</span>)
         </div>
         <div class="emph margin-top10">
           or
@@ -70,7 +71,9 @@
       <span v-if="!isNotificationSupported">It appears that your system technically DOES NOT SUPPORT Notifications so they will probably not work as expected.</span>
       <br>
       Use at your own discretion.<br>
-      You may have to re-enable your Daily Global Meditation Reminder after a page reload.
+      You may have to re-enable your Daily Global Meditation Reminder after a page reload.<br>
+      <br>
+      Your Notification Permission currently is set as: "{{ notificationPermission }}"
     </div>
 
     <h3>Privacy Notice</h3>
@@ -117,15 +120,23 @@ export default {
     }
     var ine = this.retrieveData(this.notificationEnabledStorageKey);
     if (ine) {
-      this.isNotificationEnabled = ine;
+      this.isNotificationEnabled = ine === "true";
     }
-    console.log(this.reminderTimeStorageKey + "=", rt);
     if ("Notification" in window) {
       this.isNotificationSupported = true;
       this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
       this.isNotificationDenied = Notification.permission==="denied";
       console.log("isNotificationGranted:" + this.isNotificationGranted);
       console.log("isNotificationDenied:" + this.isNotificationDenied);
+    }
+    if (this.isNotificationDenied && this.isNotificationEnabled) {
+      // user has previously enabled the reminder but must have revoked
+      // notification permission directly in their device.
+      // Reset the reminder to disabled after a short amount of time.
+      setTimeout(() => {
+        this.isNotificationEnabled = false;
+        this.storeData(this.notificationEnabledStorageKey, this.isNotificationEnabled);
+      }, 60 * 1000);
     }
   },
   created() {
@@ -138,11 +149,11 @@ export default {
     this.stopClock();
   },
   computed: {
-    timeAmPm() {
-      return this.reminderTime;
-    },
     notificationPermission() {
-      return Notification.permission;
+      return this.isNotificationGranted ? "granted" : this.isNotificationDenied ? "denied" : !this.isNotificationSupported ? "not applicable (not supported)" : "pending";
+    },
+    reminderTimeText() {
+      return 
     }
   },
   methods: {
