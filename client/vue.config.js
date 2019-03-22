@@ -17,6 +17,7 @@ module.exports = {
     //https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin
     workboxOptions: {
       importWorkboxFrom: "local",
+      importScripts: ["sw-notifications.js"],
       navigateFallback: "/index.html",
       navigateFallbackBlacklist: [/img\/media/],
       // our app is simple and non-critical and all code resources are versioned so 
