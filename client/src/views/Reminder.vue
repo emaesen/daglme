@@ -93,6 +93,8 @@
 </template>
 
 <script>
+import send_message_to_sw from "../utils/notification.js";
+
 export default {
   name: "reminders",
   components: {},
@@ -139,6 +141,7 @@ export default {
   },
   created() {
     this.startClock();
+    send_message_to_sw("TEST TEST TEST");
   },
   updated() {
     this.startClock();
