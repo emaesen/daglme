@@ -10,8 +10,9 @@
     "dev": "npm run serve:dev",
     "build": "vue-cli-service build",
     "serve:prod": "serve -s dist",
-    "copy:dist": "cp -r dist/. dist-archive/",
-    "prod": "npm run copy:dist && npm run build && npm run serve:prod"
+    "backup:dist": "cp -r dist/. dist-backup/",
+    "archive:dist": "cp -r dist-backup/. dist-archive-`date +%Y%m%d-%H%M`/",
+    "prod": "npm run backup:dist && npm run build && npm run serve:prod"
   },
   "dependencies": {
     "register-service-worker": "^1.5.2",
