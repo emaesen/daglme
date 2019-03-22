@@ -126,8 +126,6 @@ export default {
       this.isNotificationSupported = true;
       this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
       this.isNotificationDenied = Notification.permission==="denied";
-      console.log("isNotificationGranted:" + this.isNotificationGranted);
-      console.log("isNotificationDenied:" + this.isNotificationDenied);
     }
     if (this.isNotificationDenied && this.isNotificationEnabled) {
       // user has previously enabled the reminder but must have revoked
@@ -150,12 +148,19 @@ export default {
   },
   computed: {
     notificationPermission() {
-      return this.isNotificationGranted ? "granted" : this.isNotificationDenied ? "denied" : !this.isNotificationSupported ? "not applicable (not supported)" : "pending";
+      return this.isNotificationGranted ? "granted"
+        : this.isNotificationDenied ? "denied"
+        : !this.isNotificationSupported ? "not applicable (not supported)"
+        : "pending";
     },
     reminderTimeText() {
       var text = "";
       var hour = this.reminderHour > 12 ? this.reminderHour - 12 : this.reminderHour;
-      var when = " in the " + (this.reminderHour > 18 ? "evening" : this.reminderHour > 12 ? "afternoon" : "morning");
+      var when = " in the " + 
+        ( this.reminderHour > 18 ? "evening" 
+          : this.reminderHour > 12 ? "afternoon" 
+          : "morning"
+        );
       var padZero = this.reminderMinute < 10 ? "0" : "";
       if (this.reminderMinute === 0) {
         text = hour + " o'clock" + when;
@@ -238,7 +243,7 @@ export default {
       var now = new Date();
       var hours = now.getHours();
       var minutes = now.getMinutes();
-      console.log("tick tock (" + this.timerID + ") " + hours + ":" + minutes + " (" + this.reminderTime + ")" + this.isNotificationGranted);
+      console.log("tick tock (" + this.timerID + ") " + hours + ":" + minutes + " (" + this.reminderTime + ")");
       if (hours === 0 && minutes === 0) {
         // restart/recalibrate the clock
         console.log("Recalibrate the clock");
@@ -254,7 +259,6 @@ export default {
       this.store && this.store.setItem(key, value);
     },
     retrieveData(key) {
-      console.log({store:this.store, key:key});
       return this.store && this.store.getItem(key);
     }
   },
@@ -264,7 +268,6 @@ export default {
       this.reminderHour = 1 * timeSplit[0];
       this.reminderMinute = 1 * timeSplit[1];
       this.storeData(this.reminderTimeStorageKey, this.reminderTime);
-      console.log("reminder time changed to " + this.reminderTime + " (" + this.reminderHour + "," + this.reminderMinute + ")");
     }
   }
 };
