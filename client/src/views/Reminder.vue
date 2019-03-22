@@ -49,7 +49,7 @@
       <div key="mb" v-else>
         <div>
           Change your reminder time:
-          <input type="time" v-model="reminderTime" step="900"/> (<span class="mono">{{ reminderTimeText }}</span>)
+          <input type="time" v-model="reminderTime" step="900"/> &nbsp; <span class="">({{ reminderTimeText }})</span>
         </div>
         <div class="emph margin-top10">
           or
@@ -153,7 +153,16 @@ export default {
       return this.isNotificationGranted ? "granted" : this.isNotificationDenied ? "denied" : !this.isNotificationSupported ? "not applicable (not supported)" : "pending";
     },
     reminderTimeText() {
-      return 
+      var text = "";
+      var hour = this.reminderHour > 12 ? this.reminderHour - 12 : this.reminderHour;
+      var when = " in the " + (this.reminderHour > 18 ? "evening" : this.reminderHour > 12 ? "afternoon" : "morning");
+      var padZero = this.reminderMinute < 10 ? "0" : "";
+      if (this.reminderMinute === 0) {
+        text = hour + " o'clock" + when;
+      } else {
+        text = hour + ":" + padZero + this.reminderMinute + when;
+      }
+      return text;
     }
   },
   methods: {
