@@ -12,7 +12,8 @@
     "serve:prod": "serve -s dist",
     "backup:dist": "cp -r dist/. dist-backup/",
     "archive:dist": "cp -r dist-backup/. dist-archive-`date +%Y%m%d-%H%M`/",
-    "prod": "npm run backup:dist && npm run build && npm run serve:prod"
+    "prod": "npm run build && npm run serve:prod",
+    "prod:backup": "npm run backup:dist && npm run prod"
   },
   "dependencies": {
     "register-service-worker": "^1.5.2",
