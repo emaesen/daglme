@@ -141,7 +141,9 @@ export default {
   },
   created() {
     this.startClock();
-    send_message_to_sw("TEST TEST TEST");
+    send_message_to_sw("TEST MSG FROM CLIENT")
+      .then(msg => console.log(msg))
+      .catch(err => console.log(err));
   },
   updated() {
     this.startClock();
