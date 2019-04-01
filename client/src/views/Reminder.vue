@@ -20,7 +20,7 @@
       <div key="ea" v-if="!isNotificationEnabled">
         <div>
           Click the button to enable your personal private Daily Global Meditation Reminder.<br>
-          <button class="action" @click="enableNotifications">Enable a daily reminder</button> at <input type="time" v-model="reminderTime" step="900"/> (<span class="mono">{{ reminderTime }}</span>)
+          <button class="action" @click="enableNotifications">Enable a daily reminder</button><span class="nowrap"> &nbsp; at <input type="time" v-model="reminderTime" step="900"/> &nbsp; ({{ reminderTimeText }})</span>
         </div>
       </div>
       <div key="eb" v-else>
@@ -49,7 +49,7 @@
       <div key="mb" v-else>
         <div>
           Change your reminder time:
-          <input type="time" v-model="reminderTime" step="900"/> &nbsp; <span class="">({{ reminderTimeText }})</span>
+          <span class="nowrap"><input type="time" v-model="reminderTime" step="900"/> &nbsp; ({{ reminderTimeText }})</span>
         </div>
         <div class="emph margin-top10">
           or
@@ -163,7 +163,7 @@ export default {
       var hour = this.reminderHour > 12 ? this.reminderHour - 12 : this.reminderHour;
       var when = " in the " + 
         ( this.reminderHour > 18 ? "evening" 
-          : this.reminderHour > 12 ? "afternoon" 
+          : this.reminderHour >= 12 ? "afternoon" 
           : "morning"
         );
       var padZero = this.reminderMinute < 10 ? "0" : "";
