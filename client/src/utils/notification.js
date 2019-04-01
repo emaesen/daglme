@@ -6,7 +6,7 @@ function send_message_to_sw(msg) {
 
     // Handler for recieving message reply from service worker
     msg_chan.port1.onmessage = function(event){
-      console.log("[u/n] return message received ", event);
+      console.log("[u/notif] return message received ", event);
       if(event.data.error){
         reject(event.data.error);
       }else{
@@ -15,10 +15,10 @@ function send_message_to_sw(msg) {
     };
 
     if ('serviceWorker' in navigator) {
-      console.log("[u/n] checking if service worker is active...");
+      console.log("[u/notif] checking if service worker is active...");
       navigator.serviceWorker.ready
         .then(function(swreg) {
-          console.log("[u/n] sending message to service worker... accepting reply...");
+          console.log("[u/notif] sending message to service worker... accepting reply...");
           swreg.active.postMessage(msg, [msg_chan.port2]);
         })
         .catch(err => {
