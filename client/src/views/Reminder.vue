@@ -93,7 +93,11 @@
 </template>
 
 <script>
-import send_message_to_sw from "../utils/notification.js";
+import { 
+  send_message_to_sw, 
+  setNotificationParams, 
+  spawnNotification
+  } from "../utils/notification.js";
 
 export default {
   name: "reminders",
@@ -107,7 +111,6 @@ export default {
       reminderTime: "20:00",
       reminderHour: 20,
       reminderMinute: 0,
-      isClockStartPending: false,
       allowNotificationVibrate: false,
       store: null,
       reminderTimeStorageKey: "daglme:reminder-time",
@@ -140,16 +143,9 @@ export default {
     }
   },
   created() {
-    this.startClock();
     send_message_to_sw("TEST MSG FROM CLIENT")
       .then(msg => console.log(msg))
       .catch(err => console.log(err));
-  },
-  updated() {
-    this.startClock();
-  },
-  destroyed() {
-    this.stopClock();
   },
   computed: {
     notificationPermission() {
@@ -176,38 +172,20 @@ export default {
     }
   },
   methods: {
-    spawnNotification(body, duration, title) {
-      title = title || "Daily Global Meditation";
-      duration = duration * 1000 || 5 * 60 * 1000;
-      var options = {
-          body: body,
-          icon: '/img/icon-96x96.png',
-          image: '/img/daily-global-meditation-reminder.jpg',
-          badge: '/img/daily-global-meditation-reminder.jpg',
-          tag: 'daglme',
-          requireInteraction: true
-      };
-      if (this.allowNotificationVibrate) {
-        options.vibrate = [50, 50, 50];
-      }
-      var n = new Notification(title, options);
-      setTimeout(n.close.bind(n), duration);
-    },
     enableNotifications() {
       this.isNotificationEnabled = true;
       this.storeData(this.notificationEnabledStorageKey, this.isNotificationEnabled);
-      var spawnNotification = this.spawnNotification;
       var that = this;
       if (Notification.permission === "granted") {
         // permission was granted already
-        spawnNotification("Welcome! You will receive a daily meditation reminder", 15);
+        spawnNotification("Welcome! You will receive a daily meditation reminder", 15, null, this.allowNotificationVibrate);
         that.isNotificationGranted = true;
       } else {
         // ask the user for permission
         Notification.requestPermission().then(function (permission) {
           if (permission === "granted") {
             // If the user accepted, let's create a notification
-            spawnNotification("Welcome! You will receive a daily meditation reminder", 15);
+            spawnNotification("Welcome! You will receive a daily meditation reminder", 15, null, this.allowNotificationVibrate);
             that.isNotificationGranted = true;
           }
           if (permission === "denied") {
@@ -220,45 +198,6 @@ export default {
       this.isNotificationEnabled = false;
       this.isNotificationGranted = false;
       this.storeData(this.notificationEnabledStorageKey, this.isNotificationEnabled);
-    },
-    startClock() {
-      this.stopClock();
-      if(!this.isClockStartPending) {
-        // clock ticks once every minute
-        let multiplier = 60;
-        let delay = 60 - new Date().getSeconds();
-        console.log("Initialize the clock - start in " + delay + " seconds");
-        setTimeout(() => {
-          this.timerID = setInterval(this.ticktock, multiplier * 1000);
-          console.log("Start the clock (" + this.timerID + ")");
-          this.ticktock();
-          this.isClockStartPending = false;
-        }, delay * 1000);
-        this.isClockStartPending = true;
-      }
-    },
-    stopClock() {
-      if (this.timerID) {
-        console.log("Stop the clock (" + this.timerID + ")");
-        clearInterval(this.timerID);
-        this.timerID = null;
-      }
-    },
-    ticktock() {
-      var now = new Date();
-      var hours = now.getHours();
-      var minutes = now.getMinutes();
-      console.log("tick tock (" + this.timerID + ") " + hours + ":" + minutes + " (" + this.reminderTime + ")");
-      if (hours === 0 && minutes === 0) {
-        // restart/recalibrate the clock
-        console.log("Recalibrate the clock");
-        this.startClock();
-      }
-      if (this.isNotificationGranted && 
-          hours === this.reminderHour && minutes === this.reminderMinute) {
-        this.spawnNotification("For 5 minutes, envision the Earth and Sky as Illumined and Whole...\nThanks for your participation!");
-        console.log("Your Daily Global Meditation Reminder");
-      }
     },
     storeData(key, value) {
       this.store && this.store.setItem(key, value);
@@ -273,6 +212,20 @@ export default {
       this.reminderHour = 1 * timeSplit[0];
       this.reminderMinute = 1 * timeSplit[1];
       this.storeData(this.reminderTimeStorageKey, this.reminderTime);
+      setNotificationParams({
+        isNotificationGranted: this.isNotificationGranted,
+        reminderTime: this.reminderTime,
+        reminderHour: this.reminderHour,
+        reminderMinute: this.reminderMinute
+      });
+    },
+    isNotificationGranted() {
+      setNotificationParams({
+        isNotificationGranted: this.isNotificationGranted,
+        reminderTime: this.reminderTime,
+        reminderHour: this.reminderHour,
+        reminderMinute: this.reminderMinute
+      });
     }
   }
 };
