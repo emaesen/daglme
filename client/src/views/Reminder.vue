@@ -93,11 +93,7 @@
 </template>
 
 <script>
-import { 
-  send_message_to_sw, 
-  setNotificationParams, 
-  spawnNotification
-  } from "../utils/notification.js";
+import send_message_to_sw from "../utils/messaging.js";
 
 export default {
   name: "reminders",
@@ -143,9 +139,9 @@ export default {
     }
   },
   created() {
-    send_message_to_sw("TEST MSG FROM CLIENT")
-      .then(msg => console.log(msg))
-      .catch(err => console.log(err));
+    // send_message_to_sw("TEST MSG FROM CLIENT")
+    //   .then(msg => console.log(msg))
+    //   .catch(err => console.log(err));
   },
   computed: {
     notificationPermission() {
@@ -178,14 +174,14 @@ export default {
       var that = this;
       if (Notification.permission === "granted") {
         // permission was granted already
-        spawnNotification("Welcome! You will receive a daily meditation reminder", 15, null, this.allowNotificationVibrate);
+        this.spawnNotification("Wonderful! You receive a daily meditation reminder");
         that.isNotificationGranted = true;
       } else {
         // ask the user for permission
         Notification.requestPermission().then(function (permission) {
           if (permission === "granted") {
             // If the user accepted, let's create a notification
-            spawnNotification("Welcome! You will receive a daily meditation reminder", 15, null, this.allowNotificationVibrate);
+            this.spawnNotification("Welcome! You will receive a daily meditation reminder");
             that.isNotificationGranted = true;
           }
           if (permission === "denied") {
@@ -204,6 +200,31 @@ export default {
     },
     retrieveData(key) {
       return this.store && this.store.getItem(key);
+    },
+    setNotificationParams() {
+      send_message_to_sw({
+        action:"setNotificationParams", 
+        payload:{
+          isNotificationGranted: this.isNotificationGranted,
+          reminderTime: this.reminderTime,
+          reminderHour: this.reminderHour,
+          reminderMinute: this.reminderMinute
+        }
+      })
+      .then(msg => console.log("message from sw (re. snp)", {msg}))
+      .catch(err => console.log("error from sw (re. snp)", {err}));
+    },
+    spawnNotification(body) {
+      send_message_to_sw({
+        action:"spawnNotification", 
+        payload:{
+          body: body,
+          duration: 15,
+          doVibrate: this.allowNotificationVibrate
+        }
+      })
+      .then(msg => console.log("message from sw (re. snp)", {msg}))
+      .catch(err => console.log("error from sw (re. snp)", {err}));
     }
   },
   watch: {
@@ -212,20 +233,10 @@ export default {
       this.reminderHour = 1 * timeSplit[0];
       this.reminderMinute = 1 * timeSplit[1];
       this.storeData(this.reminderTimeStorageKey, this.reminderTime);
-      setNotificationParams({
-        isNotificationGranted: this.isNotificationGranted,
-        reminderTime: this.reminderTime,
-        reminderHour: this.reminderHour,
-        reminderMinute: this.reminderMinute
-      });
+      this.setNotificationParams();
     },
     isNotificationGranted() {
-      setNotificationParams({
-        isNotificationGranted: this.isNotificationGranted,
-        reminderTime: this.reminderTime,
-        reminderHour: this.reminderHour,
-        reminderMinute: this.reminderMinute
-      });
+      this.setNotificationParams();
     }
   }
 };
