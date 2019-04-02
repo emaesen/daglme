@@ -53,7 +53,17 @@ function spawnNotification(opts /*body, duration, title, doVibrate*/) {
   //setTimeout(n.close.bind(n), duration);
 
 
-  self.registration.showNotification(title, options);
+  self.registration.showNotification(title, options)
+  .then(() => {
+    self.registration.getNotifications(options).then(function(notifications) {
+      // do something with your notifications
+      console.log("[sw-n] active notifications", {notifications, duration});
+      setTimeout(() => {
+        console.log("[sw-n] closing active notification");
+        notifications && notifications[0].close();
+      }, duration);
+    }) 
+  });
 
 
 }
