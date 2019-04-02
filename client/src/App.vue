@@ -19,6 +19,7 @@ export default {
   name: "App",
   data() {
     return {
+      allowReminderLink: false,
       showReminderLink: false
     }
   },
@@ -26,7 +27,7 @@ export default {
     // show the reminder link only if service worker and
     // notifications are supported and were not previously denied
     // or if the user navigated to the reminder view explicitly.
-    if ( ("serviceWorker" in navigator && "Notification" in window && Notification.permission !== "denied")
+    if ( (this.allowReminderLink && "serviceWorker" in navigator && "Notification" in window && Notification.permission !== "denied")
          || (this.$route && this.$route.path==="/reminder") ) {
       this.showReminderLink = true;
     }
