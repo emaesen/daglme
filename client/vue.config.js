@@ -25,6 +25,7 @@ module.exports = {
       // https://redfin.engineering/how-to-fix-the-refresh-button-when-using-service-workers-a8e27af6df68
       skipWaiting: true,
       clientsClaim: true,
+      cleanupOutdatedCaches: true,
       exclude: [/\.map$/, /^manifest.*\.js(?:on)?$/,/img\/media/,/img\/icons/,/^google/,/^robots/,/^sitemap/],
       runtimeCaching: [{
         urlPattern: /media/,
