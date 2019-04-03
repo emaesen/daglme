@@ -354,6 +354,22 @@ a:not(.external):hover {
 .smallfont {
   font-size: 80%;
 }
+.alert-offscreen {
+  transition: right .5s ease;
+  right: -200px;
+}
+.alert{
+  position:fixed;
+  bottom:20px;
+  right:10px;
+  background-color: #f6d65dad;
+  border-radius: 5px;
+  padding: 2px 50px;
+  color: #2e2846;
+  text-shadow: none;
+  font-weight: 700;
+  box-shadow: 0 0 5px #5a0703;
+}
 .hidden {
   display: none;
 }
