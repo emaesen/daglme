@@ -31,7 +31,17 @@ self.addEventListener('message', function(event) {
 
 
 self.addEventListener('push', function(event) {
-  console.log("[sw-n] Push Notification received: ", event.data);
+  // push notification event using payload
+  // {"action":"spawnNotification", "opts":{"body":"YOUR PUSH NOTIFICATION"}}
+  console.log("[sw-n] Push event received: ", event);
+  let data = "";
+  if (event.data) {
+    data = JSON.parse(event.data.text());
+    console.log("[sw-n] Push data received: ", data);
+    if (data.action === "spawnNotification") {
+      spawnNotification({body:data.opts.body});
+    }
+  }
 });
 
 
@@ -67,6 +77,7 @@ function spawnNotification(opts /*body, duration, title, doVibrate*/) {
 
 
 }
+
 
 function startClock() {
   stopClock();
