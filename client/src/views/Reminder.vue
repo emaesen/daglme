@@ -89,6 +89,7 @@
     <template v-else>
       If your device, operating system and browser support Notifications, you will see options here to enable and manage a Daily Global Meditation Reminder. But your current system does not appear to support Notifications.
     </template>
+    <div :class="['alert-offscreen', alert ? 'alert' : '']">{{ alert }}</div>
   </div>
 </template>
 
@@ -110,7 +111,9 @@ export default {
       allowNotificationVibrate: false,
       store: null,
       reminderTimeStorageKey: "daglme:reminder-time",
-      notificationEnabledStorageKey: "daglme:notification-enabled"
+      notificationEnabledStorageKey: "daglme:notification-enabled",
+      alertDuration: 9 * 1000,
+      alert: null
     }
   },
   mounted() {
@@ -201,6 +204,12 @@ export default {
     retrieveData(key) {
       return this.store && this.store.getItem(key);
     },
+    showTemporaryAlert(msg) {
+      this.alert = msg;
+      setTimeout(() => {
+        this.alert = null;
+      }, this.alertDuration);
+    },
     setNotificationParams() {
       send_message_to_sw({
         action:"setNotificationParams", 
@@ -211,8 +220,8 @@ export default {
           reminderMinute: this.reminderMinute
         }
       })
-      .then(msg => console.log("message from sw (re. snp)", {msg}))
-      .catch(err => console.log("error from sw (re. snp)", {err}));
+      .then(msg => this.showTemporaryAlert(msg))
+      .catch(err => this.showTemporaryAlert("oops! " + err));
     },
     spawnNotification(body) {
       send_message_to_sw({
@@ -223,8 +232,8 @@ export default {
           doVibrate: this.allowNotificationVibrate
         }
       })
-      .then(msg => console.log("message from sw (re. snp)", {msg}))
-      .catch(err => console.log("error from sw (re. snp)", {err}));
+      .then(msg => this.showTemporaryAlert(msg))
+      .catch(err => this.showTemporaryAlert("oops! " + err));
     }
   },
   watch: {
