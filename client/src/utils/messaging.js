@@ -24,6 +24,8 @@ export default function send_message_to_sw(msg) {
         .catch(err => {
           reject(err);
         });
+    } else {
+      reject("'serviceWorker' is not available");
     }
   
   });
