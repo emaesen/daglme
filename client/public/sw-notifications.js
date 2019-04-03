@@ -19,13 +19,18 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('message', function(event) {
   console.log("[sw-n] Message received: ", event.data);
-  event.ports[0].postMessage("Reply from [sw-n]: message '" + event.data.action + "' received");
-  //event.ports[0].start();
-  if (event.data.action === "setNotificationParams") {
-    setNotificationParams(event.data.payload);
-  }
-  if (event.data.action === "spawnNotification") {
-    spawnNotification(event.data.payload);
+  //event.ports[0].postMessage("Reply from [sw-n]: message '" + event.data.action + "' received");
+  switch (event.data.action) {
+    case "setNotificationParams":
+      setNotificationParams(event.data.payload);
+      event.ports[0].postMessage("Reminder settings updated");
+      break;
+    case "spawnNotification":
+      spawnNotification(event.data.payload);
+      event.ports[0].postMessage("Notification spawned");
+      break;
+    default:
+      event.ports[0].postMessage("Unknown command: " + event.data.action);
   }
 });
 
