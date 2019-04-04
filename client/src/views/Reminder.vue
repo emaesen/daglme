@@ -113,7 +113,8 @@ export default {
       reminderTimeStorageKey: "daglme:reminder-time",
       notificationEnabledStorageKey: "daglme:notification-enabled",
       alertDuration: 9 * 1000,
-      alert: null
+      alert: null,
+      alertId: null
     }
   },
   mounted() {
@@ -206,7 +207,10 @@ export default {
     },
     showTemporaryAlert(msg) {
       this.alert = msg;
-      setTimeout(() => {
+      if (this.alertId) {
+        clearTimeout(this.alertId);
+      }
+      this.alertId = setTimeout(() => {
         this.alert = null;
       }, this.alertDuration);
     },
