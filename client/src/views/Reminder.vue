@@ -10,6 +10,9 @@
         By default the reminder will show at 8 o'clock in the evening (8 PM or 20:00 hour), but you may set any other time.<br>
         You can disable the reminder at any time if so desired.<br>
       </div>
+      <div class="emph-alert margin-top10">
+        Note: this is experimental technology with still limited support in browsers (as of April 2019).
+      </div>
       <div class="margin-top10 emph">
         If you'd like to enable or manage your personal private Daily Global Meditation Reminder, please follow the instructions below:
       </div>
@@ -35,7 +38,12 @@
             </div>
           </div>
           <div key="gb" v-else>
-            Completed! You have enabled the daily meditation reminder. Wonderful!
+            <div>
+              Completed! You have enabled the daily meditation reminder. Wonderful!
+            </div>
+            <div class="emph-alert margin-top10">
+              Note: To ensure you receive the daily meditation reminder, you should leave this webpage running in an open tab in your browser, or alternatively you may install the webpage as an app on your device and keep it active.
+            </div>
           </div>
         </transition>
       </div>
