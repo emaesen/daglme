@@ -42,7 +42,13 @@
               Completed! You have enabled the daily meditation reminder. Wonderful!
             </div>
             <div class="emph-alert margin-top10">
-              Note: To ensure you receive the daily meditation reminder, you should leave this webpage running in an open tab in your browser, or alternatively you may install the webpage as an app on your device and keep it active.
+              Note: To ensure you receive the daily meditation reminder, 
+              <template v-if="isInStandaloneMode">
+                you should keep this webapp open and active.
+              </template>
+              <template v-else>
+                you should leave this web page running in an open tab in your browser, or alternatively you may install this web site as a webapp on your device and keep it active.
+              </template>
             </div>
           </div>
         </transition>
@@ -154,8 +160,16 @@ export default {
     // send_message_to_sw("TEST MSG FROM CLIENT")
     //   .then(msg => console.log(msg))
     //   .catch(err => console.log(err));
+    if (this.isInStandaloneMode) {
+      console.log("site is running stand-alone as installed webapp");
+    } else {
+      console.log("site is running in web browser");
+    }
   },
   computed: {
+    isInStandaloneMode() {
+      return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
+    },
     notificationPermission() {
       return this.isNotificationGranted ? "granted"
         : this.isNotificationDenied ? "denied"
