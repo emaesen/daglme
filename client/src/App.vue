@@ -19,7 +19,7 @@ export default {
   name: "App",
   data() {
     return {
-      allowReminderLink: false,
+      allowReminderLink: true,
       showReminderLink: false
     }
   },
@@ -282,7 +282,14 @@ a:not(.external):hover {
   margin-bottom: 2em;
 }
 .center {
-  text-align: center
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.faded {
+  opacity: 0.3;
+  text-shadow:none;
 }
 .outline {
   border: 1px solid #80afe481;
