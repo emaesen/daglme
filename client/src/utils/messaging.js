@@ -15,7 +15,7 @@ export default function send_message_to_sw(msg) {
     };
 
     if ('serviceWorker' in navigator) {
-      console.log("[u/msg] checking if service worker is active...");
+      //console.log("[u/msg] checking if service worker is active...");
       navigator.serviceWorker.ready
         .then(function(swreg) {
           //console.log("[u/msg] sending message to service worker... accepting reply...");
