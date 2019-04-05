@@ -103,6 +103,11 @@
     <template v-else>
       If your device, operating system and browser support Notifications, you will see options here to enable and manage a Daily Global Meditation Reminder. But your current system does not appear to support Notifications.
     </template>
+
+    <div class="notice smallfont right faded margin-top50">
+      {{ siteModeTxt }}
+    </div>
+
     <div :class="['alert-offscreen', alert ? 'alert' : '']">{{ alert }}</div>
   </div>
 </template>
@@ -128,7 +133,8 @@ export default {
       notificationEnabledStorageKey: "daglme:notification-enabled",
       alertDuration: 9 * 1000,
       alert: null,
-      alertId: null
+      alertId: null,
+      siteModeTxt: null
     }
   },
   mounted() {
@@ -161,9 +167,9 @@ export default {
     //   .then(msg => console.log(msg))
     //   .catch(err => console.log(err));
     if (this.isInStandaloneMode) {
-      console.log("site is running stand-alone as installed webapp");
+      this.siteModeTxt = "Site is running stand-alone as installed webapp";
     } else {
-      console.log("site is running in web browser");
+      this.siteModeTxt = "Site is running in web browser";
     }
   },
   computed: {
