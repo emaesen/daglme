@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <img src="/img/illumined-earth.png" class="bg-img" alt="illumined earth">
+<div style="position:absolute;top:50px;">TEST 4 (sw message: {{ msg }})</div>
+
     <div id="nav" class="nowrap">
       <router-link to="/" exact>Meditation</router-link>
       <router-link to="/about">About</router-link>
@@ -20,7 +22,8 @@ export default {
   data() {
     return {
       allowReminderLink: true,
-      showReminderLink: false
+      showReminderLink: false,
+      msg: null
     }
   },
   mounted() {
@@ -30,6 +33,12 @@ export default {
     if ( (this.allowReminderLink && "serviceWorker" in navigator && "Notification" in window && Notification.permission !== "denied")
          || (this.$route && this.$route.path==="/reminder") ) {
       this.showReminderLink = true;
+    }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .addEventListener('message', event => {
+          this.msg = "msg=" + event.data.msg;
+        });
     }
   }
 }

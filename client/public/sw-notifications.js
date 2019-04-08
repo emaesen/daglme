@@ -19,19 +19,45 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('message', function(event) {
   console.log("[sw-n] Message received: ", event.data);
-  //event.ports[0].postMessage("Reply from [sw-n]: message '" + event.data.action + "' received");
-  switch (event.data.action) {
-    case "setNotificationParams":
-      setNotificationParams(event.data.payload);
-      event.ports[0].postMessage("Reminder settings updated");
-      break;
-    case "spawnNotification":
-      spawnNotification(event.data.payload);
-      event.ports[0].postMessage("Notification spawned");
-      break;
-    default:
-      event.ports[0].postMessage("Unknown command: " + event.data.action);
-  }
+  event.waitUntil(
+    new Promise(function(resolve) {
+      let returnPort = event.ports && event.ports[0];
+      let message = event.data.action || event.data.msg;
+      switch (message) {
+        case "setNotificationParams":
+          setNotificationParams(event.data.payload);
+          returnPort && returnPort.postMessage("Reminder settings updated");
+          // TODO: can we force the service worker to stay active
+          // if we never resolve the promise here???
+          resolve();
+          break;
+        case "spawnNotification":
+          spawnNotification(event.data.payload).then(resolve);
+          returnPort && returnPort.postMessage("Notification spawned");
+          break;
+        case "skipWaiting":
+          self.skipWaiting();
+          resolve();
+          break;
+        case "sw:ready":
+          console.log("[sw-n] posting message to clients...");
+          self.clients.matchAll().then(function (clients){
+            console.log("[sw-n] clients", clients);
+            clients.forEach(function(client){
+              console.log("[sw-n] client", client);
+              client.postMessage({
+                msg: message
+              });
+            });
+          });
+          resolve();
+          break;
+        default:
+          returnPort && returnPort.postMessage("Unknown command: " + event.data.action);
+          resolve();
+      }
+    })
+  );
 });
 
 
@@ -39,14 +65,20 @@ self.addEventListener('push', function(event) {
   // push notification event using payload
   // {"action":"spawnNotification", "opts":{"body":"YOUR PUSH NOTIFICATION"}}
   console.log("[sw-n] Push event received: ", event);
-  let data = "";
-  if (event.data) {
-    data = JSON.parse(event.data.text());
-    console.log("[sw-n] Push data received: ", data);
-    if (data.action === "spawnNotification") {
-      spawnNotification({body:data.opts.body});
-    }
-  }
+  event.waitUntil(
+    new Promise(function(resolve) {
+      let data = "";
+      if (event.data) {
+        data = JSON.parse(event.data.text());
+        console.log("[sw-n] Push data received: ", data);
+        if (data.action === "spawnNotification") {
+          spawnNotification({body:data.opts.body}).then(resolve);
+        }
+      } else {
+        resolve();
+      }
+    })
+  );
 });
 
 
@@ -67,20 +99,20 @@ function spawnNotification(opts /*body, duration, title, doVibrate*/) {
   //let n = new Notification(title, options);
   //setTimeout(n.close.bind(n), duration);
 
-
-  self.registration.showNotification(title, options)
+  return self.registration.showNotification(title, options)
   .then(() => {
     self.registration.getNotifications(options).then(function(notifications) {
       // do something with your notifications
       console.log("[sw-n] active notifications", {notifications, duration});
-      setTimeout(() => {
-        console.log("[sw-n] closing active notification");
-        notifications && notifications[0].close();
-      }, duration);
+      return new Promise(function(resolve) {
+        setTimeout(() => {
+          console.log("[sw-n] closing active notification");
+          notifications && notifications[0].close();
+          resolve();
+        }, duration);
+      })
     }) 
   });
-
-
 }
 
 
