@@ -19,42 +19,45 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('message', function(event) {
   console.log("[sw-n] Message received: ", event.data);
+  function postReturnMsg(msg) {
+    const returnPort = event.ports && event.ports[0];
+    returnPort && returnPort.postMessage(msg);
+  }
   event.waitUntil(
     new Promise(function(resolve) {
-      let returnPort = event.ports && event.ports[0];
-      let message = event.data.action || event.data.msg;
-      switch (message) {
-        case "setNotificationParams":
-          setNotificationParams(event.data.payload);
-          returnPort && returnPort.postMessage("Reminder settings updated");
-          // TODO: can we force the service worker to stay active
-          // if we never resolve the promise here???
-          resolve();
-          break;
-        case "spawnNotification":
-          spawnNotification(event.data.payload).then(resolve);
-          returnPort && returnPort.postMessage("Notification spawned");
-          break;
-        case "skipWaiting":
-          self.skipWaiting();
-          resolve();
-          break;
-        case "sw:ready":
-          console.log("[sw-n] posting message to clients...");
-          self.clients.matchAll().then(function (clients){
-            console.log("[sw-n] clients", clients);
-            clients.forEach(function(client){
-              console.log("[sw-n] client", client);
-              client.postMessage({
-                msg: message
-              });
+      if (event.data.action) {
+        switch (event.data.action) {
+          case "setNotificationParams":
+            setNotificationParams(event.data.payload);
+            postReturnMsg("Reminder settings updated");
+            resolve();
+            break;
+          case "spawnNotification":
+            spawnNotification(event.data.payload).then(resolve);
+            postReturnMsg("Notification spawned");
+            break;
+          case "skipWaiting":
+            self.skipWaiting();
+            resolve();
+            break;
+          default:
+            postReturnMsg("Unknown command: " + event.data.action);
+            resolve();
+        }
+      } else if(event.data.msg) {
+        console.log("[sw-n] forwarding message to clients...");
+        self.clients.matchAll()
+        .then(function (clients){
+          console.log("[sw-n] ...clients:", {clients});
+          clients.forEach(function(client){
+            client.postMessage({
+              msg: event.data.msg
             });
           });
-          resolve();
-          break;
-        default:
-          returnPort && returnPort.postMessage("Unknown command: " + event.data.action);
-          resolve();
+        })
+        .then(resolve);
+      } else {
+        resolve();
       }
     })
   );
