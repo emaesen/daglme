@@ -8,14 +8,6 @@ function postMsg(msg, swreg) {
   } else {
     self.navigator.serviceWorker.ready.then(function(reg) {
       reg.active.postMessage({msg: msg});
-      // reg.clients.matchAll().then(function (clients){
-      //   clients.forEach(function(client){
-      //     console.log("client", client);
-      //     client.postMessage({
-      //       msg: "sw-updated"
-      //     });
-      //   });
-      // });
     })  
   }
 }
