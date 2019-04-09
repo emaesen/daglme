@@ -12,7 +12,6 @@ function postMsg(msg, swreg) {
   }
 }
 
-
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready (swreg) {
@@ -33,6 +32,11 @@ if (process.env.NODE_ENV === 'production') {
     },
     updated (swreg) {
       console.log('[rsw] New content is available; please refresh.')
+      // need to instruct user to close/reopen tab,
+      // -or- invoke skipWaiting(), preferably from client,
+      // to activate updated service worker:
+      // https://developers.google.com/web/tools/workbox/guides/advanced-recipes#offer_a_page_reload_for_users
+      // https://redfin.engineering/how-to-fix-the-refresh-button-when-using-service-workers-a8e27af6df68
       postMsg("sw:updated", swreg)
     },
     offline () {
