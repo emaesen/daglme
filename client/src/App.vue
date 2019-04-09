@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="/img/illumined-earth.png" class="bg-img" alt="illumined earth">
-<div style="position:absolute;top:50px;">TEST 4 (sw message: {{ msg }})</div>
+<div style="position:absolute;top:50px;">TEST 6 (sw message: {{ msg }})</div>
 
     <div id="nav" class="nowrap">
       <router-link to="/" exact>Meditation</router-link>
@@ -37,7 +37,7 @@ export default {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
         .addEventListener('message', event => {
-          this.msg = "msg=" + event.data.msg;
+          this.msg = this.msg? this.msg + " ; " + event.data.msg : "msg=" + event.data.msg;
         });
     }
   }
