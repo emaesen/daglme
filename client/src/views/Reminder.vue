@@ -163,9 +163,6 @@ export default {
     }
   },
   created() {
-    // send_message_to_sw("TEST MSG FROM CLIENT")
-    //   .then(msg => console.log(msg))
-    //   .catch(err => console.log(err));
     if (this.isInStandaloneMode) {
       this.siteModeTxt = "Site is running stand-alone as installed webapp";
     } else {
