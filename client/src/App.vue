@@ -13,7 +13,7 @@
     </transition>
     <div id="update-alert" :class="['alert-offscreen', showUpdateAlert ? 'alert' : '']">
       New version available
-      <button class="action" @click="refreshApp">REFRESH</button>
+      <button class="action" @click="updateApp">UPDATE</button>
     </div>
     <div id="footer">© 2019, Daily Global Meditation. All rights reserved. <span class="version">{{ version }}</span></div>
     <div class="hidden">{{ msg }}</div>
@@ -61,7 +61,7 @@ export default {
     }
   },
   methods: {
-    refreshApp() {
+    updateApp() {
       this.showUpdateAlert = false;
       // get the new service worker that is in waiting state, and make it active
       navigator.serviceWorker.getRegistration().then((swreg) =>
@@ -404,8 +404,10 @@ a:not(.external):hover {
   font-size: 80%;
 }
 .alert-offscreen {
-  transition: right .5s ease;
-  right: -200px;
+  position:fixed;
+  transition: right 1s ease;
+  bottom: -80px;
+  right: -500px;
 }
 .alert{
   position:fixed;
