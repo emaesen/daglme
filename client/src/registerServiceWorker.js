@@ -28,16 +28,18 @@ if (process.env.NODE_ENV === 'production') {
       postMsg("sw:cached", swreg)
     },
     updatefound (swreg) {
-      console.log('[rsw] New content is downloading.', {swreg})
+      console.log('[rsw] New content is downloading.')
       postMsg("sw:updatefound", swreg)
     },
     updated (swreg) {
-      console.log('[rsw] New content is available; please refresh.', {swreg})
-      // need to instruct user to close/reopen tab,
-      // -or- invoke skipWaiting(), preferably from client,
-      // to activate updated service worker:
-      // https://developers.google.com/web/tools/workbox/guides/advanced-recipes#offer_a_page_reload_for_users
+      console.log('[rsw] New content is available; please refresh.')
+      // need to instruct client/user to invoke skipWaiting(),
+      // to activate updated service worker.
       // https://redfin.engineering/how-to-fix-the-refresh-button-when-using-service-workers-a8e27af6df68
+      // The proposed solution in the above article doesn't work, 
+      // but the one implemented below does:
+      // https://github.com/BuildTeamDev/tokenbb-web-client/pull/28/files
+      // Prepare to reload page if client initiates a service worker update (skipWaiting)
       let refreshing;
       self.navigator.serviceWorker.addEventListener( 'controllerchange',
         () => {
