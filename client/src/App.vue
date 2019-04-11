@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="/img/illumined-earth.png" class="bg-img" alt="illumined earth">
-<div style="position:absolute;top:50px;">TEST 6 (sw message: {{ msg }})</div>
+<div style="position:absolute;top:50px;">v01 ~ {{ msg }}</div>
 
     <div id="nav" class="nowrap">
       <router-link to="/" exact>Meditation</router-link>
@@ -12,18 +12,26 @@
     <transition name="fade" mode="out-in">
       <router-view/>
     </transition>
+    <div id="update-alert" :class="['alert-offscreen', showUpdateAlert ? 'alert' : '']">
+      New version available
+      <button class="action" @click="refreshApp">REFRESH</button>
+    </div>
     <div id="footer">© 2019, Daily Global Meditation. All rights reserved.</div>
   </div>
 </template>
 
 <script>
+import send_message_to_sw from "./utils/messaging.js";
+
 export default {
   name: "App",
   data() {
     return {
       allowReminderLink: true,
       showReminderLink: false,
-      msg: null
+      msg: null,
+      showUpdateAlert: false,
+      isReloading: false
     }
   },
   mounted() {
@@ -37,8 +45,25 @@ export default {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
         .addEventListener('message', event => {
+          if (event.data.msg === "sw:updated") {
+            console.log("in mounted(), received sw:updated", {serviceWorker:navigator.serviceWorker});
+            this.showUpdateAlert = true;
+          }
           this.msg = this.msg? this.msg + " ; " + event.data.msg : "msg=" + event.data.msg;
         });
+      
+    }
+  },
+  methods: {
+    refreshApp() {
+      console.log("in refreshApp()");
+      this.showUpdateAlert = false;
+      // send_message_to_sw({
+      //   action:"skipWaiting"
+      // })
+      navigator.serviceWorker.getRegistration().then((swreg) =>
+        swreg.waiting.postMessage("skipWaiting")
+      )
     }
   }
 }
@@ -453,6 +478,9 @@ a:not(.external):hover {
   .bg-img{
     right:0;
     width: 100%
+  }
+  .alert{
+    padding: 2px 5px;
   }
 }
 @media all and (max-width: 350px) {
