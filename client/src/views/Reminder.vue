@@ -109,7 +109,10 @@
 </template>
 
 <script>
-import send_message_to_sw from "../utils/sw-interface.js";
+import {
+  isNotificationSupported,
+  send_message_to_sw
+  } from "../utils/sw-interface.js";
 
 export default {
   name: "reminders",
@@ -142,7 +145,7 @@ export default {
     if (ine) {
       this.isNotificationEnabled = ine === "true";
     }
-    if ("Notification" in window) {
+    if (isNotificationSupported) {
       this.isNotificationSupported = true;
       this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
       this.isNotificationDenied = Notification.permission==="denied";
