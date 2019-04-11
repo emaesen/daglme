@@ -15,7 +15,8 @@
       New version available
       <button class="action" @click="refreshApp">REFRESH</button>
     </div>
-    <div id="footer">© 2019, Daily Global Meditation. All rights reserved. V01</div>
+    <div id="footer">© 2019, Daily Global Meditation. All rights reserved. <span class="version">{{ version }}</span></div>
+    <div class="hidden">{{ msg }}</div>
   </div>
 </template>
 
@@ -24,6 +25,7 @@ export default {
   name: "App",
   data() {
     return {
+      version: "V02",
       allowReminderLink: true,
       showReminderLink: false,
       msg: null,
@@ -45,8 +47,17 @@ export default {
           if (event.data.msg === "sw:updated") {
             this.showUpdateAlert = true;
           }
-          this.msg = this.msg? this.msg + " ; " + event.data.msg : "msg=" + event.data.msg;
+          this.msg = this.msg? this.msg + " ; " + event.data.msg : "msg = " + event.data.msg;
         });
+    }
+  },
+  created() {
+    if (this.isInStandaloneMode) {
+      // Site is running stand-alone as installed webapp
+      this.version += "A";
+    } else {
+      // Site is running in web browser
+      this.version += "B";
     }
   },
   methods: {
@@ -56,6 +67,11 @@ export default {
       navigator.serviceWorker.getRegistration().then((swreg) =>
         swreg.waiting.postMessage("skipWaiting")
       )
+    }
+  },
+  computed: {
+    isInStandaloneMode() {
+      return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
     }
   }
 }
@@ -402,6 +418,10 @@ a:not(.external):hover {
   text-shadow: none;
   font-weight: 700;
   box-shadow: 0 0 5px #5a0703;
+}
+.version {
+  float: right;
+  color: #a9bbd2;
 }
 .hidden {
   display: none;
