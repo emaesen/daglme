@@ -10,8 +10,10 @@
         By default the reminder will show at 8 o'clock in the evening (8 PM or 20:00 hour), but you may set any other time.<br>
         You can disable the reminder at any time if so desired.<br>
       </div>
-      <div class="emph-alert margin-top10">
-        Note: this is experimental technology with still limited support in browsers (as of April 2019). Your system appears to have at least partial support.
+      <div class="emph-caution margin-top10">
+        Note:<br>
+        The use of system "Notifications" for the daily reminder service is experimental technology with limited support in browsers (as of April 2019).<br>
+        However, your system appears to have the required support. Wonderful!
       </div>
       <div class="margin-top10 emph">
         If you'd like to enable or manage your personal private Daily Global Meditation Reminder, please follow the instructions below:
@@ -30,24 +32,24 @@
         <transition name="fade" mode="out-in">
           <div key="ga" v-if="!isNotificationGranted">
             Almost there! You have enabled the daily meditation reminder.<br>
-            <span class="emph-alert">Please grant notification permission in your browser:</span> it should show a popup with option to allow or block notifications.
+            <span class="emph-caution">Please grant notification permission in your browser:</span> it should show a popup with option to allow or block notifications.
             <div class="note" v-if="isNotificationDenied">
               <br>
               Current notification permission: "<span :class="{'emph-alert':isNotificationDenied}">{{ notificationPermission }}</span>".<br>
-              <span class="emph-alert">You may need to allow notifications in your browser or device's settings; reload this page; and try again.</span>
+              <span class="emph-alert">You may need to allow Notifications in your browser or device's settings! Grant permission for Notifications, reload this page, and try again to enable the daily meditation reminder.</span>
             </div>
           </div>
           <div key="gb" v-else>
             <div>
               Completed! You have enabled the daily meditation reminder. Wonderful!
             </div>
-            <div class="emph-alert margin-top10">
+            <div class="emph-caution margin-top10">
               Note: To ensure you receive the daily meditation reminder, 
               <template v-if="isInStandaloneMode">
                 you should keep this webapp open and active.
               </template>
               <template v-else>
-                you should leave this web page running in an open tab in your browser, or alternatively you may install this web site as a webapp on your device and keep it active.
+                you should leave this web page running in an open tab in your browser. Alternatively you may install this web site as a webApp on your device (look for an "Install Daily Global Meditation..." option in your browser controls).
               </template>
             </div>
           </div>
