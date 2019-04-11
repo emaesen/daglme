@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <img src="/img/illumined-earth.png" class="bg-img" alt="illumined earth">
-<div style="position:absolute;top:50px;">v01 ~ {{ msg }}</div>
 
     <div id="nav" class="nowrap">
       <router-link to="/" exact>Meditation</router-link>
@@ -44,17 +43,14 @@ export default {
       navigator.serviceWorker
         .addEventListener('message', event => {
           if (event.data.msg === "sw:updated") {
-            console.log("in mounted(), received sw:updated", {serviceWorker:navigator.serviceWorker});
             this.showUpdateAlert = true;
           }
           this.msg = this.msg? this.msg + " ; " + event.data.msg : "msg=" + event.data.msg;
         });
-      
     }
   },
   methods: {
     refreshApp() {
-      console.log("in refreshApp()");
       this.showUpdateAlert = false;
       // get the new service worker that is in waiting state, and make it active
       navigator.serviceWorker.getRegistration().then((swreg) =>
