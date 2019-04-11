@@ -42,6 +42,7 @@ export default {
   mounted() {
     // show the reminder link only if service worker and
     // notifications are supported and were not previously denied
+    // (unless this.allowReminderLink is set to false - in initial test phase)
     // or if the user navigated to the reminder view explicitly.
     if ( (this.allowReminderLink && areNotificationsAvailable)
          || (this.$route && this.$route.path==="/reminder") ) {
