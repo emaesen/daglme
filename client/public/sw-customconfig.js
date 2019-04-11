@@ -11,17 +11,17 @@ let reminderMinute = null;
 
 self.addEventListener('activate', function (event) {
   console.log('[sw-c] SW Activate event received', event);
-  // event.waitUntil(
-  //   new Promise(function(resolve) {
-  //     // Take immediate controll over client pages (on first load)
-  //     // so that subsequent fetches go through the service worker.
-  //     // This way we can prime the dynamic cache (for media files)
-  //     // on first load.
-  //     console.log("[sw-c] ...claim clients");
-  //     self.clients.claim();
-  //     resolve();
-  //   })
-  // );
+  event.waitUntil(
+    new Promise(function(resolve) {
+      // Take immediate controll over client pages (on first load)
+      // so that subsequent fetches go through the service worker.
+      // This way we can prime the dynamic cache (for media files)
+      // on first load.
+      console.log("[sw-c] ...claim clients");
+      self.clients.claim();
+      resolve();
+    })
+  );
 });
 
 self.addEventListener('install', function (event) {
