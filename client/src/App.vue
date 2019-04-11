@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import send_message_to_sw from "./utils/messaging.js";
-
 export default {
   name: "App",
   data() {
@@ -58,9 +56,7 @@ export default {
     refreshApp() {
       console.log("in refreshApp()");
       this.showUpdateAlert = false;
-      // send_message_to_sw({
-      //   action:"skipWaiting"
-      // })
+      // get the new service worker that is in waiting state, and make it active
       navigator.serviceWorker.getRegistration().then((swreg) =>
         swreg.waiting.postMessage("skipWaiting")
       )
