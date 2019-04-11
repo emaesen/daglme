@@ -104,16 +104,12 @@
       If your device, operating system and browser support Notifications, you will see options here to enable and manage a Daily Global Meditation Reminder. But your current system does not appear to support Notifications.
     </template>
 
-    <div class="notice smallfont right faded margin-top50">
-      {{ siteModeTxt }}
-    </div>
-
     <div :class="['alert-offscreen', alert ? 'alert' : '']">{{ alert }}</div>
   </div>
 </template>
 
 <script>
-import send_message_to_sw from "../utils/messaging.js";
+import send_message_to_sw from "../utils/sw-interface.js";
 
 export default {
   name: "reminders",
@@ -133,8 +129,7 @@ export default {
       notificationEnabledStorageKey: "daglme:notification-enabled",
       alertDuration: 9 * 1000,
       alert: null,
-      alertId: null,
-      siteModeTxt: null
+      alertId: null
     }
   },
   mounted() {
@@ -160,13 +155,6 @@ export default {
         this.isNotificationEnabled = false;
         this.storeData(this.notificationEnabledStorageKey, this.isNotificationEnabled);
       }, 60 * 1000);
-    }
-  },
-  created() {
-    if (this.isInStandaloneMode) {
-      this.siteModeTxt = "Site is running stand-alone as installed webapp";
-    } else {
-      this.siteModeTxt = "Site is running in web browser";
     }
   },
   computed: {
