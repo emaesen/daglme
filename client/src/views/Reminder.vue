@@ -11,7 +11,7 @@
         You can disable the reminder at any time if so desired.<br>
       </div>
       <div class="emph-alert margin-top10">
-        Note: this is experimental technology with still limited support in browsers (as of April 2019).
+        Note: this is experimental technology with still limited support in browsers (as of April 2019). Your system appears to have at least partial support.
       </div>
       <div class="margin-top10 emph">
         If you'd like to enable or manage your personal private Daily Global Meditation Reminder, please follow the instructions below:
@@ -101,7 +101,9 @@
     </template>
 
     <template v-else>
-      If your device, operating system and browser support Notifications, you will see options here to enable and manage a Daily Global Meditation Reminder. But your current system does not appear to support Notifications.
+      If your device, operating system and browser support Notifications, you will see options here to enable and manage a Daily Global Meditation Reminder.<br>
+      <br>
+      However, <span class="emph-alert">your current system configuration does not appear to support Notifications.</span>
     </template>
 
     <div :class="['alert-offscreen', alert ? 'alert' : '']">{{ alert }}</div>
@@ -110,7 +112,7 @@
 
 <script>
 import {
-  isNotificationSupported,
+  areNotificationsAvailable,
   send_message_to_sw
   } from "../utils/sw-interface.js";
 
@@ -145,7 +147,7 @@ export default {
     if (ine) {
       this.isNotificationEnabled = ine === "true";
     }
-    if (isNotificationSupported) {
+    if (areNotificationsAvailable) {
       this.isNotificationSupported = true;
       this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
       this.isNotificationDenied = Notification.permission==="denied";
