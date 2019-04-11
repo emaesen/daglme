@@ -368,6 +368,9 @@ a:not(.external):hover {
 .emph {
   font-weight: 700;
 }
+.emph-caution {
+  color: #fbd99a;
+}
 .emph-alert {
   color:#fa7147;
 }
