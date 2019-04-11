@@ -56,9 +56,7 @@ self.addEventListener('message', function(event) {
             });
             break;
           case "skipWaiting":
-            console.log("[sw-c] invoke skipWaiting on waiting service worker...", {self});
             self.skipWaiting().then(() => {
-              console.log("[sw-c] ...after skipWaiting");
               postReturnMsg("skipWaiting invoked");
               resolve();
             });
@@ -71,7 +69,7 @@ self.addEventListener('message', function(event) {
         console.log("[sw-c] forwarding message '" + event.data.msg + "' to clients...");
         self.clients.matchAll()
         .then(function (clients){
-          console.log("[sw-c] ...'" + event.data.msg + "' clients:...", {clients});
+          //console.log("[sw-c] ...'" + event.data.msg + "' clients:...", {clients});
           clients.forEach(function(client){
             client.postMessage({
               msg: event.data.msg
@@ -79,7 +77,7 @@ self.addEventListener('message', function(event) {
           })
         })
         .then(() => {
-          console.log("[sw-c] ...'" + event.data.msg + "' message forwarding done");
+          //console.log("[sw-c] ...'" + event.data.msg + "' message forwarding done");
           resolve()
         });
       } else {
