@@ -21,11 +21,17 @@
 </template>
 
 <script>
+import { 
+  areNotificationsAvailable,
+  addAppMessageListeners,
+  getAppUpdate 
+  } from "./utils/sw-interface.js";
+
 export default {
   name: "App",
   data() {
     return {
-      version: "V0.3.",
+      version: "V0.5",
       allowReminderLink: true,
       showReminderLink: false,
       msg: null,
@@ -37,36 +43,31 @@ export default {
     // show the reminder link only if service worker and
     // notifications are supported and were not previously denied
     // or if the user navigated to the reminder view explicitly.
-    if ( (this.allowReminderLink && "serviceWorker" in navigator && "Notification" in window && Notification.permission !== "denied")
+    if ( (this.allowReminderLink && areNotificationsAvailable)
          || (this.$route && this.$route.path==="/reminder") ) {
       this.showReminderLink = true;
     }
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .addEventListener('message', event => {
-          if (event.data.msg === "sw:updated") {
-            this.showUpdateAlert = true;
-          }
-          this.msg = this.msg? this.msg + " ; " + event.data.msg : "msg = " + event.data.msg;
-        });
-    }
+    addAppMessageListeners(this.onAppMessage);
   },
   created() {
     if (this.isInStandaloneMode) {
       // Site is running stand-alone as installed webapp
-      this.version += "A";
+      this.version += ".A";
     } else {
       // Site is running in web browser
-      this.version += "B";
+      this.version += ".B";
     }
   },
   methods: {
+    onAppMessage(msg) {
+      if (msg === "sw:updated") {
+        this.showUpdateAlert = true;
+      }
+      this.msg = this.msg? this.msg + " ; " + msg : "msg = " + msg;
+    },
     updateApp() {
       this.showUpdateAlert = false;
-      // get the new service worker that is in waiting state, and make it active
-      navigator.serviceWorker.getRegistration().then((swreg) =>
-        swreg.waiting.postMessage("skipWaiting")
-      )
+      getAppUpdate();
     }
   },
   computed: {

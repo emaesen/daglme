@@ -1,3 +1,14 @@
+
+export const isServiceWorkerSupported = "serviceWorker" in navigator;
+
+// not serviceworker functionality
+// but we show notifications through the service worker
+// (to support future push notifications)
+export const areNotificationsSupported = "Notification" in window;
+export const areNotificationsAvailable = isServiceWorkerSupported 
+  && areNotificationsSupported 
+  && Notification.permission !== "denied";
+
 export default function send_message_to_sw(msg) {
   // based on http://craig-russell.co.uk/2016/01/29/service-worker-messaging.html
   return new Promise(function(resolve, reject){
@@ -30,4 +41,23 @@ export default function send_message_to_sw(msg) {
   
   });
 
+}
+
+export function getAppUpdate() {
+  //console.log("[u/msg] in getAppUpdate()");
+  // get the new service worker that is in waiting state, and make it active
+  navigator.serviceWorker.getRegistration().then((swreg) =>
+    swreg.waiting.postMessage("skipWaiting")
+  )
+}
+
+export function addAppMessageListeners(callback) {
+  //console.log("[u/msg] in addAppMessageListeners()");
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .addEventListener('message', event => {
+        callback(event.data && event.data.msg);
+      });
+  }
+  
 }
