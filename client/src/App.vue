@@ -15,7 +15,7 @@
       New version available
       <button class="action" @click="refreshApp">REFRESH</button>
     </div>
-    <div id="footer">© 2019, Daily Global Meditation. All rights reserved.</div>
+    <div id="footer">© 2019, Daily Global Meditation. All rights reserved. V01</div>
   </div>
 </template>
 
