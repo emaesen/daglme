@@ -44,7 +44,7 @@ function ticktock() {
   var now = new Date();
   var hours = now.getHours();
   var minutes = now.getMinutes();
-  console.log("[u/rem] tick tock (" + timerID + ") " + hours + ":" + minutes + " (" + reminderTime + ")");
+  //console.log("[u/rem] tick tock (" + timerID + ") " + hours + ":" + minutes + " (" + reminderTime + ")");
   if (hours === 0 && minutes === 0) {
     // restart/recalibrate the clock
     console.log("[u/rem] Recalibrate the clock");
@@ -69,7 +69,7 @@ export function spawnNotification(payload) {
 
 export function setNotificationParams(params) {
   return new Promise(function(resolve) {
-    console.log("[u/rem] Update notification params", params);
+    //console.log("[u/rem] Update notification params", params);
     if (isNotificationGranted===false && params.isNotificationGranted===true) {
       // use 0 delta to ensure isNotificationGranted is set
       setTimeout(startClock,0);
@@ -82,6 +82,6 @@ export function setNotificationParams(params) {
     reminderTime = params.reminderTime;
     reminderHour = params.reminderHour;
     reminderMinute = params.reminderMinute;
-    resolve("Reminder settings updated");
+    resolve("Reminder settings updated " + reminderTime);
   })
 }
