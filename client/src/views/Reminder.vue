@@ -119,10 +119,17 @@
 
 <script>
 import {
+  storeNotificationEnabled,
+  storeReminderTime,
+  retrieveNotificationEnabled,
+  retrieveReminderTime
+} from "../utils/store.js";
+
+import {
   areNotificationsAvailable,
   setNotificationParams,
   spawnNotification
-  } from "../utils/reminder.js";
+} from "../utils/reminder.js";
 
 export default {
   name: "reminders",
@@ -138,9 +145,6 @@ export default {
       reminderHour: 20,
       reminderMinute: 0,
       allowNotificationVibrate: false,
-      store: null,
-      reminderTimeStorageKey: "daglme:reminder-time",
-      notificationEnabledStorageKey: "daglme:notification-enabled",
       alertDuration: 9 * 1000,
       alert: null,
       alertId: null,
@@ -148,13 +152,12 @@ export default {
     }
   },
   mounted() {
-    this.store = window.localStorage;
-    var rt = this.retrieveData(this.reminderTimeStorageKey);
+    var rt = retrieveReminderTime();
     if (rt) {
       this.suppressAlert = true;
       this.reminderTime = rt;
     }
-    var ine = this.retrieveData(this.notificationEnabledStorageKey);
+    var ine = retrieveNotificationEnabled();
     if (ine) {
       this.isNotificationEnabled = ine === "true";
     }
@@ -169,7 +172,7 @@ export default {
       // Reset the reminder to disabled after a short amount of time.
       setTimeout(() => {
         this.isNotificationEnabled = false;
-        this.storeData(this.notificationEnabledStorageKey, this.isNotificationEnabled);
+        storeNotificationEnabled(this.isNotificationEnabled);
       }, 60 * 1000);
     }
   },
@@ -203,7 +206,7 @@ export default {
   methods: {
     enableNotifications() {
       this.isNotificationEnabled = true;
-      this.storeData(this.notificationEnabledStorageKey, this.isNotificationEnabled);
+      storeNotificationEnabled(this.isNotificationEnabled);
       var that = this;
       if (Notification.permission === "granted") {
         // permission was granted already
@@ -226,13 +229,7 @@ export default {
     disableNotifications() {
       this.isNotificationEnabled = false;
       this.isNotificationGranted = false;
-      this.storeData(this.notificationEnabledStorageKey, this.isNotificationEnabled);
-    },
-    storeData(key, value) {
-      this.store && this.store.setItem(key, value);
-    },
-    retrieveData(key) {
-      return this.store && this.store.getItem(key);
+      storeNotificationEnabled(this.isNotificationEnabled);
     },
     showTemporaryAlert(msg) {
       this.alert = msg;
@@ -275,7 +272,7 @@ export default {
       var timeSplit = this.reminderTime.split(":");
       this.reminderHour = 1 * timeSplit[0];
       this.reminderMinute = 1 * timeSplit[1];
-      this.storeData(this.reminderTimeStorageKey, this.reminderTime);
+      storeReminderTime(this.reminderTime);
       this.setNotificationParams("Reminder time updated to " + this.reminderTime);
     },
     isNotificationGranted() {
