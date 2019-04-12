@@ -15,7 +15,7 @@ self.addEventListener('activate', function (event) {
   );
 });
 
-self.addEventListener('install', function (event) {
+self.addEventListener('install', function (/*event*/) {
   //console.log('[sw-c] SW Install event received', event);
   // event.waitUntil(
   //   // do something and return/resolve a promise
