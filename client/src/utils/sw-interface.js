@@ -9,7 +9,7 @@ export const areNotificationsAvailable = isServiceWorkerSupported
   && isNotificationSupported 
   && Notification.permission !== "denied";
 
-export default function send_message_to_sw(msg) {
+export function send_message_to_sw(msg) {
   // based on http://craig-russell.co.uk/2016/01/29/service-worker-messaging.html
   return new Promise(function(resolve, reject){
     // Create a Message Channel
@@ -17,7 +17,7 @@ export default function send_message_to_sw(msg) {
 
     // Handler for recieving message reply from service worker
     msg_chan.port1.onmessage = function(event){
-      //console.log("[u/msg] return message received ", event);
+      //console.log("[u/sw-api] return message received ", event);
       if(event.data.error){
         reject(event.data.error);
       }else{
@@ -26,10 +26,10 @@ export default function send_message_to_sw(msg) {
     };
 
     if ('serviceWorker' in navigator) {
-      //console.log("[u/msg] checking if service worker is active...");
+      //console.log("[u/sw-api] checking if service worker is active...");
       navigator.serviceWorker.ready
         .then(function(swreg) {
-          //console.log("[u/msg] sending message to service worker... accepting reply...");
+          //console.log("[u/sw-api] sending message to service worker... accepting reply...");
           swreg.active.postMessage(msg, [msg_chan.port2]);
         })
         .catch(err => {
@@ -38,13 +38,11 @@ export default function send_message_to_sw(msg) {
     } else {
       reject("'serviceWorker' is not available");
     }
-  
   });
-
 }
 
 export function getAppUpdate() {
-  //console.log("[u/msg] in getAppUpdate()");
+  //console.log("[u/sw-api] in getAppUpdate()");
   // get the new service worker that is in waiting state, and make it active
   navigator.serviceWorker.getRegistration().then((swreg) =>
     swreg.waiting.postMessage("skipWaiting")
@@ -52,12 +50,11 @@ export function getAppUpdate() {
 }
 
 export function addAppMessageListeners(callback) {
-  //console.log("[u/msg] in addAppMessageListeners()");
+  //console.log("[u/sw-api] in addAppMessageListeners()");
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .addEventListener('message', event => {
         callback(event.data && event.data.msg);
       });
   }
-  
 }
