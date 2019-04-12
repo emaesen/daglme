@@ -418,7 +418,7 @@ a:not(.external):hover {
   position:fixed;
   bottom:20px;
   right:10px;
-  background-color: #f6d65dad;
+  background-color: #f6d55de8;
   border-radius: 5px;
   padding: 2px 50px;
   color: #2e2846;
