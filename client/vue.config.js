@@ -6,7 +6,6 @@ module.exports = {
     name: "Daily Global Meditation",
     themeColor: "#ffffff",
     msTileColor: "#000000",
-    appleMobileWebAppCapable: "yes",
     iconPaths: {
       favicon32: "img/icon-32x32.png",
       favicon16: "img/icon-16x16.png",
