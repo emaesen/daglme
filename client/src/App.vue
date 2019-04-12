@@ -31,7 +31,7 @@ export default {
   name: "App",
   data() {
     return {
-      version: "V0.5",
+      version: "V1.0",
       allowReminderLink: true,
       showReminderLink: false,
       msg: null,
