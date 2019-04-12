@@ -7,16 +7,17 @@
     <div class="margin-top20">
       <div>
         If you'd like to receive a Daily Global Meditation Reminder as a notification on your device, you are invited to enable a personal daily reminder below.<br>
-        By default the reminder will show at 8 o'clock in the evening (8 PM or 20:00 hour), but you may set any other time.<br>
+        <span v-if="!isNotificationEnabled">By default the reminder will show at 8 o'clock in the evening (8 PM or 20:00 hour), but you may set any other time.</span>
+        <br>
         You can disable the reminder at any time if so desired.<br>
       </div>
-      <div class="emph-caution margin-top10">
+      <div class="emph-caution margin-top10" v-if="!isNotificationEnabled">
         Note:<br>
         The use of system "Notifications" for the daily reminder service is experimental technology with limited support in browsers (as of April 2019).<br>
         However, your system appears to have the required support. Wonderful!
       </div>
-      <div class="margin-top10 emph">
-        If you'd like to enable or manage your personal private Daily Global Meditation Reminder, please follow the instructions below:
+      <div class="margin-top10 emph" v-if="!isNotificationEnabled">
+        If you'd like to enable your personal private Daily Global Meditation Reminder, please follow the instructions below:
       </div>
     </div>
 
@@ -33,10 +34,13 @@
           <div key="ga" v-if="!isNotificationGranted">
             Almost there! You have enabled the daily meditation reminder.<br>
             <span class="emph-caution">Please grant notification permission in your browser:</span> it should show a popup with option to allow or block notifications.
-            <div class="note" v-if="isNotificationDenied">
+            <div class="emph-caution" v-if="isNotificationDenied">
               <br>
               Current notification permission: "<span :class="{'emph-alert':isNotificationDenied}">{{ notificationPermission }}</span>".<br>
-              <span class="emph-alert">You may need to allow Notifications in your browser or device's settings! Grant permission for Notifications, reload this page, and try again to enable the daily meditation reminder.</span>
+              <span class="emph-alert">You may need to allow Notifications in your browser or device's settings!</span><br>
+              <span class="emph-caution">1. Grant permission for Notifications,<br>
+              2. Reload this page, and <br>
+              3. Try again to enable the daily meditation reminder.</span>
             </div>
           </div>
           <div key="gb" v-else>
@@ -44,12 +48,14 @@
               Completed! You have enabled the daily meditation reminder. Wonderful!
             </div>
             <div class="emph-caution margin-top10">
-              Note: To ensure you receive the daily meditation reminder, 
+              Note:<br>
+              To ensure you receive the daily meditation reminder, 
               <template v-if="isInStandaloneMode">
                 you should keep this webapp open and active.
               </template>
               <template v-else>
-                you should leave this web page running in an open tab in your browser. Alternatively you may install this web site as a webApp on your device (look for an "Install Daily Global Meditation..." option in your browser controls).
+                you should leave this web page running in an open tab in your browser.<br>
+                Alternatively you may install this web site as a webApp on your device (look for an "Install Daily Global Meditation..." option in your browser controls).
               </template>
             </div>
           </div>
@@ -82,12 +88,11 @@
     <h3>Terms of Service</h3>
     <div class="notice smallfont">
       The Daily Global Meditation Reminder is provided AS IS, as a courtesy service.<br>
-      The technology used to display Notifications still has limited browser and device support.<br>
+      The technology used to display Notifications has limited browser and device support.<br>
       <span v-if="isNotificationSupported">If you can view this page then your system technically supports Notifications but they may or may not work entirely as expected.</span>
       <span v-if="!isNotificationSupported">It appears that your system technically DOES NOT SUPPORT Notifications so they will probably not work as expected.</span>
       <br>
       Use at your own discretion.<br>
-      You may have to re-enable your Daily Global Meditation Reminder after a page reload.<br>
       <br>
       Your Notification Permission currently is set as: "{{ notificationPermission }}"
     </div>
@@ -105,7 +110,7 @@
     <template v-else>
       If your device, operating system and browser support Notifications, you will see options here to enable and manage a Daily Global Meditation Reminder.<br>
       <br>
-      However, <span class="emph-alert">your current system configuration does not appear to support Notifications.</span>
+      However, <span class="emph-caution">your current system configuration does not appear to support Notifications.</span>
     </template>
 
     <div :class="['alert-offscreen', alert ? 'alert' : '']">{{ alert }}</div>
@@ -115,14 +120,16 @@
 <script>
 import {
   areNotificationsAvailable,
-  send_message_to_sw
-  } from "../utils/sw-interface.js";
+  setNotificationParams,
+  spawnNotification
+  } from "../utils/reminder.js";
 
 export default {
   name: "reminders",
   components: {},
   data() {
     return {
+      bypassLackOfNotificationSupport: false,
       isNotificationSupported: false,
       isNotificationEnabled: false,
       isNotificationGranted: false,
@@ -136,20 +143,22 @@ export default {
       notificationEnabledStorageKey: "daglme:notification-enabled",
       alertDuration: 9 * 1000,
       alert: null,
-      alertId: null
+      alertId: null,
+      suppressAlert: false
     }
   },
   mounted() {
     this.store = window.localStorage;
     var rt = this.retrieveData(this.reminderTimeStorageKey);
     if (rt) {
+      this.suppressAlert = true;
       this.reminderTime = rt;
     }
     var ine = this.retrieveData(this.notificationEnabledStorageKey);
     if (ine) {
       this.isNotificationEnabled = ine === "true";
     }
-    if (areNotificationsAvailable) {
+    if (areNotificationsAvailable || this.bypassLackOfNotificationSupport) {
       this.isNotificationSupported = true;
       this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
       this.isNotificationDenied = Notification.permission==="denied";
@@ -234,29 +243,30 @@ export default {
         this.alert = null;
       }, this.alertDuration);
     },
-    setNotificationParams() {
-      send_message_to_sw({
-        action:"setNotificationParams", 
-        payload:{
-          isNotificationGranted: this.isNotificationGranted,
-          reminderTime: this.reminderTime,
-          reminderHour: this.reminderHour,
-          reminderMinute: this.reminderMinute
+    setNotificationParams(msg) {
+      setNotificationParams({
+        isNotificationGranted: this.isNotificationGranted,
+        reminderTime: this.reminderTime,
+        reminderHour: this.reminderHour,
+        reminderMinute: this.reminderMinute
+      })
+      .then(() => {
+        msg = msg || "Reminder settings updated";
+        if (!this.suppressAlert) {
+          this.showTemporaryAlert("✓ " + msg)
+        } else {
+          this.suppressAlert = false;
         }
       })
-      .then(msg => this.showTemporaryAlert(msg))
       .catch(err => this.showTemporaryAlert("oops! " + err));
     },
     spawnNotification(body) {
-      send_message_to_sw({
-        action:"spawnNotification", 
-        payload:{
-          body: body,
-          duration: 15,
-          doVibrate: this.allowNotificationVibrate
-        }
+      spawnNotification({
+        body: body,
+        duration: 30,
+        doVibrate: this.allowNotificationVibrate
       })
-      .then(msg => this.showTemporaryAlert(msg))
+      .then(() => this.showTemporaryAlert("ℹ Reminder enabled ↣ check notification..."))
       .catch(err => this.showTemporaryAlert("oops! " + err));
     }
   },
@@ -266,10 +276,14 @@ export default {
       this.reminderHour = 1 * timeSplit[0];
       this.reminderMinute = 1 * timeSplit[1];
       this.storeData(this.reminderTimeStorageKey, this.reminderTime);
-      this.setNotificationParams();
+      this.setNotificationParams("Reminder time updated to " + this.reminderTime);
     },
     isNotificationGranted() {
-      this.setNotificationParams();
+      if (this.isNotificationGranted) {
+        this.setNotificationParams("Reminder enabled");
+      } else {
+        this.setNotificationParams("Reminder disabled");
+      }
     }
   }
 };
