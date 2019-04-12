@@ -16,23 +16,23 @@ function postMsg(msg, swreg) {
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready (swreg) {
-      console.log('[rsw] App is served from cache.');
+      //console.log('[rsw] App is served from cache.');
       postMsg("sw:ready", swreg)
     },
     registered (swreg) {
-      console.log('[rsw] Service worker has been registered.')
+      //console.log('[rsw] Service worker has been registered.')
       postMsg("sw:registered", swreg)
     },
     cached (swreg) {
-      console.log('[rsw] Content has been cached for offline use.')
+      //console.log('[rsw] Content has been cached for offline use.')
       postMsg("sw:cached", swreg)
     },
     updatefound (swreg) {
-      console.log('[rsw] New content is downloading.')
+      //console.log('[rsw] New content is downloading.')
       postMsg("sw:updatefound", swreg)
     },
     updated (swreg) {
-      console.log('[rsw] New content is available; please refresh.')
+      //console.log('[rsw] New content is available; please refresh.')
       // need to instruct client/user to invoke skipWaiting(),
       // to activate updated service worker.
       // https://redfin.engineering/how-to-fix-the-refresh-button-when-using-service-workers-a8e27af6df68
@@ -53,11 +53,11 @@ if (process.env.NODE_ENV === 'production') {
       postMsg("sw:updated", swreg)
     },
     offline () {
-      console.log('[rsw] No internet connection found. App is running in offline mode.')
+      //console.log('[rsw] No internet connection found. App is running in offline mode.')
       postMsg("sw:offline")
     },
     error (error) {
-      console.error('[rsw] Error during service worker registration:', error)
+      //console.error('[rsw] Error during service worker registration:', error)
       postMsg("sw:error:" + error);
     }
   })
