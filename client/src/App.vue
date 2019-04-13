@@ -31,7 +31,7 @@ export default {
   name: "App",
   data() {
     return {
-      version: "V1.0",
+      version: "V0.9.0",
       allowReminderLink: true,
       showReminderLink: false,
       msg: null,
@@ -502,7 +502,7 @@ a:not(.external):hover {
     padding: 2px 5px;
   }
 }
-@media all and (max-width: 350px) {
+@media all and (max-width: 400px) {
   #nav a {
     margin-left: 0;
   }
