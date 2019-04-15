@@ -50,7 +50,7 @@ function ticktock() {
     console.log("[u/rem] Recalibrate the clock");
     startClock();
   }
-  if (isNotificationGranted && 
+  if (Notification.permission === "granted" && 
       hours === reminderHour && minutes === reminderMinute) {
     spawnNotification({
       body:"For 5 minutes, envision the Earth and Sky as Illumined and Whole...\nThanks for your participation!"
