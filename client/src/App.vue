@@ -26,11 +26,15 @@ import {
   retrieveReminderTime
 } from "./utils/store.js";
 
+import {
+  setNotificationParams
+} from "./utils/reminder.js";
+
 import { 
   areNotificationsAvailable,
   addAppMessageListeners,
   getAppUpdate 
-  } from "./utils/sw-interface.js";
+} from "./utils/sw-interface.js";
 
 export default {
   name: "App",
@@ -42,7 +46,7 @@ export default {
       msg: null,
       showUpdateAlert: false,
       isReloading: false,
-      isNotificationEnabled: false,
+      isNotificationActive: false,
       standardReminderTime: "20:00",
       reminderTime: null
     }
@@ -58,7 +62,7 @@ export default {
     }
     addAppMessageListeners(this.onAppMessage);
     this.reminderTime = retrieveReminderTime();
-    this.isNotificationEnabled = Notification.permission === "granted" && retrieveNotificationEnabled();
+    this.isNotificationActive = Notification.permission === "granted" && retrieveNotificationEnabled();
   },
   created() {
     if (this.isInStandaloneMode) {
@@ -67,6 +71,12 @@ export default {
     } else {
       // Site is running in web browser
       this.version += ".B";
+    }
+    if (this.reminderTime && this.isNotificationActive) {
+      setNotificationParams({
+        isNotificationGranted: this.isNotificationActive,
+        reminderTime: this.reminderTime
+      })
     }
   },
   methods: {
@@ -86,7 +96,7 @@ export default {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
     },
     reminderIndicator() {
-      return this.reminderTime && this.isNotificationEnabled ? 
+      return this.reminderTime && this.isNotificationActive ? 
         (this.reminderTime===this.standardReminderTime ? 
           "✓" : "@"+this.reminderTime)
         : "";
