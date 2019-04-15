@@ -263,7 +263,7 @@ export default {
         duration: 30,
         doVibrate: this.allowNotificationVibrate
       })
-      .then(() => this.showTemporaryAlert("ℹ Reminder enabled ↣ check notification..."))
+      .then(() => this.showTemporaryAlert("ℹ Reminder enabled ➜ check notification..."))
       .catch(err => this.showTemporaryAlert("oops! " + err));
     }
   },
