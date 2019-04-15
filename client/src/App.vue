@@ -6,7 +6,7 @@
       <router-link to="/" exact>Meditation</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/presenters">Presenters</router-link>
-      <router-link to="/reminder" v-if="showReminderLink">Remind me</router-link>
+      <router-link to="/reminder" v-if="showReminderLink">Remind me {{ reminderIndicator }}</router-link>
     </div>
     <transition name="fade" mode="out-in">
       <router-view/>
@@ -21,6 +21,11 @@
 </template>
 
 <script>
+import {
+  retrieveNotificationEnabled,
+  retrieveReminderTime
+} from "./utils/store.js";
+
 import { 
   areNotificationsAvailable,
   addAppMessageListeners,
@@ -36,7 +41,10 @@ export default {
       showReminderLink: false,
       msg: null,
       showUpdateAlert: false,
-      isReloading: false
+      isReloading: false,
+      isNotificationEnabled: false,
+      standardReminderTime: "20:00",
+      reminderTime: null
     }
   },
   mounted() {
@@ -49,6 +57,8 @@ export default {
       this.showReminderLink = true;
     }
     addAppMessageListeners(this.onAppMessage);
+    this.reminderTime = retrieveReminderTime();
+    this.isNotificationEnabled = Notification.permission === "granted" && retrieveNotificationEnabled();
   },
   created() {
     if (this.isInStandaloneMode) {
@@ -74,6 +84,12 @@ export default {
   computed: {
     isInStandaloneMode() {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
+    },
+    reminderIndicator() {
+      return this.reminderTime && this.isNotificationEnabled ? 
+        (this.reminderTime===this.standardReminderTime ? 
+          "✓" : "@"+this.reminderTime)
+        : "";
     }
   }
 }
