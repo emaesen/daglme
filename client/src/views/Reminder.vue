@@ -126,6 +126,7 @@ import {
 } from "../utils/store.js";
 
 import {
+  splitHourAndMinutes,
   areNotificationsAvailable,
   setNotificationParams,
   spawnNotification
@@ -243,9 +244,7 @@ export default {
     setNotificationParams(msg) {
       setNotificationParams({
         isNotificationGranted: this.isNotificationGranted,
-        reminderTime: this.reminderTime,
-        reminderHour: this.reminderHour,
-        reminderMinute: this.reminderMinute
+        reminderTime: this.reminderTime
       })
       .then(() => {
         msg = msg || "Reminder settings updated";
@@ -269,9 +268,9 @@ export default {
   },
   watch: {
     reminderTime() {
-      var timeSplit = this.reminderTime.split(":");
-      this.reminderHour = 1 * timeSplit[0];
-      this.reminderMinute = 1 * timeSplit[1];
+      var timeSplit = splitHourAndMinutes(this.reminderTime);
+      this.reminderHour = timeSplit.hour;
+      this.reminderMinute = timeSplit.minute;
       storeReminderTime(this.reminderTime);
       this.setNotificationParams("Reminder time updated to " + this.reminderTime);
     },

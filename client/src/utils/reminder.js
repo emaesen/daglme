@@ -67,6 +67,14 @@ export function spawnNotification(payload) {
   });
 }
 
+export function splitHourAndMinutes(time) {
+  let timeSplit = time.split(":");
+  return {
+    hour : 1 * timeSplit[0],
+    minute : 1 * timeSplit[1]
+  };
+}
+
 export function setNotificationParams(params) {
   return new Promise(function(resolve) {
     //console.log("[u/rem] Update notification params", params);
@@ -80,8 +88,9 @@ export function setNotificationParams(params) {
     }
     isNotificationGranted = params.isNotificationGranted;
     reminderTime = params.reminderTime;
-    reminderHour = params.reminderHour;
-    reminderMinute = params.reminderMinute;
+    let timeSplit = splitHourAndMinutes(reminderTime);
+    reminderHour = timeSplit.hour;
+    reminderMinute = timeSplit.minute;
     resolve("Reminder settings updated " + reminderTime);
   })
 }
