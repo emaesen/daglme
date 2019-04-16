@@ -119,11 +119,11 @@
 
 <script>
 import {
-  storeNotificationEnabled,
+  storeIsNotificationEnabled,
   storeReminderTime,
-  retrieveNotificationEnabled,
+  retrieveIsNotificationEnabled,
   retrieveReminderTime
-} from "../utils/store.js";
+} from "../utils/storage.js";
 
 import {
   splitHourAndMinutes,
@@ -158,7 +158,7 @@ export default {
       this.suppressAlert = true;
       this.reminderTime = rt;
     }
-    var ine = retrieveNotificationEnabled();
+    var ine = retrieveIsNotificationEnabled();
     if (ine) {
       this.isNotificationEnabled = ine === "true";
     }
@@ -173,7 +173,7 @@ export default {
       // Reset the reminder to disabled after a short amount of time.
       setTimeout(() => {
         this.isNotificationEnabled = false;
-        storeNotificationEnabled(this.isNotificationEnabled);
+        storeIsNotificationEnabled(this.isNotificationEnabled);
       }, 60 * 1000);
     }
   },
@@ -207,7 +207,7 @@ export default {
   methods: {
     enableNotifications() {
       this.isNotificationEnabled = true;
-      storeNotificationEnabled(this.isNotificationEnabled);
+      storeIsNotificationEnabled(this.isNotificationEnabled);
       var that = this;
       if (Notification.permission === "granted") {
         // permission was granted already
@@ -230,7 +230,7 @@ export default {
     disableNotifications() {
       this.isNotificationEnabled = false;
       this.isNotificationGranted = false;
-      storeNotificationEnabled(this.isNotificationEnabled);
+      storeIsNotificationEnabled(this.isNotificationEnabled);
     },
     showTemporaryAlert(msg) {
       this.alert = msg;
