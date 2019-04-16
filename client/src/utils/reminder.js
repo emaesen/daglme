@@ -9,6 +9,7 @@ let isNotificationGranted = false;
 let reminderTime = null;
 let reminderHour = null;
 let reminderMinute = null;
+export let clockDisplay = null;
 
 export const isNotificationSupported = "Notification" in window;
 export const areNotificationsAvailable = isServiceWorkerSupported 
@@ -40,6 +41,18 @@ function stopClock() {
   }
 }
 
+const padZeros = (n, td) => {
+  var ns = n.toString(),
+    l = ns.length,
+    z = "";
+  if (td > l) {
+    for (var i = l; i < td; i++) {
+      z += "0";
+    }
+  }
+  return z + ns;
+};
+
 function ticktock() {
   var now = new Date();
   var hours = now.getHours();
@@ -57,6 +70,7 @@ function ticktock() {
     });
     console.log("[u/rem] Your Daily Global Meditation Reminder");
   }
+  clockDisplay = padZeros(hours, 2) + ":" + padZeros(minutes, 2);
 }
 
 export function spawnNotification(payload) {
