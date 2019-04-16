@@ -273,6 +273,7 @@ export default {
       this.reminderMinute = timeSplit.minute;
       storeReminderTime(this.reminderTime);
       this.setNotificationParams("Reminder time updated to " + this.reminderTime);
+      this.$emit("message", "reminder:updated");
     },
     isNotificationGranted() {
       if (this.isNotificationGranted) {
@@ -280,6 +281,7 @@ export default {
       } else {
         this.setNotificationParams("Reminder disabled");
       }
+      this.$emit("message", "reminder:updated");
     }
   }
 };
