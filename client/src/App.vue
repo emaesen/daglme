@@ -8,8 +8,11 @@
       <router-link to="/presenters">Presenters</router-link>
       <router-link to="/reminder" v-if="showReminderLink">Remind me {{ reminderIndicator }}</router-link>
     </div>
+    <div v-if="showClock" id="clock">
+      {{ clock }}
+    </div>
     <transition name="fade" mode="out-in">
-      <router-view/>
+      <router-view v-on:message="onMessageFromChild"/>
     </transition>
     <div id="update-alert" :class="['alert-offscreen', showUpdateAlert ? 'alert' : '']">
       New version available
@@ -27,7 +30,8 @@ import {
 } from "./utils/store.js";
 
 import {
-  setNotificationParams
+  setNotificationParams,
+  clockDisplay,
 } from "./utils/reminder.js";
 
 import { 
@@ -43,12 +47,23 @@ export default {
       version: "V0.9.0",
       allowReminderLink: true,
       showReminderLink: false,
+      allowClockDisplay: true,
       msg: null,
       showUpdateAlert: false,
       isReloading: false,
       isNotificationActive: false,
+      isNotificationPermissionGranted: Notification.permission === "granted",
       standardReminderTime: "20:00",
       reminderTime: null
+    }
+  },
+  created() {
+    if (this.isInStandaloneMode) {
+      // Site is running stand-alone as installed webapp
+      this.version += ".A";
+    } else {
+      // Site is running in web browser
+      this.version += ".B";
     }
   },
   mounted() {
@@ -61,25 +76,22 @@ export default {
       this.showReminderLink = true;
     }
     addAppMessageListeners(this.onAppMessage);
-    this.reminderTime = retrieveReminderTime();
-    this.isNotificationActive = Notification.permission === "granted" && retrieveNotificationEnabled();
-  },
-  created() {
-    if (this.isInStandaloneMode) {
-      // Site is running stand-alone as installed webapp
-      this.version += ".A";
-    } else {
-      // Site is running in web browser
-      this.version += ".B";
-    }
-    if (this.reminderTime && this.isNotificationActive) {
-      setNotificationParams({
-        isNotificationGranted: this.isNotificationActive,
-        reminderTime: this.reminderTime
-      })
-    }
+    this.retrieveAndSetReminderData();
+    this.initializeReminderNotifications();
   },
   methods: {
+    retrieveAndSetReminderData() {
+      this.reminderTime = retrieveReminderTime();
+      this.isNotificationActive = !!(this.reminderTime && this.isNotificationPermissionGranted && retrieveNotificationEnabled());
+    },
+    initializeReminderNotifications() {
+      if (this.isNotificationActive) {
+        setNotificationParams({
+          isNotificationGranted: this.isNotificationActive,
+          reminderTime: this.reminderTime
+        })
+      }
+    },
     onAppMessage(msg) {
       if (msg === "sw:updated") {
         this.showUpdateAlert = true;
@@ -89,6 +101,11 @@ export default {
     updateApp() {
       this.showUpdateAlert = false;
       getAppUpdate();
+    },
+    onMessageFromChild(msg) {
+      if (msg === "reminder:updated") {
+        this.retrieveAndSetReminderData();
+      }
     }
   },
   computed: {
@@ -96,10 +113,16 @@ export default {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
     },
     reminderIndicator() {
-      return this.reminderTime && this.isNotificationActive ? 
+      return this.isNotificationActive ? 
         (this.reminderTime===this.standardReminderTime ? 
           "✓" : "@"+this.reminderTime)
         : "";
+    },
+    showClock() {
+      return this.isNotificationActive && this.allowClockDisplay;
+    },
+    clock() {
+      return clockDisplay;
     }
   }
 }
@@ -298,6 +321,14 @@ a.expand:after {
 }
 a.expand.external:after { 
   content: " \00A0 (" attr(href) ") \02197"; 
+}
+#clock {
+  position: fixed;
+  top: 36px;
+  right: 18px;
+  font-family: monospace;
+  color: #daf6ffa9;
+  text-shadow: 0 0 10px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.5);
 }
 #nav {
   position: fixed;
