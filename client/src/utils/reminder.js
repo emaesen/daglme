@@ -57,7 +57,8 @@ function ticktock() {
   var now = new Date();
   var hours = now.getHours();
   var minutes = now.getMinutes();
-  //console.log("[u/rem] tick tock (" + timerID + ") " + hours + ":" + minutes + " (" + reminderTime + ")");
+  clockDisplay = padZeros(hours, 2) + ":" + padZeros(minutes, 2);
+  //console.log("[u/rem] tick tock (" + timerID + ") " + clockDisplay + " (" + reminderTime + ")");
   if (hours === 0 && minutes === 0) {
     // restart/recalibrate the clock
     console.log("[u/rem] Recalibrate the clock");
@@ -70,7 +71,6 @@ function ticktock() {
     });
     console.log("[u/rem] Your Daily Global Meditation Reminder");
   }
-  clockDisplay = padZeros(hours, 2) + ":" + padZeros(minutes, 2);
 }
 
 export function spawnNotification(payload) {
