@@ -9,7 +9,12 @@ let isNotificationGranted = false;
 let reminderTime = null;
 let reminderHour = null;
 let reminderMinute = null;
-export let clockDisplay = null;
+export let reminderState = {
+  clockDisplay : "--:--",
+  setClockDisplay(val) {
+    this.clockDisplay = val;
+  }
+};
 
 export const isNotificationSupported = "Notification" in window;
 export const areNotificationsAvailable = isServiceWorkerSupported 
@@ -57,8 +62,8 @@ function ticktock() {
   var now = new Date();
   var hours = now.getHours();
   var minutes = now.getMinutes();
-  clockDisplay = padZeros(hours, 2) + ":" + padZeros(minutes, 2);
-  //console.log("[u/rem] tick tock (" + timerID + ") " + clockDisplay + " (" + reminderTime + ")");
+  reminderState.setClockDisplay(padZeros(hours, 2) + ":" + padZeros(minutes, 2));
+  console.log("[u/rem] tick tock (" + timerID + ") " + reminderState.clockDisplay + " (" + reminderTime + ")");
   if (hours === 0 && minutes === 0) {
     // restart/recalibrate the clock
     console.log("[u/rem] Recalibrate the clock");
