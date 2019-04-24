@@ -25,13 +25,13 @@
 
 <script>
 import {
-  retrieveNotificationEnabled,
+  retrieveIsNotificationEnabled,
   retrieveReminderTime
-} from "./utils/store.js";
+} from "./utils/storage.js";
 
 import {
   setNotificationParams,
-  clockDisplay,
+  reminderState,
 } from "./utils/reminder.js";
 
 import { 
@@ -39,6 +39,8 @@ import {
   addAppMessageListeners,
   getAppUpdate 
 } from "./utils/sw-interface.js";
+
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "App",
@@ -48,9 +50,11 @@ export default {
       allowReminderLink: true,
       showReminderLink: false,
       allowClockDisplay: true,
+      clockDisplay: reminderState.clockDisplay,
       msg: null,
       showUpdateAlert: false,
       isReloading: false,
+      isNotificationEnabled: false,
       isNotificationActive: false,
       isNotificationPermissionGranted: Notification.permission === "granted",
       standardReminderTime: "20:00",
@@ -80,9 +84,14 @@ export default {
     this.initializeReminderNotifications();
   },
   methods: {
+    ...mapMutations(["SET_REMINDER_TIME", "SET_IS_NOTIFICATION_ENABLED"]),
     retrieveAndSetReminderData() {
       this.reminderTime = retrieveReminderTime();
-      this.isNotificationActive = !!(this.reminderTime && this.isNotificationPermissionGranted && retrieveNotificationEnabled());
+      this.isNotificationEnabled = retrieveIsNotificationEnabled();
+      this.isNotificationActive = !!(this.reminderTime &&
+        this.isNotificationPermissionGranted && this.isNotificationEnabled);
+      this.SET_REMINDER_TIME(this.reminderTime);
+      this.SET_IS_NOTIFICATION_ENABLED(this.isNotificationEnabled);
     },
     initializeReminderNotifications() {
       if (this.isNotificationActive) {
@@ -109,6 +118,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["clockTime"]),
     isInStandaloneMode() {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
     },
@@ -122,7 +132,7 @@ export default {
       return this.isNotificationActive && this.allowClockDisplay;
     },
     clock() {
-      return clockDisplay;
+      return this.clockTime;
     }
   }
 }
