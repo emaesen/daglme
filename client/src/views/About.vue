@@ -3,7 +3,7 @@
     <h1>About the Daily Global Meditation</h1>
 
     <p class="margin-top20">
-      The Daily Global Meditation is a call for peoples around the world to participate in a short daily meditation or prayer at 8 o'clock in the evening (8:00 PM or 20:00) local time.
+      The Daily Global Meditation is a call for peoples around the world to participate in a short daily synchronized meditation or prayer at 8 o'clock in the evening (8:00 PM or 20:00) local time.
       <br>
       If 8 PM is an inconvenient time, one may choose any other hour of the day and align with individuals for which that hour is their local 8 PM.
     </p>
@@ -15,7 +15,7 @@
       This is known as the <a href="https://tmhome.com/benefits/study-maharishi-effect-group-meditation-crime-rate/" target="_blank" class="external">"Maharishi effect"</a>.
     </p>
     <p>
-      One doesn't need to be an experienced meditator to join our Daily Global Meditation. We suggest a focused attention daily for 5 minutes at 8 PM local time, to envision the Earth and Sky as Illumined and Whole.
+      One doesn't need to be an experienced meditator to join our Daily Global Meditation. We suggest a focused attention daily for 5 minutes (or more) at 8 PM local time, to envision the Earth and Sky as Illumined and Whole.
     </p>
     <p>
       Daily Global Meditation embraces all ways, paths and practices.
