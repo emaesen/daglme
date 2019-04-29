@@ -84,7 +84,7 @@
 
     <h2>Global Awakening</h2>
     <ul>
-      <li>A daily wave of Awareness Awakening…</li>
+      <li>A daily synchronized wave of Awareness Awakening…</li>
       <li>propagating around the globe.</li>
       <li class="margin-top5">The group effect…</li>
       <li>amplifying the intentions of each individual.</li>
