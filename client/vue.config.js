@@ -18,8 +18,12 @@ module.exports = {
       importWorkboxFrom: "local",
       importScripts: ["sw-customconfig.js"],
       navigateFallback: "/index.html",
+      // the media images must be accessible through their URI
+      // (not embedded on a page):
       navigateFallbackBlacklist: [/img\/media/],
       exclude: [/\.map$/, /^manifest.*\.js(?:on)?$/,/img\/media/,/img\/icons/,/img\/video/,/^google/,/^robots/,/^sitemap/],
+      // (large) media and video files are cached only when
+      // accessed at runtime:
       runtimeCaching: [{
         urlPattern: /media/,
         handler: 'cacheFirst',
