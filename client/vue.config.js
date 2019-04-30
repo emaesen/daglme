@@ -19,11 +19,6 @@ module.exports = {
       importScripts: ["sw-customconfig.js"],
       navigateFallback: "/index.html",
       navigateFallbackBlacklist: [/img\/media/],
-      // our app is simple and non-critical and all code resources are versioned so 
-      // we skip waiting during install to force an update during refresh:
-      // https://redfin.engineering/how-to-fix-the-refresh-button-when-using-service-workers-a8e27af6df68
-      //skipWaiting: true,
-      //clientsClaim: true,
       exclude: [/\.map$/, /^manifest.*\.js(?:on)?$/,/img\/media/,/img\/icons/,/img\/video/,/^google/,/^robots/,/^sitemap/],
       runtimeCaching: [{
         urlPattern: /media/,
