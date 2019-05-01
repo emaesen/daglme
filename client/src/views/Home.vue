@@ -32,9 +32,21 @@
           Listen Within.</li>
     </ul>
 
-    <h2>Sacred Sound</h2>
+    <h2>Sacred Sound ~ Meditation Videos</h2>
     <div>
-      <span class="todo">coming soon: .....(option of meditation with recorded sacred sounding).....</span>
+      You may meditate in silence,<br>
+      listen to your relaxing music of choice,<br>
+      or listen to one of three sacred sound recordings:
+    </div>
+    <ol>
+      <li :class="[videoPreviewNr===0? '' : 'action']" @click="selectRecording(0)">The soothing melody of a metal tongue drum</li>
+      <li :class="[videoPreviewNr===1? '' : 'action']" @click="selectRecording(1)">A soft healing chant</li>
+      <li :class="[videoPreviewNr===2? '' : 'action']" @click="selectRecording(2)">The trance rhythm of a shamanic drum</li>
+    </ol>
+    <div>
+      <transition name="fade" mode="out-in">
+        <img :src="videoPreviewSrc" class="border" :key="videoPreviewNr" width="368" height="234">
+      </transition>
     </div>
     <ul>
       <li>One will connect with the Divine Current.</li>
@@ -106,8 +118,22 @@
 </template>
 
 <script>
+const videoPreviewSrcFolder = "/img/video/";
+const videoPreviewSources = ["tongue-drum.jpg", "healing-chant.jpg", "shamanic-drum.jpg"];
+
 export default {
   name: "home",
-  components: {}
+  data() {
+    return {
+      videoPreviewNr: 0,
+      videoPreviewSrc: videoPreviewSrcFolder + videoPreviewSources[0]
+    }
+  },
+  methods: {
+    selectRecording(nr) {
+      this.videoPreviewNr = nr;
+      this.videoPreviewSrc = videoPreviewSrcFolder + videoPreviewSources[nr];
+    }
+  }
 };
 </script>
