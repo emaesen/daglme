@@ -252,6 +252,11 @@ input {
   border-radius: 5px;
   line-height: 1.3em;
 }
+img.border {
+  border: 1px solid #80afe481;
+  border-radius: 20px;
+  box-shadow: 0 0 5px #a7dcff;
+}
 .mono {
   font-family: monospace;
 }
