@@ -505,6 +505,9 @@ a:not(.external):hover {
 .hidden {
   display: none;
 }
+.invisible {
+  visibility: hidden;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s ease;
 }
