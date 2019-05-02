@@ -515,6 +515,11 @@ a:not(.external):hover {
 .invisible {
   visibility: hidden;
 }
+.videoContainer img,
+.videoContainer iframe {
+  width: 368px;
+  height: 234px;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s ease;
 }
@@ -587,6 +592,14 @@ a:not(.external):hover {
 @media all and (max-width: 400px) {
   #nav a {
     margin-left: 0;
+  }
+  .videoContainer {
+    width: 95%;
+  }
+  .videoContainer img,
+  .videoContainer iframe {
+    width: 100%;
+    height: auto;
   }
 }
 @media print {
