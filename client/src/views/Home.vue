@@ -43,10 +43,12 @@
       <li :class="[videoPreviewNr===1? '' : 'action']" @click="selectRecording(1)">A soft healing chant</li>
       <li :class="[videoPreviewNr===2? '' : 'action']" @click="selectRecording(2)">The trance rhythm of a shamanic drum</li>
     </ol>
-    <div>
+    <div class="videoContainer">
       <transition name="fade" mode="out-in">
-        <img :src="videoPreviewSrc" class="border" :key="videoPreviewNr" width="368" height="234">
+        <img v-if="showVideoPreview" :src="videoPreviewSrc" class="border" :key="videoPreviewNr" width="368" height="234" @click="showVideo">
+        <iframe v-else width="368" height="234" :src="videoSrc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </transition>
+      <div class="note" :class="{invisible:!showVideoPreview}">clicking the above image will embed a YouTube video</div>
     </div>
     <ul>
       <li>One will connect with the Divine Current.</li>
@@ -120,11 +122,20 @@
 <script>
 const videoPreviewSrcFolder = "/img/video/";
 const videoPreviewSources = ["tongue-drum.jpg", "healing-chant.jpg", "shamanic-drum.jpg"];
+const videoEmbedPath = "https://www.youtube-nocookie.com/embed/";
+const videoSourceIds = ["QFPyTxCrMrk", "wNNGEqrV-yY", "0BDd7i9vV1k"];
+// https://developers.google.com/youtube/player_parameters
+const videoEmbedQS = "?autoplay=1" 
+      + "&fs=0"
+      + "&playsinline=1"
+      + "&rel=0"
+      + "&origin=" + window.location.protocol + "//" + window.location.hostname;
 
 export default {
   name: "home",
   data() {
     return {
+      showVideoPreview: true,
       videoPreviewNr: 0,
       videoPreviewSrc: videoPreviewSrcFolder + videoPreviewSources[0]
     }
@@ -133,6 +144,14 @@ export default {
     selectRecording(nr) {
       this.videoPreviewNr = nr;
       this.videoPreviewSrc = videoPreviewSrcFolder + videoPreviewSources[nr];
+    },
+    showVideo() {
+      this.showVideoPreview = false;
+    }
+  },
+  computed: {
+    videoSrc() {
+      return videoEmbedPath + videoSourceIds[this.videoPreviewNr] + videoEmbedQS
     }
   }
 };
