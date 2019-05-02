@@ -498,6 +498,9 @@ a:not(.external):hover {
   font-weight: 700;
   box-shadow: 0 0 5px #5a0703;
 }
+.checked {
+  color: #09ff09;
+}
 .version {
   float: right;
   color: #a9bbd2;
