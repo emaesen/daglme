@@ -35,29 +35,32 @@
     <h2>Sacred Sound ~ Meditation Videos</h2>
     <div>
       You may meditate in silence,<br>
-      listen to your relaxing music of choice,<br>
-      or listen to one of three sacred sound recordings:
+      listen to your own relaxing music of choice,<br>
+      or listen to one of our three sacred sound recordings:
     </div>
     <ol>
-      <li :class="[videoPreviewNr===0? '' : 'action']" @click="selectRecording(0)">
-        <span :class="[videoPreviewNr===0? 'checked' : 'invisible']">✓</span>
+      <li :class="['action', videoPreviewNr===0? 'inactive' : '']" @click="selectRecording(0)">
+        <span v-if="videoPreviewNr===0" class="checked">☑</span>
+        <span v-else>☐</span>
         The soothing melody of a metal tongue drum
       </li>
-      <li :class="[videoPreviewNr===1? '' : 'action']" @click="selectRecording(1)">
-        <span :class="[videoPreviewNr===1? 'checked' : 'invisible']">✓</span>
+      <li :class="['action', videoPreviewNr===1? 'inactive' : '']" @click="selectRecording(1)">
+        <span v-if="videoPreviewNr===1" class="checked">☑</span>
+        <span v-else>☐</span>
         A soft healing chant
       </li>
-      <li :class="[videoPreviewNr===2? '' : 'action']" @click="selectRecording(2)">
-        <span  :class="[videoPreviewNr===2? 'checked' : 'invisible']">✓</span>
+      <li :class="['action', videoPreviewNr===2? 'inactive' : '']" @click="selectRecording(2)">
+        <span v-if="videoPreviewNr===2" class="checked">☑</span>
+        <span v-else>☐</span>
         The trance rhythm of a shamanic drum
       </li>
     </ol>
     <div class="videoContainer">
       <transition name="fade" mode="out-in">
-        <img v-if="showVideoPreview" :src="videoPreviewSrc" class="border" :key="videoPreviewNr" width="368" height="234" @click="showVideo">
+        <img v-if="showVideoPreview" :src="videoPreviewSrc" class="action border" :key="videoPreviewNr" width="368" height="234" @click="showVideo">
         <iframe v-else width="368" height="234" :src="videoSrc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </transition>
-      <div class="note" :class="{invisible:!showVideoPreview}">clicking the above image will embed a YouTube video</div>
+      <div class="note emph-caution" :class="{invisible:!showVideoPreview}">➥ clicking the above image will embed a YouTube video</div>
     </div>
     <ul>
       <li>One will connect with the Divine Current.</li>
