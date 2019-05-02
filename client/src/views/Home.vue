@@ -57,8 +57,8 @@
     </ol>
     <div class="videoContainer">
       <transition name="fade" mode="out-in">
-        <img v-if="showVideoPreview" :src="videoPreviewSrc" class="action border" :key="videoPreviewNr" width="368" height="234" @click="showVideo">
-        <iframe v-else width="368" height="234" :src="videoSrc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <img v-if="showVideoPreview" :src="videoPreviewSrc" class="action border" :key="videoPreviewNr" @click="showVideo">
+        <iframe v-else :src="videoSrc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </transition>
       <div class="note emph-caution" :class="{invisible:!showVideoPreview}">➥ clicking the above image will embed a YouTube video</div>
     </div>
