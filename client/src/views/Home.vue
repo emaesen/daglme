@@ -105,12 +105,12 @@
 
     <h2>Presented and Supported by:</h2>
     <ul>
-      <li><a href="http://EarthCareGlobalTV.com" class="external expand">EarthCare Global TV</a></li>
-      <li class="margin-top5"><a href="https://InSharedOneness.com" class="external expand">In Shared Oneness retreats</a>:<br>
+      <li><a href="http://EarthCareGlobalTV.com" class="external expand" rel="noopener">EarthCare Global TV</a></li>
+      <li class="margin-top5"><a href="https://InSharedOneness.com" class="external expand" rel="noopener">In Shared Oneness retreats</a>:<br>
         <ul>
-        <li><a href="http://MarySaintMarie.com" class="external expand">Mary Saint-Marie</a></li>
-        <li><a href="http://letempledelesprit.com/" class="external expand">Angelique Jan Pera</a></li>
-        <li><a href="https://kagalakan.com" class="external expand">Edward Maesen</a></li>
+        <li><a href="http://MarySaintMarie.com" class="external expand" rel="noopener">Mary Saint-Marie</a></li>
+        <li><a href="http://letempledelesprit.com/" class="external expand" rel="noopener">Angelique Jan Pera</a></li>
+        <li><a href="https://kagalakan.com" class="external expand" rel="noopener">Edward Maesen</a></li>
         </ul>
       </li>
     </ul>

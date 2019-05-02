@@ -36,7 +36,7 @@
     <h3>Mystic Art and Books:</h3>
     <div>
       The Mystic Art-of-the-Soul and thirteen Books may be found listed on 
-      <a href="http://MarySaintMarie.com" class="external">her website</a>.<br>
+      <a href="http://MarySaintMarie.com" class="external" rel="noopener">her website</a>.<br>
       Books may be purchased on Amazon and some of the Mystic Art is on website and in art books.
     </div>
 
@@ -61,15 +61,15 @@
 
     <h3>EarthCare Global TV</h3>
     <div>
-      Please visit <a href="http://EarthCareGlobalTV.com" class="external">EarthCare Global TV</a> to see the 305+ documentary films on earth care.
+      Please visit <a href="http://EarthCareGlobalTV.com" class="external" rel="noopener">EarthCare Global TV</a> to see the 305+ documentary films on earth care.
     </div>
 
     <div class="contact margin-top50">
       In Beauty,<br>
       Mary<br>
       <br>
-      <a href="http://MarySaintMarie.com" class="external expand">Mary's web site</a><br>
-      <a href="http://EarthCareGlobalTV.com" class="external expand">EarthCare Global TV</a>
+      <a href="http://MarySaintMarie.com" class="external expand" rel="noopener">Mary's web site</a><br>
+      <a href="http://EarthCareGlobalTV.com" class="external expand" rel="noopener">EarthCare Global TV</a>
     </div>
 
   </div>

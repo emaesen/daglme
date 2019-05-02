@@ -52,15 +52,15 @@
 
     <h3>Spiritual Retreats</h3>
     <div>
-      As founding member of <a href="https://InSharedOneness.com" class="external">In Shared Oneness</a>, Edward facilitates spiritual retreats in Mount Shasta, at the southern end of the Cascade Range in Siskiyou County, Northern California, USA. 
+      As founding member of <a href="https://InSharedOneness.com" class="external" rel="noopener">In Shared Oneness</a>, Edward facilitates spiritual retreats in Mount Shasta, at the southern end of the Cascade Range in Siskiyou County, Northern California, USA. 
     </div>
 
     <div class="contact margin-top50">
       Blessings,<br>
       Edward<br>
       <br>
-      <a href="https://kagalakan.com" class="external expand">Edward's web site</a><br>
-      <a href="https://www.youtube.com/c/EdwardMaesen" class="external expand">Edward's YouTube channel</a>
+      <a href="https://kagalakan.com" class="external expand" rel="noopener">Edward's web site</a><br>
+      <a href="https://www.youtube.com/c/EdwardMaesen" class="external expand" rel="noopener">Edward's YouTube channel</a>
     </div>
 
   </div>

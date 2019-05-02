@@ -20,7 +20,7 @@
         </div>
         <div>All may be daily guardians of the earth and sky by living ‘Action Borne of Vision.’</div>
         <div class="poetic">‘Our ACTIONS affect everyone, everything and everyplace. <span class="nowrap">We are One.’</span></div>
-        <div>Web site: <a href="http://EarthCareGlobalTV.com" class="external expand">EarthCare Global TV</a></div>
+        <div>Web site: <a href="http://EarthCareGlobalTV.com" class="external expand" rel="noopener">EarthCare Global TV</a></div>
       </div>
       </div>
 </template>
