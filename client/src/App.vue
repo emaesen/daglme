@@ -323,6 +323,10 @@ a,
   font-family: 'Rosario', sans-serif;
   font-size: 90%;
 }
+.action.inactive {
+  cursor: default;
+  color: inherit;
+}
 a.external:after {
   content: " \02197";
   color: #7adaf7;
