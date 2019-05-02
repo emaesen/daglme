@@ -13,6 +13,10 @@
       <br>
       Edward's life is a demonstration of living in tune with —and following direction of— an inner Knowing. 
     </div>
+    <div class="poetic margin-top20">
+      Wholeness already Is.<br>
+      Any conception of "lack" stems only from a <span class="nowrap">distorted belief system.</span>
+    </div>
 
     <h3>The Journey</h3>
     <div>
@@ -37,7 +41,7 @@
 
     <h3>Sound Ceremony as Celestial Initiation</h3>
     <div>
-      Through the intentional ceremonial use of sound with acoustic instruments and voice, Edward reflects the State of True Being of the Ones he is with. This serves as a celestial initiation and a catalyst for healing, understanding and gratitude in the physical, mental, emotional, and spiritual aspects of Self:<br>
+      Through the intentional ceremonial use of sound with acoustic instruments and voice, Edward reflects the State of True Being of the Ones he is with. His songs restore balance and harmony, revitalizing and reinforcing one's connection to Self. Their sounds serve as a celestial initiation and a catalyst for healing and understanding:<br>
       ‘Sound Ceremony as Celestial Initiation’.
     </div>
     <div class="poetic margin-top20">
@@ -56,6 +60,7 @@
       Edward<br>
       <br>
       <a href="https://kagalakan.com" class="external expand">Edward's web site</a><br>
+      <a href="https://www.youtube.com/c/EdwardMaesen" class="external expand">Edward's YouTube channel</a>
     </div>
 
   </div>
