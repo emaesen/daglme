@@ -39,9 +39,18 @@
       or listen to one of three sacred sound recordings:
     </div>
     <ol>
-      <li :class="[videoPreviewNr===0? '' : 'action']" @click="selectRecording(0)">The soothing melody of a metal tongue drum</li>
-      <li :class="[videoPreviewNr===1? '' : 'action']" @click="selectRecording(1)">A soft healing chant</li>
-      <li :class="[videoPreviewNr===2? '' : 'action']" @click="selectRecording(2)">The trance rhythm of a shamanic drum</li>
+      <li :class="[videoPreviewNr===0? '' : 'action']" @click="selectRecording(0)">
+        <span :class="[videoPreviewNr===0? 'checked' : 'invisible']">✓</span>
+        The soothing melody of a metal tongue drum
+      </li>
+      <li :class="[videoPreviewNr===1? '' : 'action']" @click="selectRecording(1)">
+        <span :class="[videoPreviewNr===1? 'checked' : 'invisible']">✓</span>
+        A soft healing chant
+      </li>
+      <li :class="[videoPreviewNr===2? '' : 'action']" @click="selectRecording(2)">
+        <span  :class="[videoPreviewNr===2? 'checked' : 'invisible']">✓</span>
+        The trance rhythm of a shamanic drum
+      </li>
     </ol>
     <div class="videoContainer">
       <transition name="fade" mode="out-in">
