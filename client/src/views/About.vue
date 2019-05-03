@@ -64,6 +64,12 @@
       <a href="mailto:daglme@protonmail.com">daglme@protonmail.com</a>
     </div>
 
+    <h2>Social Media</h2>
+    <div>
+      Hash tags: #DailyGlobalMeditation, #daglme.<br>
+      Twitter: <a href="https://twitter.com/dagl_me" class="external expand" rel="noopener">@dagl_me</a>
+    </div>
+
     <h3>Donations</h3>
     <div class="smallfont">
       Donations to support the development of the Daily Global Meditation website and corresponding meditation videos are greatly appreciated. If you feel so inclined, please view this site's <a href="https://www.gofundme.com/daily-global-meditation-website&rcid=r01-155112011808-f5a97623d58746d3&pc=ot_co_campmgmt_w" class="external" target="_blank" rel="noopener">fundraising campaign on GoFundMe</a>. Any amount is accepted in gratitude.
@@ -85,7 +91,7 @@
         <li>use "cookies" or "web beacons"</li>
         <li>collect or transmit a visitor's personal information</li>
         <li>embed analytics trackers</li>
-        <li>embed or connect with social networks</li>
+        <li>connect to social networks</li>
         <li>display ads</li>
       </ul>
     </div>
@@ -105,6 +111,9 @@
         </li>
         <li>request to send you push notifications with a daily meditation reminder;
           <ul><li>(Only after you explicitly opt in)</li><li>(You may opt out by blocking "notifications" in your device’s settings)</li></ul>
+        </li>
+        <li>embed a Daily Global Meditation YouTube video;
+          <ul><li>(Only after you intentionally click the video's preview image)</li></ul>
         </li>
       </ul>
     </div>
