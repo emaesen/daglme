@@ -114,7 +114,6 @@
       <li>propagating around the globe.</li>
       <li class="margin-top5">The group effect…</li>
       <li>amplifying the intentions of each individual.</li>
-      <li class="margin-top5">#DailyGlobalMeditation, #daglme</li>
     </ul>
 
     <h2>Presented and Supported by:</h2>
