@@ -30,7 +30,7 @@ function startClock() {
     console.log("[u/rem] Initialize the clock - start in " + delay + " seconds");
     setTimeout(() => {
       timerID = setInterval(ticktock, multiplier * 1000);
-      console.log("[u/rem] Start the clock (" + timerID + ")");
+      console.log("[u/rem] Start the clock (" + timerID + ") " + new Date());
       ticktock();
       isClockStartPending = false;
     }, delay * 1000);
@@ -40,7 +40,7 @@ function startClock() {
 
 function stopClock() {
   if (timerID) {
-    console.log("[u/rem] Stop the clock (" + timerID + ")");
+    console.log("[u/rem] Stop the clock (" + timerID + ") " + new Date());
     clearInterval(timerID);
     timerID = null;
   }
