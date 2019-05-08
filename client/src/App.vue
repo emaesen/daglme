@@ -396,7 +396,11 @@ a:not(.external):hover {
   width: 100%;
   text-align: center;
   font-size:75%;
-  opacity: .5;
+  opacity: .72;
+  background-image: url(/img/bg.png);
+  background-size: initial;
+  padding-top:5px;
+  border-top: 1px solid #80afe481;
 }
 .view {
   margin-bottom: 2em;
