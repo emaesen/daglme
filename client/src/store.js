@@ -8,12 +8,14 @@ export default new Vuex.Store({
     clockTime: "--:--",
     reminderTime: "20:00",
     isNotificationEnabled: false,
+    isNotificationActive: false,
     showReminderOptions: false
   },
   getters: {
     clockTime: state => state.clockTime,
     reminderTime: state => state.reminderTime,
     isNotificationEnabled: state => state.isNotificationEnabled,
+    isNotificationActive: state => state.isNotificationActive,
     showReminderOptions: state => state.showReminderOptions
   },
   mutations: {
@@ -21,6 +23,7 @@ export default new Vuex.Store({
     SET_CLOCK_DISPLAY: (state, clockTime) => (state.clockTime = clockTime),
     SET_REMINDER_TIME: (state, reminderTime) => (state.reminderTime = reminderTime),
     SET_IS_NOTIFICATION_ENABLED: (state, isNotificationEnabled) => (state.isNotificationEnabled = isNotificationEnabled),
+    SET_IS_NOTIFICATION_ACTIVE: (state, isNotificationActive) => (state.isNotificationActive = isNotificationActive),
     SET_SHOW_REMINDER_OPTIONS: (state, showReminderOptions) => (state.showReminderOptions = showReminderOptions)
   },
   actions: {
