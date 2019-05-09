@@ -5,9 +5,10 @@ export const isServiceWorkerSupported = "serviceWorker" in navigator;
 // but we show notifications through the service worker
 // (to support future push notifications)
 export const isNotificationSupported = "Notification" in window;
+export const areNotificationsDenied = Notification.permission === "denied";
 export const areNotificationsAvailable = isServiceWorkerSupported 
   && isNotificationSupported 
-  && Notification.permission !== "denied";
+  && !areNotificationsDenied;
 
 export function send_message_to_sw(msg) {
   // based on http://craig-russell.co.uk/2016/01/29/service-worker-messaging.html
