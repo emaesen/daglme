@@ -6,7 +6,7 @@
       <router-link to="/" exact>Meditation</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/presenters">Presenters</router-link>
-      <router-link to="/reminder" v-if="showReminderLink">Remind me {{ reminderIndicator }}</router-link>
+      <router-link to="/reminder" v-if="showReminderOptions">Remind me {{ reminderIndicator }}</router-link>
     </div>
     <div v-if="showClock" id="clock">
       {{ clock }}
@@ -27,7 +27,7 @@
 import {
   retrieveIsNotificationEnabled,
   retrieveReminderTime
-} from "./utils/storage.js";
+} from "./utils/persistence.js";
 
 import {
   setNotificationParams,
@@ -47,8 +47,8 @@ export default {
   data() {
     return {
       version: "V0.9.1",
-      allowReminderLink: true,
-      showReminderLink: false,
+      allowReminderOptions: true,
+      showReminderOptions: false,
       allowClockDisplay: true,
       clockDisplay: reminderState.clockDisplay,
       msg: null,
@@ -73,11 +73,11 @@ export default {
   mounted() {
     // show the reminder link only if service worker and
     // notifications are supported and were not previously denied
-    // (unless this.allowReminderLink is set to false - in initial test phase)
+    // (unless this.allowReminderOptions is set to false - in initial test phase)
     // or if the user navigated to the reminder view explicitly.
-    if ( (this.allowReminderLink && areNotificationsAvailable)
+    if ( (this.allowReminderOptions && areNotificationsAvailable)
          || (this.$route && this.$route.path==="/reminder") ) {
-      this.showReminderLink = true;
+      this.showReminderOptions = true;
     }
     addAppMessageListeners(this.onAppMessage);
     this.retrieveAndSetReminderData();

@@ -123,7 +123,7 @@ import {
   storeReminderTime,
   retrieveIsNotificationEnabled,
   retrieveReminderTime
-} from "../utils/storage.js";
+} from "../utils/persistence.js";
 
 import {
   splitHourAndMinutes,
@@ -131,6 +131,8 @@ import {
   setNotificationParams,
   spawnNotification
 } from "../utils/reminder.js";
+
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "reminders",
@@ -178,6 +180,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["reminderTime", "isNotificationEnabled"]),
     isInStandaloneMode() {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
     },
@@ -205,6 +208,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["SET_REMINDER_TIME", "SET_IS_NOTIFICATION_ENABLED"]),
     enableNotifications() {
       this.isNotificationEnabled = true;
       storeIsNotificationEnabled(this.isNotificationEnabled);
