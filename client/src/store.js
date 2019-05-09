@@ -20,7 +20,7 @@ export default new Vuex.Store({
   },
   mutations: {
     // can be used directly for synchronous events
-    SET_CLOCK_DISPLAY: (state, clockTime) => (state.clockTime = clockTime),
+    SET_CLOCK_TIME: (state, clockTime) => (state.clockTime = clockTime),
     SET_REMINDER_TIME: (state, reminderTime) => (state.reminderTime = reminderTime),
     SET_IS_NOTIFICATION_ENABLED: (state, isNotificationEnabled) => (state.isNotificationEnabled = isNotificationEnabled),
     SET_IS_NOTIFICATION_ACTIVE: (state, isNotificationActive) => (state.isNotificationActive = isNotificationActive),
