@@ -26,7 +26,8 @@ export function persistShowReminderOptions(value) {
 }
 
 export function retrieveIsNotificationEnabled() {
-  return retrieveData(isNotificationEnabledStorageKey)==="true";
+  const data = retrieveData(isNotificationEnabledStorageKey);
+  return data!==null ? retrieveData(isNotificationEnabledStorageKey)==="true" : data;
 }
 
 export function retrieveReminderTime() {
@@ -34,5 +35,6 @@ export function retrieveReminderTime() {
 }
 
 export function retrieveShowReminderOptions() {
-  return retrieveData(showReminderOptionsStorageKey)==="true";
+  const data = retrieveData(showReminderOptionsStorageKey);
+  return data!==null ? retrieveData(showReminderOptionsStorageKey)==="true" : data;
 }
