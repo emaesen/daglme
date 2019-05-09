@@ -2,6 +2,7 @@
 const store = window.localStorage;
 const reminderTimeStorageKey = "daglme:reminder-time";
 const isNotificationEnabledStorageKey = "daglme:is-notification-enabled";
+const showReminderOptionsStorageKey = "daglme:show-reminder-options";
 
 
 function storeData(key, value) {
@@ -20,10 +21,18 @@ export function storeReminderTime(value) {
   storeData(reminderTimeStorageKey, value) ;
 }
 
+export function storeShowReminderOptions(value) {
+  storeData(showReminderOptionsStorageKey, value) ;
+}
+
 export function retrieveIsNotificationEnabled() {
   return retrieveData(isNotificationEnabledStorageKey)==="true";
 }
 
 export function retrieveReminderTime() {
   return retrieveData(reminderTimeStorageKey);
+}
+
+export function retrieveShowReminderOptions() {
+  return retrieveData(showReminderOptionsStorageKey)==="true";
 }
