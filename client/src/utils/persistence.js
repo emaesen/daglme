@@ -5,7 +5,7 @@ const isNotificationEnabledStorageKey = "daglme:is-notification-enabled";
 const showReminderOptionsStorageKey = "daglme:show-reminder-options";
 
 
-function storeData(key, value) {
+function persistData(key, value) {
   store && store.setItem(key, value);
 }
 
@@ -13,16 +13,16 @@ function retrieveData(key) {
   return store && store.getItem(key);
 }
 
-export function storeIsNotificationEnabled(value) {
-  storeData(isNotificationEnabledStorageKey, value) ;
+export function persistIsNotificationEnabled(value) {
+  persistData(isNotificationEnabledStorageKey, value) ;
 }
 
-export function storeReminderTime(value) {
-  storeData(reminderTimeStorageKey, value) ;
+export function persistReminderTime(value) {
+  persistData(reminderTimeStorageKey, value) ;
 }
 
-export function storeShowReminderOptions(value) {
-  storeData(showReminderOptionsStorageKey, value) ;
+export function persistShowReminderOptions(value) {
+  persistData(showReminderOptionsStorageKey, value) ;
 }
 
 export function retrieveIsNotificationEnabled() {

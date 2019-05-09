@@ -119,8 +119,8 @@
 
 <script>
 import {
-  storeIsNotificationEnabled,
-  storeReminderTime,
+  persistIsNotificationEnabled,
+  persistReminderTime,
   retrieveIsNotificationEnabled,
   retrieveReminderTime
 } from "../utils/persistence.js";
@@ -175,7 +175,7 @@ export default {
       // Reset the reminder to disabled after a short amount of time.
       setTimeout(() => {
         this.isNotificationEnabled = false;
-        storeIsNotificationEnabled(this.isNotificationEnabled);
+        persistIsNotificationEnabled(this.isNotificationEnabled);
       }, 60 * 1000);
     }
   },
@@ -211,7 +211,7 @@ export default {
     ...mapMutations(["SET_REMINDER_TIME", "SET_IS_NOTIFICATION_ENABLED"]),
     enableNotifications() {
       this.isNotificationEnabled = true;
-      storeIsNotificationEnabled(this.isNotificationEnabled);
+      persistIsNotificationEnabled(this.isNotificationEnabled);
       var that = this;
       if (Notification.permission === "granted") {
         // permission was granted already
@@ -234,7 +234,7 @@ export default {
     disableNotifications() {
       this.isNotificationEnabled = false;
       this.isNotificationGranted = false;
-      storeIsNotificationEnabled(this.isNotificationEnabled);
+      persistIsNotificationEnabled(this.isNotificationEnabled);
     },
     showTemporaryAlert(msg) {
       this.alert = msg;
@@ -275,7 +275,7 @@ export default {
       var timeSplit = splitHourAndMinutes(this.reminderTime);
       this.reminderHour = timeSplit.hour;
       this.reminderMinute = timeSplit.minute;
-      storeReminderTime(this.reminderTime);
+      persistReminderTime(this.reminderTime);
       this.setNotificationParams("Reminder time updated to " + this.reminderTime);
       this.$emit("message", "reminder:updated");
     },
