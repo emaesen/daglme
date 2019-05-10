@@ -120,9 +120,7 @@
 <script>
 import {
   persistIsNotificationEnabled,
-  persistReminderTime,
-  retrieveIsNotificationEnabled,
-  retrieveReminderTime
+  persistReminderTime
 } from "../utils/persistence.js";
 
 import {
@@ -141,10 +139,8 @@ export default {
     return {
       bypassLackOfNotificationSupport: false,
       isNotificationSupported: false,
-      isNotificationEnabled: false,
       isNotificationGranted: false,
       isNotificationDenied: false,
-      reminderTime: "20:00",
       reminderHour: 20,
       reminderMinute: 0,
       allowNotificationVibrate: false,
@@ -155,14 +151,8 @@ export default {
     }
   },
   mounted() {
-    var rt = retrieveReminderTime();
-    if (rt) {
+    if (this.reminderTime ) {
       this.suppressAlert = true;
-      this.reminderTime = rt;
-    }
-    var ine = retrieveIsNotificationEnabled();
-    if (ine) {
-      this.isNotificationEnabled = ine === "true";
     }
     if (areNotificationsAvailable || this.bypassLackOfNotificationSupport) {
       this.isNotificationSupported = true;
@@ -180,7 +170,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["reminderTime", "isNotificationEnabled"]),
+    ...mapGetters(["reminderTime", "isNotificationEnabled", "showReminderOptions"]),
     isInStandaloneMode() {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
     },
