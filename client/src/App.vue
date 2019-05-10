@@ -26,7 +26,8 @@
 <script>
 import {
   retrieveIsNotificationEnabled,
-  retrieveReminderTime
+  retrieveReminderTime,
+  retrieveShowReminderOptions
 } from "./utils/persistence.js";
 
 import {
@@ -71,27 +72,47 @@ export default {
     }
   },
   mounted() {
-    // show the reminder link only if service worker and
-    // notifications are supported and were not previously denied
-    // (unless this.allowReminderOptions is set to false - in initial test phase)
-    // or if the user navigated to the reminder view explicitly.
-    if ( (this.allowReminderOptions && areNotificationsAvailable)
-         || (this.$route && this.$route.path==="/reminder") ) {
-      this.showReminderOptions = true;
-    }
     addAppMessageListeners(this.onAppMessage);
-    this.retrieveAndSetReminderData();
+    this.retrieveReminderData();
+    this.deriveReminderData();
+    this.setReminderData();
     this.initializeReminderNotifications();
   },
   methods: {
-    ...mapMutations(["SET_REMINDER_TIME", "SET_IS_NOTIFICATION_ENABLED"]),
-    retrieveAndSetReminderData() {
+    ...mapMutations([
+      "SET_REMINDER_TIME",
+      "SET_IS_NOTIFICATION_ENABLED",
+      "SET_IS_NOTIFICATION_ACTIVE",
+      "SET_SHOW_REMINDER_OPTIONS"
+    ]),
+    retrieveReminderData() {
       this.reminderTime = retrieveReminderTime();
       this.isNotificationEnabled = retrieveIsNotificationEnabled();
+      this.showReminderOptions = retrieveShowReminderOptions();
+    },
+    deriveReminderData() {
+      const onReminderView = this.$route && this.$route.path==="/reminder";
+      // initialize showReminderOptions in case it was not previously set
+      // show the reminder link only if service worker and
+      // notifications are supported and were not previously denied
+      // (unless this.allowReminderOptions is set to false - in initial test phase)
+      // or if the user navigated to the reminder view explicitly.
+      if (this.showReminderOptions === null || onReminderView) {
+        if ( (this.allowReminderOptions && areNotificationsAvailable)
+            || onReminderView ) {
+          this.showReminderOptions = true;
+        } else {
+          this.showReminderOptions = false;
+        }
+      }
       this.isNotificationActive = !!(this.reminderTime &&
         this.isNotificationPermissionGranted && this.isNotificationEnabled);
+    },
+    setReminderData() {
       this.SET_REMINDER_TIME(this.reminderTime);
       this.SET_IS_NOTIFICATION_ENABLED(this.isNotificationEnabled);
+      this.SET_IS_NOTIFICATION_ACTIVE(this.isNotificationActive);
+      this.SET_SHOW_REMINDER_OPTIONS(this.showReminderOptions);
     },
     initializeReminderNotifications() {
       if (this.isNotificationActive) {
@@ -113,7 +134,7 @@ export default {
     },
     onMessageFromChild(msg) {
       if (msg === "reminder:updated") {
-        this.retrieveAndSetReminderData();
+        this.setReminderData();
       }
     }
   },
