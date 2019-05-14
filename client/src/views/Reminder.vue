@@ -256,12 +256,12 @@ export default {
     }
   },
   watch: {
-    reminderTime() {
-      var timeSplit = splitHourAndMinutes(this.reminderTime);
+    reminderTimeModel() {
+      var timeSplit = splitHourAndMinutes(this.reminderTimeModel);
       this.reminderHour = timeSplit.hour;
       this.reminderMinute = timeSplit.minute;
-      this.SET_REMINDER_TIME(this.reminderTime);
-      this.setNotificationParams("Reminder time updated to " + this.reminderTime);
+      this.SET_REMINDER_TIME(this.reminderTimeModel);
+      this.setNotificationParams("Reminder time updated to " + this.reminderTimeModel);
     },
     isNotificationGranted() {
       if (this.isNotificationGranted) {
