@@ -2,7 +2,7 @@
   <div class="reminder view">
     <h1>Daily Global Meditation Reminder</h1>
 
-    <template v-if="isNotificationSupported">
+    <template v-if="showReminderOptions">
 
     <div class="margin-top20">
       <div>
@@ -26,7 +26,7 @@
       <div key="ea" v-if="!isNotificationEnabled">
         <div>
           Click the button to enable your personal private Daily Global Meditation Reminder.<br>
-          <button class="action" @click="enableNotifications">Enable a daily reminder</button><span class="nowrap"> &nbsp; at <input type="time" v-model="reminderTime" step="900"/> &nbsp; ({{ reminderTimeText }})</span>
+          <button class="action" @click="enableNotifications">Enable a daily reminder</button><span class="nowrap"> &nbsp; at <input type="time" v-model="reminderTimeModel" step="900"/> &nbsp; ({{ reminderTimeText }})</span>
         </div>
       </div>
       <div key="eb" v-else>
@@ -119,8 +119,8 @@
 
 <script>
 import {
+  isNotificationSupported,
   splitHourAndMinutes,
-  areNotificationsAvailable,
   setNotificationParams,
   spawnNotification
 } from "../utils/reminder.js";
@@ -132,10 +132,10 @@ export default {
   components: {},
   data() {
     return {
-      bypassLackOfNotificationSupport: false,
-      isNotificationSupported: false,
+      isNotificationSupported: isNotificationSupported,
       isNotificationGranted: false,
       isNotificationDenied: false,
+      reminderTimeModel: null,
       reminderHour: 20,
       reminderMinute: 0,
       allowNotificationVibrate: false,
@@ -146,11 +146,11 @@ export default {
     }
   },
   mounted() {
-    if (this.reminderTime ) {
+    if (this.reminderTime) {
+      this.reminderTimeModel = this.reminderTime;
       this.suppressAlert = true;
     }
-    if (areNotificationsAvailable || this.bypassLackOfNotificationSupport) {
-      this.isNotificationSupported = true;
+    if (this.showReminderOptions) {
       this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
       this.isNotificationDenied = Notification.permission==="denied";
     }
