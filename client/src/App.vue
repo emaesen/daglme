@@ -12,7 +12,7 @@
       {{ clock }}
     </div>
     <transition name="fade" mode="out-in">
-      <router-view v-on:message="onMessageFromChild"/>
+      <router-view/>
     </transition>
     <div id="update-alert" :class="['alert-offscreen', showUpdateAlert ? 'alert' : '']">
       New version available
@@ -25,6 +25,9 @@
 
 <script>
 import {
+  persistIsNotificationEnabled,
+  persistReminderTime,
+  persistShowReminderOptions,
   retrieveIsNotificationEnabled,
   retrieveReminderTime,
   retrieveShowReminderOptions
@@ -131,11 +134,6 @@ export default {
     updateApp() {
       this.showUpdateAlert = false;
       getAppUpdate();
-    },
-    onMessageFromChild(msg) {
-      if (msg === "reminder:updated") {
-        this.setReminderData();
-      }
     }
   },
   computed: {
