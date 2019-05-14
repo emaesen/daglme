@@ -73,13 +73,13 @@ export default {
       // Site is running in web browser
       this.version += ".B";
     }
-  },
-  mounted() {
-    addAppMessageListeners(this.onAppMessage);
     this.retrieveReminderData();
     this.deriveReminderData();
     this.setReminderData();
     this.initializeReminderNotifications();
+  },
+  mounted() {
+    addAppMessageListeners(this.onAppMessage);
   },
   methods: {
     ...mapMutations([
@@ -112,6 +112,7 @@ export default {
         this.isNotificationPermissionGranted && this.isNotificationEnabled);
     },
     setReminderData() {
+      console.log("set reminderTime="+this.reminderTime);
       this.SET_REMINDER_TIME(this.reminderTime);
       this.SET_IS_NOTIFICATION_ENABLED(this.isNotificationEnabled);
       this.SET_IS_NOTIFICATION_ACTIVE(this.isNotificationActive);
