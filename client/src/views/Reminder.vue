@@ -289,6 +289,12 @@ export default {
       } else {
         this.setNotificationParams("Reminder disabled");
       }
+    },
+    isNotificationEnabledState() {
+      this.isNotificationEnabled = this.isNotificationEnabledState;
+    },
+    reminderTimeState() {
+      this.reminderTime = this.reminderTimeState;
     }
   }
 };
