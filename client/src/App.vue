@@ -536,7 +536,7 @@ a:not(.external):hover {
 }
 .alert{
   position:fixed;
-  bottom:20px;
+  bottom:27px;
   right:10px;
   background-color: #f6d55de8;
   border-radius: 5px;
