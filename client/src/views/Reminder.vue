@@ -21,7 +21,7 @@
         Unfortunately, your system does not appear to have the required support.
         </span>
         <div class="emph-alert" v-if="isNotificationDenied">
-          Notifications are currently denied; <span class="emph-caution">you may need to allow Notifications in your browser or device's settings.</span>
+          Notifications are currently denied by your browser; <span class="emph-caution">you may need to allow Notifications in your browser or device's settings.</span>
         </div>
       </div>
       <div class="margin-top10 emph" v-if="!isNotificationEnabled">
