@@ -34,6 +34,7 @@ import {
 } from "./utils/persistence.js";
 
 import {
+  isNotificationSupported,
   isNotificationGranted,
   isNotificationDenied,
   setNotificationParams,
@@ -61,6 +62,7 @@ export default {
       showUpdateAlert: false,
       isReloading: false,
       isNotificationEnabled: false,
+      notificationActiveCntr: 1,
       standardReminderTime: "20:00",
       reminderTime: null
     }
@@ -144,13 +146,14 @@ export default {
     ...mapGetters({
       clockTimeState: "clockTime", 
       reminderTimeState: "reminderTime", 
-      isNotificationEnabledState: "isNotificationEnabled"
+      isNotificationEnabledState: "isNotificationEnabled", 
+      isNotificationActiveState: "isNotificationActive"
     }),
     isInStandaloneMode() {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
     },
     isNotificationActive() {
-      return !!(this.reminderTime &&
+      return !!(this.notificationActiveCntr && this.reminderTime &&
         isNotificationGranted && this.isNotificationEnabled);
     },
     reminderIndicator() {
@@ -174,6 +177,13 @@ export default {
     isNotificationEnabledState() {
       this.isNotificationEnabled = this.isNotificationEnabledState;
       persistIsNotificationEnabled(this.isNotificationEnabled);
+    },
+    isNotificationActiveState() {
+      // trigger a re-evaluation of computed property isNotificationActive
+      // using a delay to ensure isNotificationGranted is properly set/read.
+      setTimeout(() => {
+        this.notificationActiveCntr++;
+      }, 0)
     },
     reminderTimeState() {
       this.reminderTime = this.reminderTimeState;
