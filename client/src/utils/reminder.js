@@ -98,6 +98,11 @@ export function splitHourAndMinutes(time) {
 }
 
 export function setNotificationParams(params) {
+  // re-evaluate permission
+  isNotificationGranted = isNotificationSupported
+    && Notification.permission === "granted";
+  isNotificationDenied = isNotificationSupported
+    && Notification.permission === "denied";
   return new Promise(function(resolve) {
     //console.log("[u/rem] Update notification params", params);
     if (params.isNotificationGranted===true) {
@@ -108,7 +113,6 @@ export function setNotificationParams(params) {
       // use 0 delta to ensure isNotificationGranted is set
       setTimeout(stopClock,0);
     }
-    isNotificationGranted = params.isNotificationGranted;
     reminderTime = params.reminderTime;
     let timeSplit = splitHourAndMinutes(reminderTime);
     reminderHour = timeSplit.hour;
