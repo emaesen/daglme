@@ -60,8 +60,6 @@ export default {
       showUpdateAlert: false,
       isReloading: false,
       isNotificationEnabled: false,
-      isNotificationActive: false,
-      isNotificationPermissionGranted: isNotificationGranted,
       standardReminderTime: "20:00",
       reminderTime: null
     }
@@ -110,8 +108,6 @@ export default {
           this.showReminderOptions = false;
         }
       }
-      this.isNotificationActive = !!(this.reminderTime &&
-        this.isNotificationPermissionGranted && this.isNotificationEnabled);
     },
     setReminderData() {
       this.SET_REMINDER_TIME(this.reminderTime);
@@ -151,6 +147,10 @@ export default {
     }),
     isInStandaloneMode() {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
+    },
+    isNotificationActive() {
+      return !!(this.reminderTime &&
+        isNotificationGranted && this.isNotificationEnabled);
     },
     reminderIndicator() {
       return this.isNotificationActive ? 
