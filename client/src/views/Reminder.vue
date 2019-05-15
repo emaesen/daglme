@@ -194,7 +194,8 @@ export default {
   methods: {
     ...mapMutations([
       "SET_REMINDER_TIME", 
-      "SET_IS_NOTIFICATION_ENABLED"
+      "SET_IS_NOTIFICATION_ENABLED",
+      "SET_IS_NOTIFICATION_ACTIVE"
     ]),
     initializeReminderDataFromState() {
       this.reminderTime = this.reminderTimeState;
@@ -217,8 +218,8 @@ export default {
       }
     },
     enableNotifications() {
-      this.SET_IS_NOTIFICATION_ENABLED(true);
       var that = this;
+      this.SET_IS_NOTIFICATION_ENABLED(true);
       if (Notification.permission === "granted") {
         // permission was granted already
         this.spawnNotification("Wonderful! You receive a daily meditation reminder");
@@ -228,12 +229,14 @@ export default {
         Notification.requestPermission().then(function (permission) {
           if (permission === "granted") {
             // If the user accepted, let's create a notification
-            this.spawnNotification("Welcome! You will receive a daily meditation reminder");
+            that.spawnNotification("Welcome! You will receive a daily meditation reminder");
             that.isNotificationGranted = true;
+            that.SET_IS_NOTIFICATION_ACTIVE(true);
           }
           if (permission === "denied") {
             that.isNotificationDenied = true;
-          }
+            that.SET_IS_NOTIFICATION_ACTIVE(false);
+         }
         });
       }
     },
