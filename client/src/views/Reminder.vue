@@ -34,7 +34,7 @@
       <div key="ea" v-if="!isNotificationEnabled">
         <div>
           Click the button to enable your personal private Daily Global Meditation Reminder.<br>
-          <button class="action" @click="enableNotifications">Enable a daily reminder</button><span class="nowrap"> &nbsp; at <input type="time" v-model="reminderTimeModel" step="900"/> &nbsp; ({{ reminderTimeText }})</span>
+          <button class="action" @click="enableNotifications">Enable a daily reminder</button><span class="nowrap"> &nbsp; at <input type="time" v-model="reminderTime" step="900"/> &nbsp; ({{ reminderTimeText }})</span>
         </div>
       </div>
       <div key="eb" v-else>
@@ -143,7 +143,9 @@ export default {
       isNotificationSupported: isNotificationSupported,
       isNotificationGranted: false,
       isNotificationDenied: false,
-      reminderTimeModel: null,
+      isNotificationEnabled: false,
+      showReminderOptions: false,
+      reminderTime: null,
       reminderHour: 20,
       reminderMinute: 0,
       allowNotificationVibrate: false,
@@ -154,25 +156,15 @@ export default {
     }
   },
   mounted() {
-    if (this.reminderTime) {
-      this.reminderTimeModel = this.reminderTime;
-      this.suppressAlert = true;
-    }
-    if (this.showReminderOptions) {
-      this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
-      this.isNotificationDenied = Notification.permission==="denied";
-    }
-    if (this.isNotificationDenied && this.isNotificationEnabled) {
-      // user has previously enabled the reminder but must have revoked
-      // notification permission directly in their device.
-      // Reset the reminder to disabled after a short amount of time.
-      setTimeout(() => {
-        this.SET_IS_NOTIFICATION_ENABLED(false);
-      }, 60 * 1000);
-    }
+    this.initializeReminderDataFromState();
+    this.initializeDerivedReminderData();
   },
   computed: {
-    ...mapGetters(["reminderTime", "isNotificationEnabled", "showReminderOptions"]),
+    ...mapGetters({
+      reminderTimeState: "reminderTime", 
+      isNotificationEnabledState: "isNotificationEnabled",
+      showReminderOptionsState: "showReminderOptions"
+    }),
     isInStandaloneMode() {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
     },
@@ -200,7 +192,30 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["SET_REMINDER_TIME", "SET_IS_NOTIFICATION_ENABLED"]),
+    ...mapMutations([
+      "SET_REMINDER_TIME", 
+      "SET_IS_NOTIFICATION_ENABLED"
+    ]),
+    initializeReminderDataFromState() {
+      this.reminderTime = this.reminderTimeState;
+      this.isNotificationEnabled = this.isNotificationEnabledState;
+      this.showReminderOptions = this.showReminderOptionsState;
+    },
+    initializeDerivedReminderData() {
+      this.suppressAlert = true;
+      if (this.showReminderOptions) {
+        this.isNotificationGranted = this.isNotificationEnabled && Notification.permission==="granted";
+        this.isNotificationDenied = Notification.permission==="denied";
+      }
+      if (this.isNotificationDenied && this.isNotificationEnabled) {
+        // user has previously enabled the reminder but must have revoked
+        // notification permission directly in their device.
+        // Reset the reminder to disabled after a short amount of time.
+        setTimeout(() => {
+          this.SET_IS_NOTIFICATION_ENABLED(false);
+        }, 60 * 1000);
+      }
+    },
     enableNotifications() {
       this.SET_IS_NOTIFICATION_ENABLED(true);
       var that = this;
@@ -261,12 +276,12 @@ export default {
     }
   },
   watch: {
-    reminderTimeModel() {
-      var timeSplit = splitHourAndMinutes(this.reminderTimeModel);
+    reminderTime() {
+      var timeSplit = splitHourAndMinutes(this.reminderTime);
       this.reminderHour = timeSplit.hour;
       this.reminderMinute = timeSplit.minute;
-      this.SET_REMINDER_TIME(this.reminderTimeModel);
-      this.setNotificationParams("Reminder time updated to " + this.reminderTimeModel);
+      this.SET_REMINDER_TIME(this.reminderTime);
+      this.setNotificationParams("Reminder time updated to " + this.reminderTime);
     },
     isNotificationGranted() {
       if (this.isNotificationGranted) {
