@@ -100,7 +100,7 @@ export function splitHourAndMinutes(time) {
 export function setNotificationParams(params) {
   return new Promise(function(resolve) {
     //console.log("[u/rem] Update notification params", params);
-    if (isNotificationGranted===false && params.isNotificationGranted===true) {
+    if (params.isNotificationGranted===true) {
       // use 0 delta to ensure isNotificationGranted is set
       setTimeout(startClock,0);
     }
