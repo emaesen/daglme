@@ -18,9 +18,11 @@ export let reminderState = {
 export const isNotificationSupported = "Notification" in window;
 export let isNotificationGranted = isNotificationSupported
   && Notification.permission === "granted";
+export let isNotificationDenied = isNotificationSupported
+  && Notification.permission === "denied";
 export const areNotificationsAvailable = isServiceWorkerSupported 
   && isNotificationSupported 
-  && Notification.permission !== "denied";
+  && !isNotificationDenied;
 
 function startClock() {
   stopClock();
