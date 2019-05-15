@@ -167,8 +167,7 @@ export default {
       // notification permission directly in their device.
       // Reset the reminder to disabled after a short amount of time.
       setTimeout(() => {
-        this.isNotificationEnabled = false;
-        this.SET_IS_NOTIFICATION_ENABLED(this.isNotificationEnabled);
+        this.SET_IS_NOTIFICATION_ENABLED(false);
       }, 60 * 1000);
     }
   },
@@ -203,8 +202,7 @@ export default {
   methods: {
     ...mapMutations(["SET_REMINDER_TIME", "SET_IS_NOTIFICATION_ENABLED"]),
     enableNotifications() {
-      this.isNotificationEnabled = true;
-      this.SET_IS_NOTIFICATION_ENABLED(this.isNotificationEnabled);
+      this.SET_IS_NOTIFICATION_ENABLED(true);
       var that = this;
       if (Notification.permission === "granted") {
         // permission was granted already
@@ -225,9 +223,8 @@ export default {
       }
     },
     disableNotifications() {
-      this.isNotificationEnabled = false;
       this.isNotificationGranted = false;
-      this.SET_IS_NOTIFICATION_ENABLED(this.isNotificationEnabled);
+      this.SET_IS_NOTIFICATION_ENABLED(false);
     },
     showTemporaryAlert(msg) {
       this.alert = msg;
