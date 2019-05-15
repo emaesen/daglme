@@ -153,10 +153,14 @@ export default {
         isNotificationGranted && this.isNotificationEnabled);
     },
     reminderIndicator() {
-      return this.isNotificationActive ? 
-        (this.reminderTime===this.standardReminderTime ? 
-          "✓" : "@"+this.reminderTime)
-        : "";
+      let txt = "";
+      if (this.isNotificationEnabled) {
+        txt = this.isNotificationActive ? 
+          (this.reminderTime===this.standardReminderTime ? 
+            "✓" : "@"+this.reminderTime)
+          : "⚐";
+      }
+      return txt;
     },
     showClock() {
       return this.isNotificationActive && this.allowClockDisplay;
