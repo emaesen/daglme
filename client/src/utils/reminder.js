@@ -5,7 +5,6 @@ import {
 
 let isClockStartPending = false;
 let timerID;
-let isNotificationGranted = false;
 let reminderTime = null;
 let reminderHour = null;
 let reminderMinute = null;
@@ -17,6 +16,8 @@ export let reminderState = {
 };
 
 export const isNotificationSupported = "Notification" in window;
+export let isNotificationGranted = isNotificationSupported
+  && Notification.permission === "granted";
 export const areNotificationsAvailable = isServiceWorkerSupported 
   && isNotificationSupported 
   && Notification.permission !== "denied";
