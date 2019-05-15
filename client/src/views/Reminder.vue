@@ -20,9 +20,9 @@
         <span v-if="!isNotificationSupported">
         Unfortunately, your system does not appear to have the required support.
         </span>
-      </div>
-      <div class="emph-alert" v-if="isNotificationDenied">
-        Notifications are currently denied; <span class="emph-caution">you may need to allow Notifications in your browser or device's settings.</span>
+        <div class="emph-alert" v-if="isNotificationDenied">
+          Notifications are currently denied; <span class="emph-caution">you may need to allow Notifications in your browser or device's settings.</span>
+        </div>
       </div>
       <div class="margin-top10 emph" v-if="!isNotificationEnabled">
         If you'd like to enable your personal private Daily Global Meditation Reminder, please follow the instructions below:
