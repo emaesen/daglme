@@ -35,6 +35,7 @@ import {
 
 import {
   isNotificationGranted,
+  isNotificationDenied,
   setNotificationParams,
   reminderState,
 } from "./utils/reminder.js";
@@ -153,7 +154,7 @@ export default {
         isNotificationGranted && this.isNotificationEnabled);
     },
     reminderIndicator() {
-      let txt = "";
+      let txt = isNotificationDenied ? "☓" : "";
       if (this.isNotificationEnabled) {
         txt = this.isNotificationActive ? 
           (this.reminderTime===this.standardReminderTime ? 
