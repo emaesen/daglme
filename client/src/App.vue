@@ -77,6 +77,7 @@ export default {
     this.retrieveReminderData();
     this.deriveReminderData();
     this.setReminderData();
+    this.persistReminderData();
     this.initializeReminderNotifications();
   },
   mounted() {
@@ -90,7 +91,7 @@ export default {
       "SET_SHOW_REMINDER_OPTIONS"
     ]),
     retrieveReminderData() {
-      this.reminderTime = retrieveReminderTime();
+      this.reminderTime = retrieveReminderTime() || this.standardReminderTime;
       this.isNotificationEnabled = retrieveIsNotificationEnabled();
       this.showReminderOptions = retrieveShowReminderOptions();
     },
@@ -117,6 +118,11 @@ export default {
       this.SET_IS_NOTIFICATION_ENABLED(this.isNotificationEnabled);
       this.SET_IS_NOTIFICATION_ACTIVE(this.isNotificationActive);
       this.SET_SHOW_REMINDER_OPTIONS(this.showReminderOptions);
+    },
+    persistReminderData() {
+      persistIsNotificationEnabled(this.isNotificationEnabled);
+      persistReminderTime(this.reminderTime);
+      persistShowReminderOptions(this.showReminderOptions);
     },
     initializeReminderNotifications() {
       if (this.isNotificationActive) {
