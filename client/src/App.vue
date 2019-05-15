@@ -144,7 +144,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["clockTime"]),
+    ...mapGetters({
+      clockTimeState: "clockTime", 
+      reminderTimeState: "reminderTime", 
+      isNotificationEnabledState: "isNotificationEnabled"
+    }),
     isInStandaloneMode() {
       return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
     },
@@ -159,6 +163,16 @@ export default {
     },
     clock() {
       return this.clockTime;
+    }
+  },
+  watch: {
+    isNotificationEnabledState() {
+      this.isNotificationEnabled = this.isNotificationEnabledState;
+      persistIsNotificationEnabled(this.isNotificationEnabled);
+    },
+    reminderTimeState() {
+      this.reminderTime = this.reminderTimeState;
+      persistReminderTime(this.reminderTime);
     }
   }
 }
