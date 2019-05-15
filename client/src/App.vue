@@ -34,6 +34,7 @@ import {
 } from "./utils/persistence.js";
 
 import {
+  isNotificationGranted,
   setNotificationParams,
   reminderState,
 } from "./utils/reminder.js";
@@ -50,7 +51,7 @@ export default {
   name: "App",
   data() {
     return {
-      version: "V0.9.1",
+      version: "V0.9.2",
       allowReminderOptions: true,
       showReminderOptions: false,
       allowClockDisplay: true,
@@ -60,7 +61,7 @@ export default {
       isReloading: false,
       isNotificationEnabled: false,
       isNotificationActive: false,
-      isNotificationPermissionGranted: Notification.permission === "granted",
+      isNotificationPermissionGranted: isNotificationGranted,
       standardReminderTime: "20:00",
       reminderTime: null
     }
