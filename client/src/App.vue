@@ -34,7 +34,6 @@ import {
 } from "./utils/persistence.js";
 
 import {
-  isNotificationSupported,
   isNotificationGranted,
   isNotificationDenied,
   setNotificationParams
