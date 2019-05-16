@@ -565,7 +565,8 @@ a:not(.external):hover {
   color: #fbd99a;
 }
 .version {
-  float: right;
+  position: fixed;
+  right: 5px;
   color: #a9bbd2;
 }
 .hidden {
@@ -659,6 +660,9 @@ a:not(.external):hover {
   .videoContainer iframe {
     width: 100%;
     height: auto;
+  }
+  .version {
+    bottom: 25px;
   }
 }
 @media print {
