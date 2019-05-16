@@ -37,8 +37,7 @@ import {
   isNotificationSupported,
   isNotificationGranted,
   isNotificationDenied,
-  setNotificationParams,
-  reminderState,
+  setNotificationParams
 } from "./utils/reminder.js";
 
 import { 
@@ -166,7 +165,7 @@ export default {
       return txt;
     },
     clockDisplay() {
-      return reminderState.clockDisplay;
+      return this.clockTimeState;
     },
     showClock() {
       return this.isNotificationActive && this.allowClockDisplay;
