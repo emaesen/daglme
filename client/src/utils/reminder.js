@@ -27,7 +27,9 @@ export const areNotificationsAvailable = isServiceWorkerSupported
 function startClock() {
   stopClock();
   if(isNotificationGranted && !isClockStartPending) {
+    ticktock();
     // clock ticks once every minute
+    // calculate delay so that clock ticks on the minute change;
     let multiplier = 60;
     let delay = 60 - new Date().getSeconds();
     console.log("[u/rem] Initialize the clock - start in " + delay + " seconds");
