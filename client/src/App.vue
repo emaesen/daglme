@@ -52,7 +52,7 @@ export default {
   name: "App",
   data() {
     return {
-      version: "V0.9.2",
+      version: "V0.9.3",
       allowReminderOptions: true,
       showReminderOptions: false,
       allowClockDisplay: true,
