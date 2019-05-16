@@ -11,7 +11,7 @@
       in association with
       <router-link to="/presenters/earthcare-global-tv">EarthCare Global TV</router-link>
       and
-      <router-link to="/presenters/in-shared-oneness">In Shared Oneness</router-link>.
+      <router-link to="/presenters/in-shared-oneness">In Shared Oneness</router-link> retreats.
       <br>
       <span class="instruction">(Click any of these names to view their information below)</span>
     </p>
