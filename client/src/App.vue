@@ -399,6 +399,7 @@ a.expand.external:after {
   top: 36px;
   right: 18px;
   font-family: monospace;
+  font-size: 15px;
   color: #daf6ffa9;
   text-shadow: 0 0 10px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.5);
 }
