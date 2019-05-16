@@ -375,9 +375,10 @@ a,
   font-family: 'Rosario', sans-serif;
   font-size: 90%;
 }
-.action.inactive {
+.action.selected {
   cursor: default;
   color: inherit;
+  color: #fbd99a;
 }
 a.external:after {
   content: " \02197";
@@ -561,7 +562,7 @@ a:not(.external):hover {
   box-shadow: 0 0 5px #5a0703;
 }
 .checked {
-  color: #09ff09;
+  color: #fbd99a;
 }
 .version {
   float: right;

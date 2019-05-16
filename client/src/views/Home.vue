@@ -39,17 +39,17 @@
       or listen to one of our three sacred sound recordings:
     </div>
     <ol>
-      <li :class="['action', videoPreviewNr===0? 'inactive' : '']" @click="selectRecording(0)">
+      <li :class="['action', videoPreviewNr===0? 'selected' : '']" @click="selectRecording(0)">
         <span v-if="videoPreviewNr===0" class="checked">☑</span>
         <span v-else>☐</span>
         The soothing melody of a metal tongue drum
       </li>
-      <li :class="['action', videoPreviewNr===1? 'inactive' : '']" @click="selectRecording(1)">
+      <li :class="['action', videoPreviewNr===1? 'selected' : '']" @click="selectRecording(1)">
         <span v-if="videoPreviewNr===1" class="checked">☑</span>
         <span v-else>☐</span>
         A soft healing chant
       </li>
-      <li :class="['action', videoPreviewNr===2? 'inactive' : '']" @click="selectRecording(2)">
+      <li :class="['action', videoPreviewNr===2? 'selected' : '']" @click="selectRecording(2)">
         <span v-if="videoPreviewNr===2" class="checked">☑</span>
         <span v-else>☐</span>
         The trance rhythm of a shamanic drum
