@@ -9,7 +9,7 @@
       <router-link to="/reminder" v-if="showReminderOptions">Remind me {{ reminderIndicator }}</router-link>
     </div>
     <div v-if="showClock" id="clock">
-      {{ clock }}
+      {{ clockDisplay }}
     </div>
     <transition name="fade" mode="out-in">
       <router-view/>
@@ -57,7 +57,6 @@ export default {
       allowReminderOptions: true,
       showReminderOptions: false,
       allowClockDisplay: true,
-      clockDisplay: reminderState.clockDisplay,
       msg: null,
       showUpdateAlert: false,
       isReloading: false,
@@ -166,11 +165,11 @@ export default {
       }
       return txt;
     },
+    clockDisplay() {
+      return reminderState.clockDisplay;
+    },
     showClock() {
       return this.isNotificationActive && this.allowClockDisplay;
-    },
-    clock() {
-      return this.clockTime;
     }
   },
   watch: {
