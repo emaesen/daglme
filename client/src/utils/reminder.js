@@ -1,19 +1,24 @@
 import {
   isServiceWorkerSupported,
   send_message_to_sw
-  } from "./sw-interface.js";
+} from "./sw-interface.js";
+
+import store from "../store.js";
 
 let isClockStartPending = false;
 let timerID;
 let reminderTime = null;
 let reminderHour = null;
 let reminderMinute = null;
-export let reminderState = {
+let reminderClock = {
   clockDisplay : "--:--",
   setClockDisplay(val) {
     this.clockDisplay = val;
+    store.commit("SET_CLOCK_TIME", val);
   }
 };
+
+export let clockDisplay = reminderClock.clockDisplay;
 
 export const isNotificationSupported = "Notification" in window;
 export let isNotificationGranted = isNotificationSupported
@@ -32,10 +37,10 @@ function startClock() {
     // calculate delay so that clock ticks on the minute change;
     let multiplier = 60;
     let delay = 60 - new Date().getSeconds();
-    console.log("[u/rem] Initialize the clock - start in " + delay + " seconds");
+    //console.log("[u/rem] Initialize the clock - start in " + delay + " seconds");
     setTimeout(() => {
       timerID = setInterval(ticktock, multiplier * 1000);
-      console.log("[u/rem] Start the clock (" + timerID + ") " + new Date());
+      //console.log("[u/rem] Start the clock (" + timerID + ") " + new Date());
       ticktock();
       isClockStartPending = false;
     }, delay * 1000);
@@ -45,7 +50,7 @@ function startClock() {
 
 function stopClock() {
   if (timerID) {
-    console.log("[u/rem] Stop the clock (" + timerID + ") " + new Date());
+    //console.log("[u/rem] Stop the clock (" + timerID + ") " + new Date());
     clearInterval(timerID);
     timerID = null;
   }
@@ -67,11 +72,11 @@ function ticktock() {
   var now = new Date();
   var hours = now.getHours();
   var minutes = now.getMinutes();
-  reminderState.setClockDisplay(padZeros(hours, 2) + ":" + padZeros(minutes, 2));
-  console.log("[u/rem] tick tock (" + timerID + ") " + reminderState.clockDisplay + " (" + reminderTime + ")");
+  reminderClock.setClockDisplay(padZeros(hours, 2) + ":" + padZeros(minutes, 2));
+  //console.log("[u/rem] tick tock (" + timerID + ") " + reminderClock.clockDisplay + " (" + reminderTime + ")");
   if (hours === 0 && minutes === 0) {
     // restart/recalibrate the clock
-    console.log("[u/rem] Recalibrate the clock");
+    //console.log("[u/rem] Recalibrate the clock");
     startClock();
   }
   if (Notification.permission === "granted" && 
@@ -79,12 +84,12 @@ function ticktock() {
     spawnNotification({
       body:"For 5 minutes, envision the Earth and Sky as Illumined and Whole...\nThanks for your participation!"
     });
-    console.log("[u/rem] Your Daily Global Meditation Reminder");
+    //console.log("[u/rem] Your Daily Global Meditation Reminder");
   }
 }
 
 export function spawnNotification(payload) {
-  console.log("[u/rem] spawn notification", {payload});
+  //console.log("[u/rem] spawn notification", {payload});
   return send_message_to_sw({
     action:"spawnNotification", 
     payload:payload
