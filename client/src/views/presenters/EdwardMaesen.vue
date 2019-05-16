@@ -41,8 +41,9 @@
 
     <h3>Sound Ceremony as Celestial Initiation</h3>
     <div>
-      Through the intentional ceremonial use of sound with acoustic instruments and voice, Edward reflects the State of True Being of the Ones he is with. His songs restore balance and harmony, revitalizing and reinforcing one's connection to Self. Their sounds serve as a celestial initiation and a catalyst for healing and understanding:<br>
-      ‘Sound Ceremony as Celestial Initiation’.
+      Through the ceremonial use of sound with acoustic instruments and voice, Edward reflects the State of True Being of the Ones he is with. His songs restore balance and harmony, revitalizing and reinforcing one's connection to Self. Their sounds serve as a celestial initiation and a catalyst for healing and understanding:<br>
+      ‘Sound Ceremony as Celestial Initiation’.<br>
+      A selection of video recordings can be viewed on Edward's <a href="https://www.youtube.com/c/EdwardMaesen" class="external" rel="noopener">Sound Healing YouTube channel</a>
     </div>
     <div class="poetic margin-top20">
       “Beyond the story<br>
@@ -52,7 +53,7 @@
 
     <h3>Spiritual Retreats</h3>
     <div>
-      As founding member of <a href="https://InSharedOneness.com" class="external" rel="noopener">In Shared Oneness</a>, Edward facilitates spiritual retreats in Mount Shasta, at the southern end of the Cascade Range in Siskiyou County, Northern California, USA. 
+      As founding member of <a href="https://InSharedOneness.com" class="external" rel="noopener">In Shared Oneness</a>, Edward co-facilitates spiritual retreats and performs sound healing ceremonies in Mount Shasta, in the beautiful mountains of Northern California, USA. 
     </div>
 
     <div class="contact margin-top50">
@@ -60,7 +61,7 @@
       Edward<br>
       <br>
       <a href="https://kagalakan.com" class="external expand" rel="noopener">Edward's web site</a><br>
-      <a href="https://www.youtube.com/c/EdwardMaesen" class="external expand" rel="noopener">Edward's YouTube channel</a>
+      <a href="https://www.youtube.com/c/EdwardMaesen" class="external expand" rel="noopener">Edward's Sound Healing YouTube channel</a>
     </div>
 
   </div>
