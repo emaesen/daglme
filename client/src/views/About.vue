@@ -80,7 +80,9 @@
       We value and respect your security and privacy and therefor this website (https://dailyglobalmeditation.com):
       <ul class="bullet">
         <li>is served over a secure connection;
-          <ul><li>("https" - identified by a padlock or similar icon next to this site URL in your browser window)</li></ul>
+          <ul>
+            <li>("https" - identified by a padlock or similar icon next to this site's URL in your browser window)</li>
+          </ul>
         </li>
         <li>processes the minimum amount of information required to operate and display content on this site</li>
       </ul>
@@ -88,18 +90,20 @@
     <div class="notice smallfont margin-top20">
       This website does not:
       <ul class="bullet">
-        <li>use "cookies" or "web beacons"</li>
+        <li>use data-transmitting "cookies" or "web beacons"</li>
         <li>collect or transmit a visitor's personal information</li>
         <li>embed analytics trackers</li>
         <li>connect to social networks</li>
-        <li>display ads</li>
+        <li>display ads or connect to an ad network</li>
       </ul>
     </div>
     <div class="notice smallfont margin-top20">
       This website does:
       <ul class="bullet">
-        <li>store standard non-personal information transmitted by your browser when you request access to pages on this website;
-          <ul><li>(This is aggregated in anonymous statistical access data, that is not shared with any third parties)</li></ul>
+        <li>store standard non-personal internet-access information that's controlled and transmitted by your browser when you request access to pages on this website;
+          <ul>
+            <li>(this is aggregated in anonymous statistical access data, that is not shared with any third parties)</li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -107,13 +111,22 @@
       This website may:
       <ul class="bullet">
         <li>store a copy of its pages on your local device for offline use;
-          <ul><li>(You may opt out by disabling "service workers" in your device's settings)</li></ul>
+          <ul>
+            <li>(only if your browser supports this functionality)</li>
+            <li>(you may opt out by disabling "service workers" in your device's settings)</li>
+          </ul>
         </li>
         <li>request to send you push notifications with a daily meditation reminder;
-          <ul><li>(Only after you explicitly opt in)</li><li>(You may opt out by blocking "notifications" in your device’s settings)</li></ul>
+          <ul>
+            <li>(only if your browser supports this functionality)</li>
+            <li>(only after you explicitly enable this functionality)</li>
+            <li>(you may opt out by blocking "notifications" in your device’s settings)</li>
+          </ul>
         </li>
         <li>embed a Daily Global Meditation YouTube video;
-          <ul><li>(Only after you intentionally click the video's preview image)</li></ul>
+          <ul>
+            <li>(only after you intentionally click the video's preview image)</li>
+          </ul>
         </li>
       </ul>
     </div>
