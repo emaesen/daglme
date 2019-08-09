@@ -75,6 +75,12 @@
       Donations to support the development of the Daily Global Meditation website and corresponding meditation videos are greatly appreciated. If you feel so inclined, please view this site's <a href="https://www.gofundme.com/daily-global-meditation-website&rcid=r01-155112011808-f5a97623d58746d3&pc=ot_co_campmgmt_w" class="external" target="_blank" rel="noopener">fundraising campaign on GoFundMe</a>. Any amount is accepted in gratitude.
     </div>
 
+    <h3>Acknowledgment</h3>
+    <div class="smallfont">
+      The art embedded in the bottom right of the background is ‘Behold-SHE’ by Mary Saint-Marie/Sheoekah.<br>
+      The image of the earth in the background is an open-source image from NASA.
+    </div>
+
     <h3>Privacy Policy</h3>
     <div class="notice smallfont">
       We value and respect your security and privacy and therefor this website (https://dailyglobalmeditation.com):
