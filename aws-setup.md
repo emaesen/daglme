@@ -53,6 +53,13 @@ Configure content bucket Static Web Hosting to "Use this bucket to host a websit
 
 Configure www subdomain bucket Static Web Hosting to "Redirect requests" to the content bucket.
 
+### For SPA: redirect all page requests to main index page
+
+Configure content bucket Static Web Hosting to set "Index document" to "index.html",
+as well as:
+Configure content bucket Static Web Hosting to set "Error document" to "index.html"
+(This works fine for regular browser users but pages return a 404 code, which is not good for SEO purposes - this is fixed in the CloudFront configuration)
+
 ## Create SSL Certificate
 
 Open [AWS ACM](https://console.aws.amazon.com/acm/home?region=us-east-1#/).
@@ -76,6 +83,14 @@ Use defaults except:
 - "Logging" => check "On"
 - "Bucket for Logs" => click in box and select existing S3 log bucket.
 - "Log Prefix" => type "cdn/" (without the quotes)
+
+### For SPA SEO: replace 404 response code with 200 code
+
+Under Error Pages tab, click Create Custom Error Response
+HTTP Error Code: 404 Not Found
+Customize Error Response: Yes
+Response Page Path: /index.html
+HTTP Response Code: 200
 
 ## Add alias records in Route 53
 
