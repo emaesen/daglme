@@ -16,7 +16,7 @@
       <span class="instruction">(Click any of these names to view their information below)</span>
     </p>
 
-    <transition name="view-fade" mode="out-in">
+    <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
   </div>
