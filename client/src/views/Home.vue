@@ -143,7 +143,7 @@ const videoEmbedQS = "?autoplay=1"
       + "&origin=" + window.location.protocol + "//" + window.location.hostname;
 
 export default {
-  name: "home",
+  name: "Home",
   data() {
     return {
       showVideoPreview: true,

@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "about",
+  name: "Presenters",
   components: {}
 };
 </script>

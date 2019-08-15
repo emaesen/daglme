@@ -10,7 +10,7 @@ import InSharedOneness from "./InSharedOneness.vue";
 import EarthCareGlobalTV from "./EarthCareGlobalTV.vue";
 
 export default {
-  name: "MarySaintMarie",
+  name: "Sponsors",
   components: {
     InSharedOneness,
     EarthCareGlobalTV

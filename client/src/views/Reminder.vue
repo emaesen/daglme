@@ -136,7 +136,7 @@ import {
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
-  name: "reminders",
+  name: "Reminder",
   components: {},
   data() {
     return {
