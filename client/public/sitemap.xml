@@ -10,4 +10,14 @@
 		<priority>1.00</priority>
 		<changefreq>weekly</changefreq>
 	</url>
+	<url>
+		<loc>https://dailyglobalmeditation.com/about</loc>
+		<priority>0.90</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>https://dailyglobalmeditation.com/presenters</loc>
+		<priority>0.90</priority>
+		<changefreq>weekly</changefreq>
+	</url>
 </urlset>
