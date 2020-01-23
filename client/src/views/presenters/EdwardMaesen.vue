@@ -56,7 +56,7 @@
       As founding member of <a href="https://InSharedOneness.com" class="external" rel="noopener">In Shared Oneness</a>, Edward co-facilitates spiritual retreats and performs sound healing ceremonies in Mount Shasta, in the beautiful mountains of Northern California, USA. 
     </div>
 
-    <h3>Photography art and website design</h3>
+    <h3>Photography Art and Website Design</h3>
     <div>
       Edward also creates limited edition gallery-quality prints with artistic renditions of his photography and provides website design services. 
     </div>
