@@ -18,7 +18,7 @@
       New version available
       <button class="action" @click="updateApp">UPDATE</button>
     </div>
-    <div id="footer">© 2019, Daily Global Meditation. All rights reserved. <span class="version">{{ version }}</span></div>
+    <div id="footer">© 2019 - {{ year }}, Daily Global Meditation. All rights reserved. <span class="version">{{ version }}</span></div>
     <div class="hidden">{{ msg }}</div>
   </div>
 </template>
@@ -168,6 +168,9 @@ export default {
     },
     showClock() {
       return this.isNotificationActive && this.allowClockDisplay;
+    },
+    year() {
+      return (new Date()).getFullYear();
     }
   },
   watch: {
