@@ -15,7 +15,7 @@
         Note:<br>
         The use of system "Notifications" for the daily reminder service is experimental technology with limited support in browsers (as of April 2019).<br>
         <span v-if="isNotificationSupported">
-        However, your system appears to have the required support. Wonderful!
+        However, your system appears to have some required minimal support. Wonderful! Yet... memory management specifics of your device may interfere with the notification functionality.
         </span>
         <span v-if="!isNotificationSupported">
         Unfortunately, your system does not appear to have the required support.
