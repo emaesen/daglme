@@ -53,21 +53,13 @@
     <div>
       Participants are welcome and invited to download and share the Daily Global Meditation <a href="/img/media/daily-global-meditation-eflyer.jpg">email flyer</a> or <a href="/img/media/daily-global-meditation-banner-3x2.jpg">website banner</a>.<br>
       <br> 
-      When sharing on social media, consider using hashtag #DailyGlobalMeditation or #daglme.<br>
-      <br>
-      This <i>DailyGlobalMeditation.com</i> website can be referenced in short as <a href="http://dagl.me" class="external expand" rel="noopener"><i>dagl.me</i></a>. For instance on social media with limited character length, like twitter, gab or SMS.
+      When sharing on social media, please consider using hashtag #DailyGlobalMeditation or #daglme.
     </div>
 
     <h2>eMail Contact</h2>
     <div>
       We'd love to hear from you!<br>
       <a href="mailto:daglme@protonmail.com">daglme@protonmail.com</a>
-    </div>
-
-    <h2>Social Media</h2>
-    <div>
-      Hash tags: #DailyGlobalMeditation, #daglme.<br>
-      Twitter: <a href="https://twitter.com/dagl_me" class="external expand" rel="noopener">@dagl_me</a>
     </div>
 
     <h3>Donations</h3>
@@ -77,8 +69,9 @@
 
     <h3>Acknowledgment</h3>
     <div class="smallfont">
-      The art embedded in the bottom right of the background is ‘Behold-SHE’ by Mary Saint-Marie/Sheoekah.<br>
-      The image of the earth in the background is an open-source image from NASA.
+      The art embedded in the bottom right of the background is ‘Behold-SHE’ by <router-link to="/presenters/mary-saint-marie">Mary Saint-Marie/Sheoekah</router-link>.<br>
+      The image of the earth in the background is an open-source image from NASA.<br>
+      Website conception and design by <router-link to="/presenters/edward-maesen">Edward Maesen</router-link>.
     </div>
 
     <h3>Privacy Policy</h3>
